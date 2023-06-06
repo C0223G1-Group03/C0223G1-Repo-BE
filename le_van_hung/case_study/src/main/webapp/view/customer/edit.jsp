@@ -17,41 +17,116 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #19161c;
+            height: 100vh;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-direction: column;
+            align-content: center;
+        }
+
+        .box {
+            position: relative;
+        }
+
+        .input {
+            padding: 10px;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: 4px solid white;
+            border-radius: 50px;
+            box-sizing: border-box;
+            font-family: Comic Sans MS;
+            font-size: 20px;
+            color: white;
+            outline: none;
+            transition: .5s;
+        }
+
+        .box:hover input {
+            width: 100px;
+            background: #3b3640;
+            border-radius: 10px;
+        }
+
+        .box i {
+            position: absolute;
+            top: 60%;
+            right: auto;
+            transform: translate(-50%, -50%);
+            font-size: 15px;
+            color: white;
+            transition: .2s;
+        }
+
+        .box:hover i {
+            opacity: 0;
+            z-index: -1;
+        }
+        th{
+            width: 200px;
+            text-align: center;
+        }
+        td,input{
+            width: 400px;
+        }
+
+    </style>
 </head>
 <body>
 <form action="/customer?action=update" method="post">
-    <table class="table table-dark table-hover container-f ">
+    <table class="table table-dark table-hover container-f">
         <thead>
         <tr style="text-align: center">
-            <th class="col-1" scope="col">Mã KH</th>
-            <th class="col-2" scope="col">Họ và tên</th>
-            <th class="col-1" scope="col">Ngày sinh</th>
-            <th class="col-1" scope="col">Giới tính</th>
-            <th class="col-1" scope="col">CCCD</th>
-            <th class="col-1" scope="col">SĐT</th>
-            <th class="col-3" scope="col">Địa chỉ</th>
-            <th class="col-2" scope="col">Email</th>
-        </tr>
-        </thead>
-        <tbody style="text-align: center">
         <tr>
-            <td class="col-1 "><input scope="row" name="id" readonly value="${customer.getId()}"></td>
-            <td class="col-2"><input name="name_edit" value="${customer.getName()}" ></td>
-            <td class="col-1"><input name="dateOfBirth_edit" value="${customer.getDateOfBirth()}"></td>
-            <td class="col-1" ><select name="gender" >
-                <option   value="male">Male
-                <option  value="female">Female
+            <th>Mã KH</th>
+            <td><input name="id" readonly value="${customer.getId()}"></td>
+        </tr>
+        <tr>
+            <th >Họ và tên</th>
+            <td ><input name="name_edit" value="${customer.getName()}"></td>
+        </tr>
+        <tr>
+            <th >Ngày sinh</th>
+            <td ><input name="dateOfBirth_edit" value="${customer.getDateOfBirth()}"></td>
+        </tr>
+        <tr>
+            <th >Giới tính</th>
+            <td ><select name="gender">
+                <option value="Nam">Nam
+                <option value="Nữ">Nữ
             </select></td>
-            <td class="col-1"><input  name="citizenId" value="${customer.getCitizenId()}"></td>
-            <td class="col-1"><input  name="phone" value="${customer.getPhone()}"></td>
-            <td class="col-2"><input  name="address" value="${customer.getAddress()}"></td>
-            <td class="col-2"><input  name="email" value="${customer.getEmail()}"></td>
-            <td class="col-1">
-                <button class="btn btn-outline-light" type="submit" style="width: 40px"><span>
+        </tr>
+        <tr>
+            <th>CCCD</th>
+            <td ><input name="citizenId" value="${customer.getCitizenId()}"></td>
+        </tr>
+        <tr>
+            <th>SĐT</th>
+            <td ><input name="phone" value="${customer.getPhone()}"></td>
+        </tr>
+        <tr>
+            <th >Địa chỉ</th>
+            <td ><input name="address" value="${customer.getAddress()}"></td>
+        </tr>
+        <tr>
+            <th >Email</th>
+            <td ><input name="email" value="${customer.getEmail()}"></td>
+        </tr>
+        <tr>
+            <th>Back</th>
+            <td >
+                <button class="btn btn-outline-light" type="submit" style="width: 40px;"><span>
                 <i class="fa-regular fa-circle-check"></i></span></button>
             </td>
         </tr>
-        </tbody>
+        </thead>
     </table>
 </form>
 
