@@ -11,4 +11,5 @@ public interface IEmployeeRepo {
     boolean delete(int id);
     void update(Employee employee);
     Employee search(int id);
+    boolean findEmployee(Employee employee);
 }
