@@ -1,0 +1,127 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Hi
+  Date: 6/3/2023
+  Time: 2:21 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hiển thị danh sách</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+</head>
+<body>
+<nav class="navbar pt-0 navbar-expand-lg p-0">
+    <div class="container-fluid menu" style="background-color: black">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse  " id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+                <li class="nav-item">
+                    <a href="/display" class="nav-link  ">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/display?action=display" class="nav-link  ">Danh sách sản phẩm</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/display?action=user" class="nav-link  ">Đăng nhập</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Tư Vấn Mua Xe
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">HotLine : 086753579</a></li>
+                        <li><a class="dropdown-item" href="#">Thế Giới Mercedes-Benz</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Dịch Vụ
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                        <li><h6 style="padding-left: 17px;">Dịch Vụ & Phụ Kiện</h6></li>
+                        <li><a class="dropdown-item" href="#">Đặt Lịch Hẹn Trực Tuyến</a></li>
+                        <li><a class="dropdown-item" href="#">Dịch Vụ và Bảo Dưỡng</a></li>
+                        <li><a class="dropdown-item" href="#">Bảo Hành</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <div class="box">
+                    <div class="container-1">
+                        <input type="search" id="search" placeholder="Tìm Kiếm Xe" />&nbsp&nbsp
+                    </div>
+                </div>
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="container" >
+
+    <h1>Các dòng xe Mercedes-Benz</h1>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/display?action=display" style="color: black">Tất cả các dòng xe</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/display?action=display&type=1" style="color: black">Sedans</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/display?action=display&type=2" style="color: black">Xe địa hình/SUV</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/display?action=display&type=3" style="color: black">Xe Coupé</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/display?action=display&type=4" style="color: black">Xe đa dụng</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row" style="margin-bottom: 20px">
+        <c:forEach items="${productList}" var="list">
+        <div class="col-3" style="margin-right: 20px; margin-left: 40px;margin-bottom: 40px" >
+            <div class="card" style="width: 18rem">
+                <img height="200px" src="<c:out value="${list.image}"/> " class="card-img-top" alt="..."/>
+                <div class="card-body">
+                    <p class="card-text">${list.ten_xe}</p>
+                </div>
+                <div class="card-body">
+                    <a href="/display?action=detail&id=${list.ma_xe}"><button style="border: 0px">Chi tiết</button></a>
+                </div>
+                <div class="card-body">
+                    <a><button style="border: 0px"><i class="fa-solid fa-cart-shopping"></i></button></a>
+                </div>
+            </div>
+        </div>
+        </c:forEach>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+</html>
