@@ -101,7 +101,7 @@
       <marquee class="menu"> VH3 Automobile Store Online</marquee>
     </div>
     <div class="col-2">
-      <img src="<mecccc.png"/>" width="150px" ; style="padding-left: 50px; padding-top: 30px">
+      <img src="<mecccc.png" width="150px" ; style="padding-left: 50px; padding-top: 30px">
     </div>
   </div>
   <nav class="navbar pt-0 navbar-expand-lg p-0">
