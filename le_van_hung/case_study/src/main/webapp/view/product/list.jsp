@@ -10,6 +10,11 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+        .collapse ul li a{
+            color: white;
+        }
+    </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
@@ -22,7 +27,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse  " id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a href="/display" class="nav-link  ">Trang chủ</a>
                 </li>
@@ -55,14 +60,6 @@
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex">
-                <div class="box">
-                    <div class="container-1">
-                        <input type="search" id="search" placeholder="Tìm Kiếm Xe" />&nbsp&nbsp
-                    </div>
-                </div>
-                <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
         </div>
     </div>
 </nav>
@@ -71,7 +68,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent1">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/product" style="color: black">Quản lý sản phẩm</a>
+                    <a class="nav-link active" aria-current="page" href="/product" style="color: black">Quản lý sản
+                        phẩm</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" style="color: black">Quản lý nhân viên</a>
@@ -86,22 +84,23 @@
         </div>
     </div>
 </nav>
-<h2>
+<h2 style="text-align: center">
     Quản Lý Sản Phẩm
 </h2>
-<a href="/product?action=showFormAdd">thêm sản phẩm mới</a>
 <form method="get" action="/product">
-    <table style="border: 2px black solid;background-color: #0dcaf0; color: black; width: 100%;">
-            <tr>
-                <th>STT &nbsp</th>
-                <th>Tên Loại xe &nbsp</th>
-                <th>Màu xe &nbsp</th>
-                <th>Ngày Sản Xuât &nbsp</th>
-                <th>Mô Tả &nbsp</th>
-                <th>Tên Loai Xe &nbsp</th>
-                <th>Tên Tình Trạng &nbsp</th>
-                <th>Giá &nbsp</th>
-            </tr>
+    <table style="border: 2px black solid;background-color: black; color: white; width: 100%; font-size: large; height: 100%">
+        <tr>
+            <th>STT &nbsp</th>
+            <th>Tên xe &nbsp</th>
+            <th>Màu xe &nbsp</th>
+            <th>Ngày Sản Xuât &nbsp</th>
+            <th>Mô Tả &nbsp</th>
+            <th>Loai Xe &nbsp</th>
+            <th>Tên Tình Trạng &nbsp</th>
+            <th>Giá &nbsp</th>
+            <th><a href="/product?action=showFormAdd">Thêm Xe Mới</a>
+            </th>
+        </tr>
         <c:forEach items="${list}" var="list" varStatus="loop">
             <tr>
                 <td><c:out value="${loop.count}"/></td>
@@ -113,7 +112,7 @@
                 <td><c:out value="${list.tinhTrang.ten_tinh_trang}"/></td>
                 <td><c:out value="${list.gia}"/></td>
                 <td>
-                    <button><a href="/product?action=showFormEdit?id=${list.ma_xe}"/>Sửa</button>
+                    <button><a href="/product?action=showFormEdit&id=${list.ma_xe}"/>Sửa</button>
                 </td>
                 <td>
                     <button type="button" class="btn btn-primary"
