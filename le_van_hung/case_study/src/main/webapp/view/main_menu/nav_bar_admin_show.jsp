@@ -27,10 +27,10 @@
                     <a class="nav-link active" aria-current="page" href="/product" style="color: black">Quản lý sản phẩm</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: black">Quản lý nhân viên</a>
+                    <a class="nav-link" href="/employee" style="color: black">Quản lý nhân viên</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: black">Quản lý khách hàng</a>
+                    <a class="nav-link" href="/customer" style="color: black">Quản lý khách hàng</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" style="color: black">Quản lý hợp đồng</a>
