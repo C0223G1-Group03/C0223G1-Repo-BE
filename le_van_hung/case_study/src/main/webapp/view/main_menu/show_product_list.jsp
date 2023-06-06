@@ -15,6 +15,22 @@
           content="width=device-width, user-scalable=no, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hiển thị danh sách</title>
+    <style>
+        .menu:hover {
+            border: 1px ;
+            background-color: white;
+            color: black;
+        }
+        .container-fluid{
+            background-color: black;
+        }
+        .nav-item a{
+            color: white;
+        }
+        /*.ca{*/
+        /*    box-shadow: 0px 0px 20px 30px white;*/
+        /*}*/
+    </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
@@ -67,17 +83,20 @@
                         <input type="search" id="search" placeholder="Tìm Kiếm Xe" />&nbsp&nbsp
                     </div>
                 </div>
-                <button class="btn btn-outline-light" type="submit">Search</button>
+                <div>
+                <button class="btn btn-outline-light" type="submit"  style="height: 30px; padding-bottom: 10px; font-size: small">
+                    <span >Search</span></button>
+                </div>
             </form>
         </div>
     </div>
 </nav>
-<div class="container" >
+<div class=" container-fluid" >
 
-    <h1>Các dòng xe Mercedes-Benz</h1>
+    <h1 style="color: white">Các dòng xe Mercedes-Benz</h1>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/display?action=display" style="color: black">Tất cả các dòng xe</a>
+            <a class="navbar-brand" href="/display?action=display" style="color: white">Tất cả các dòng xe</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -85,16 +104,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent1">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/display?action=display&type=1" style="color: black">Sedans</a>
+                        <a class="nav-link active" aria-current="page" href="/display?action=display&type=1" style="color: white">Sedans</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/display?action=display&type=2" style="color: black">Xe địa hình/SUV</a>
+                        <a class="nav-link" href="/display?action=display&type=2" style="color: white">Xe địa hình/SUV</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/display?action=display&type=3" style="color: black">Xe Coupé</a>
+                        <a class="nav-link" href="/display?action=display&type=3" style="color: white">Xe Coupé</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/display?action=display&type=4" style="color: black">Xe đa dụng</a>
+                        <a class="nav-link" href="/display?action=display&type=4" style="color: white">Xe đa dụng</a>
                     </li>
                 </ul>
             </div>
@@ -110,7 +129,7 @@
                     <p class="card-text">${list.ten_xe}</p>
                 </div>
                 <div class="card-body">
-                    <a href="/display?action=detail&id=${list.ma_xe}"><button style="border: 0px">Chi tiết</button></a>
+                    <a href="/display?action=detail&id=${list.ma_xe}"><button class="menu">Chi tiết</button></a>
                 </div>
                 <div class="card-body">
                     <a><button style="border: 0px"><i class="fa-solid fa-cart-shopping"></i></button></a>
