@@ -6,6 +6,7 @@ import com.example.case_study.model.product.LoaiXe;
 import com.example.case_study.model.product.Product;
 import com.example.case_study.model.product.TinhTrang;
 import com.example.case_study.service.product.*;
+import com.mysql.cj.protocol.x.XMessage;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,7 +14,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet(name="ProductServlet", value ="/product")
@@ -46,10 +49,12 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action=req.getParameter("action");
+
         if(action==null){
             action="";
         }
         switch (action){
+
             case "add":
                 addProduct(req,resp);
                 break;
@@ -112,7 +117,9 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-    private void addProduct(HttpServletRequest req, HttpServletResponse resp) {
+    private void addProduct(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        resp.setContentType("text/html;charset=UTF-8");
+        PrintWriter out=resp.getWriter();
         String name=req.getParameter("name");
         String color=req.getParameter("color");
         String date=req.getParameter("day");
@@ -123,8 +130,10 @@ public class ProductServlet extends HttpServlet {
         TinhTrang tinhTrang1 = new TinhTrang(tinhTrang);
         Product product = new Product(name,color,date,introduce,loaiXe1,tinhTrang1);
         productService.add(product);
+        resp.getWriter().print("Thêm thành Công.");
         try {
             resp.sendRedirect("/product");
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -136,6 +145,7 @@ public class ProductServlet extends HttpServlet {
         req.setAttribute("tinhTrangXe",tinhTrangList);
         RequestDispatcher requestDispatcher=req.getRequestDispatcher("view/product/add.jsp");
         requestDispatcher.forward(req,resp);
+
     }
 
     private void showList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -10,12 +10,23 @@
 <html>
 <head>
     <title>Title</title>
+    <meta charset="utf-8">
     <style>
-        .collapse ul li a{
+        .collapse ul li a {
             color: white;
         }
-        .dropdown-menu li a{
+
+        .dropdown-menu li a {
             color: black;
+        }
+
+        table {
+            border: 2px black solid;
+            background-color: black;
+            color: white;
+            width: 100%;
+            font-size: large;
+            height: 100%;
         }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -24,12 +35,12 @@
 <body>
 <jsp:include page="/view/main_menu/nav_bar_giao_dien.jsp"></jsp:include>
 <jsp:include page="/view/main_menu/nav_bar_admin_show.jsp"></jsp:include>
-<h2>
 <h2 style="text-align: center">
     Quản Lý Sản Phẩm
 </h2>
+<a href="/product?action=showFormAdd">Thêm Xe Mới</a>
 <form method="get" action="/product">
-    <table style="border: 2px black solid;background-color: black; color: white; width: 100%; font-size: large; height: 100%">
+    <table>
         <tr>
             <th>STT &nbsp</th>
             <th>Tên xe &nbsp</th>
@@ -39,8 +50,6 @@
             <th>Loai Xe &nbsp</th>
             <th>Tên Tình Trạng &nbsp</th>
             <th>Giá &nbsp</th>
-            <th><a href="/product?action=showFormAdd">Thêm Xe Mới</a>
-            </th>
         </tr>
         <c:forEach items="${list}" var="list" varStatus="loop">
             <tr>
