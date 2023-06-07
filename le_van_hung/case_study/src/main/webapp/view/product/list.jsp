@@ -7,30 +7,32 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Title</title>
     <meta charset="utf-8">
     <style>
-        .collapse ul li a {
-            color: white;
-        }
+        /*.collapse ul li a {*/
+        /*    color: white;*/
+        /*}*/
 
-        .dropdown-menu li a {
-            color: black;
-        }
+        /*.dropdown-menu li a {*/
+        /*    color: black;*/
+        /*}*/
 
-        table {
-            border: 2px black solid;
-            background-color: black;
-            color: white;
-            width: 100%;
-            font-size: large;
-            height: 100%;
-        }
+        /*table {*/
+        /*    border: 2px black solid;*/
+        /*    background-color: black;*/
+        /*    color: white;*/
+        /*    width: 100%;*/
+        /*    font-size: large;*/
+        /*    height: 100%;*/
+        /*}*/
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="datatables/css/dataTables.bootstrap5.min.css"/>
 </head>
 <body>
 <jsp:include page="/view/main_menu/nav_bar_giao_dien.jsp"></jsp:include>
@@ -40,7 +42,8 @@
 </h2>
 <a href="/product?action=showFormAdd">Thêm Xe Mới</a>
 <form method="get" action="/product">
-    <table>
+    <table id="table-list" class="table table-striped table-bordered" style="width:100% ;">
+        <thead>
         <tr>
             <th>STT &nbsp</th>
             <th>Tên xe &nbsp</th>
@@ -51,6 +54,8 @@
             <th>Tên Tình Trạng &nbsp</th>
             <th>Giá &nbsp</th>
         </tr>
+        </thead>
+        <tbody>
         <c:forEach items="${list}" var="list" varStatus="loop">
             <tr>
                 <td><c:out value="${loop.count}"/></td>
@@ -72,6 +77,7 @@
                 </td>
             </tr>
         </c:forEach>
+        </tbody>
     </table>
 </form>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -99,8 +105,19 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+<script src="jquery/jquery-3.5.1.min.js"></script>
+<script src="datatables/js/jquery.dataTables.min.js"></script>
+<script src="datatables/js/dataTables.bootstrap5.min.js"></script>
 <script>
-    function remove(ma_xe, ten_xe) {
+    $(document).ready(function () {
+        $("#table-list").dataTable({
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 2
+        });
+    });
+
+    function remove(ma_xe,ten_xe) {
         document.getElementById("nameDelete").innerText = ten_xe;
         document.getElementById("idDelete").value = ma_xe;
     }

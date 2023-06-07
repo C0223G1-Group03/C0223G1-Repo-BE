@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+
 @WebServlet(name="ProductServlet", value ="/product")
 public class ProductServlet extends HttpServlet {
     private ILoaiXeService loaiXeService = new LoaiXeService();
@@ -119,7 +120,6 @@ public class ProductServlet extends HttpServlet {
 
     private void addProduct(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/html;charset=UTF-8");
-        PrintWriter out=resp.getWriter();
         String name=req.getParameter("name");
         String color=req.getParameter("color");
         String date=req.getParameter("day");
@@ -130,10 +130,8 @@ public class ProductServlet extends HttpServlet {
         TinhTrang tinhTrang1 = new TinhTrang(tinhTrang);
         Product product = new Product(name,color,date,introduce,loaiXe1,tinhTrang1);
         productService.add(product);
-        resp.getWriter().print("Thêm thành Công.");
         try {
             resp.sendRedirect("/product");
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

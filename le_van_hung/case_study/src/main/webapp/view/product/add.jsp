@@ -67,7 +67,6 @@
                 <input type="number" name="gia" step="any" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Chỉ được nhập số">
             </th>
             <th>
-
                 <button type="submit" style="">Thêm Mới</button>
             </th>
         </tr>

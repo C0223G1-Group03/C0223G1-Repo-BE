@@ -128,7 +128,7 @@
         <marquee class="menu"> VH3 Automobile Store Online</marquee>
     </div>
     <div class="col-2">
-        <img src="/view/image/mecccc.png" width="150px" ; style="padding-left: 50px; padding-top: 30px"/>
+        <img src="/view/image/mecccc.png" width="150px" ; style="padding-left: 70px; padding-top: 35px"/>
     </div>
 </div>
 <nav class="navbar pt-0 navbar-expand-lg p-0">
@@ -191,7 +191,7 @@
     <h2 style="padding-top: 150px">Tìm Hiểu Thêm</h2>
     <div class="col-4">
         <br>
-        <div class="card" style="width: 100%; color: black">
+        <div class="card" style="width: 100%;height:400px; color: black">
             <img src="https://images.drive.com.au/driveau/image/upload/c_fill,f_auto,g_auto,h_675,q_auto:eco,w_1200/v1/cms/uploads/jrb4ysxfzzbr0udce9kj"
                  c...lass="card-img-top" alt="...">
             <div class="card-body">
@@ -203,7 +203,7 @@
     </div>
     <div class="col-4">
         <br>
-        <div class="card" style="width: 100%; color: black">
+        <div class="card" style="width: 100%;height:400px; color: black">
             <img src="https://cdn.dailyxe.com.vn/image/lan-truyen-tin-don-mercedes-benz-c300-amg-2022-sap-ve-viet-nam-gia-chenh-lech-gan-200-trieu-dong(1)-235609j.jpg"
                  c...lass="card-img-top" alt="...">
             <div class="card-body">
@@ -215,7 +215,7 @@
     </div>
     <div class="col-4">
         <br>
-        <div class="card" style="width: 100%;color: black">
+        <div class="card" style="width: 100%;height:400px;color: black">
             <img src="https://mercedes-center.com.vn/gw-content/images/gia-lan-banh-mercedes-benz-eclass-RhqvK.jpg"
                  c...lass="card-img-top" alt="...">
             <div class="card-body">
