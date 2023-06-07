@@ -34,6 +34,15 @@ public class Customer {
         this.citizenId = citizenId;
     }
 
+    public Customer(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Customer(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
