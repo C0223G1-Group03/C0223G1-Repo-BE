@@ -89,11 +89,14 @@ public class CustomerServlet extends HttpServlet {
     private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id=Integer.parseInt(request.getParameter("id"));
         Customer customer=customerService.search(id);
+        if(customer==null){
+            response.sendRedirect("/view/customer/list.jsp");
+        }else{
         List<Customer> customerList=new ArrayList<>();
         customerList.add(customer);
         request.setAttribute("customerList",customerList);
         RequestDispatcher requestDispatcher= request.getRequestDispatcher("/view/customer/list.jsp");
-        requestDispatcher.forward(request, response);
+        requestDispatcher.forward(request, response);}
     }
 
     private void update(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -118,8 +121,6 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void add(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int id;
-        id=Integer.parseInt(request.getParameter("id"));
         String name= request.getParameter("name");
         String dateOfBirth= request.getParameter("dateOfBirth");
         boolean gender= request.getParameter("gender").equals("Male");
@@ -127,7 +128,7 @@ public class CustomerServlet extends HttpServlet {
         String phone= request.getParameter("phone");
         String address= request.getParameter("address");
         String email= request.getParameter("email");
-        customerService.add(new Customer(id,name,dateOfBirth,citizenId,gender,phone,address,email));
+        customerService.add(new Customer(name,dateOfBirth,citizenId,gender,phone,address,email));
         response.sendRedirect("/customer");
     }
 }
