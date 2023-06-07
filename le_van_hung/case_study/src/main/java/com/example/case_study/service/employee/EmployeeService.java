@@ -32,4 +32,9 @@ public class EmployeeService implements IEmployeeService {
     public Employee search(int id) {
         return employeeRepo.search(id);
     }
+
+    @Override
+    public boolean findEmployee(Employee employee) {
+        return employeeRepo.findEmployee(employee);
+    }
 }
