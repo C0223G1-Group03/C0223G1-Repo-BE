@@ -19,7 +19,7 @@ public class ProductRepository implements IProductRepository {
             "  join tinh_trang on xe.ma_tinh_trang=tinh_trang.ma_tinh_trang\n";
     private static final String DELETE = "delete from xe where ma_xe = ?";
 
-    private static final String EDIT = "update users set ten_xe = ?,mau_sac_xe= ?, ngay_san_xuat =?,mo_ta=?,ma_loai_xe=?,ma_tinh_trang=?, gia=? where id = ?;";
+    private static final String EDIT = "update xe set ten_xe = ?,mau_sac_xe= ?, ngay_san_xuat =?,mo_ta=?,ma_loai_xe=?,ma_tinh_trang=?, gia=? where ma_xe = ?;";
 
     private static final String SELECTBYTYPE = "select xe.*,tinh_trang.ten_tinh_trang,loai_xe.ten_loai_xe from xe\n" +
             "join loai_xe on xe.ma_loai_xe = loai_xe.ma_loai_xe\n" +
