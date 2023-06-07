@@ -19,58 +19,53 @@
             font-size: medium;
         }
     </style>
+  <title>Title</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 </head>
 <body>
 <form action="/product?action=add" method="post">
-    <table>
-        <tr>
-            <th>nhập tên xe :
-                <input type="text" name="name">
-            </th>
-
-            <th>nhập màu xe :
-                <input type="text" name="color">
-            </th>
-
-            <th>nhập ngày sản xuất :
-
-                <input type="date" name="day" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
-            </th>
-
-            <th>Nhập mô tả :
-
-                <input type="text" name="introduce" minlength="3" maxlength="12">
-
-            </th>
-
-            <th>Nhập loại xe :
-            <select name="loai_xe">
-                <c:forEach items="${loaiXeList}" var="loaiXe">
-                    <option value="${loaiXe.ma_loai_xe}">Sedan</option>
-                    <option value="${loaiXe.ma_loai_xe}">SUV</option>
-                    <option value="${loaiXe.ma_loai_xe}">coupe</option>
-                    <option value="${loaiXe.ma_loai_xe}">Xe đa dụng</option>
-                </c:forEach>
-            </select>
-            </th>
-
-            <th>Nhập tình trạng :
-            <select name="tinh_trang">
-                <c:forEach items="${tinhTrangXe}" var="tinhTrang">
-                    <option value="${tinhTrang.ma_tinh_trang}">Có Sẵn</option>
-                    <option value="${tinhTrang.ma_tinh_trang}">Không có sẵn</option>
-                </c:forEach>
-            </select>
-            </th>
-
-            <th>Nhập Giá Xe
-                <input type="number" name="gia" step="any" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Chỉ được nhập số">
-            </th>
-            <th>
-                <button type="submit" style="">Thêm Mới</button>
-            </th>
-        </tr>
-    </table>
+  <table class="table table-dark table-hover container-f ">
+    <thead>
+    <tr style="text-align: center">
+      <th class="col-3" scope="col">Tên xe</th>
+      <th class="col-1" scope="col">Màu xe</th>
+      <th class="col-3" scope="col">Ngày sản xuất</th>
+      <th class="col-1" scope="col">Mô tả</th>
+      <th class="col-2" scope="col">Loại xe</th>
+      <th class="col-1" scope="col">Tình trạng</th>
+      <th class="col-1" scope="col"><a href="/product"><span class="btn btn-outline-light"><i class="fa-solid fa-arrow-left"></i></span></a></th>
+    </tr>
+    </thead>
+    <tbody style="text-align: center">
+    <tr>
+      <td class="col-3"><input name="name"></td>
+      <td class="col-1" ><input name="color"></td>
+      <td class="col-3" ><input name="day">
+      <td class="col-1"><input  name="introduce"></td>
+      <td class="col-2"><select name="loai_xe">
+      <c:forEach items="${loaiXeList}" var="loaiXe">
+        <option value="${loaiXe.ma_loai_xe}">Sedan</option>
+        <option value="${loaiXe.ma_loai_xe}">SUV</option>
+        <option value="${loaiXe.ma_loai_xe}">coupe</option>
+        <option value="${loaiXe.ma_loai_xe}">Xe đa dụng</option>
+      </c:forEach>
+    </select>
+    </td>
+      <td class="col-1"><select name="tinh_trang">
+        <c:forEach items="${tinhTrangXe}" var="tinhTrang">
+          <option value="${tinhTrang.ma_tinh_trang}">Có Sẵn</option>
+          <option value="${tinhTrang.ma_tinh_trang}">Không có sẵn</option>
+        </c:forEach>
+      </select></td>
+      <td class="col-1">
+        <button class="btn btn-outline-light" type="submit" style="width: 40px"><span>
+                <i class="fa-regular fa-circle-check"></i></span></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </form>
 </body>
 </html>

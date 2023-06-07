@@ -99,8 +99,8 @@
         <tr>
             <th >Giới tính</th>
             <td ><select name="gender">
-                <option value="male">Male
-                <option value="female">Female
+                <option value="Nam">Nam
+                <option value="Nữ">Nữ
             </select></td>
         </tr>
         <tr>
@@ -128,9 +128,9 @@
             <td ><input name="password" value="${employee.getPassword()}"></td>
         </tr>
         <tr>
-            <th>Back</th>
-            <td >
-                <button class="btn btn-outline-light" type="submit" style="width: 40px;"><span>
+            <th><a href="/employee"><span class="btn btn-outline-light"><i class="fa-solid fa-arrow-left"></i></span></a></th>
+            <td>
+                <button class="btn btn-outline-light" type="submit" style="width: 40px;margin-left: 300px"><span>
                 <i class="fa-regular fa-circle-check"></i></span></button>
             </td>
         </tr>

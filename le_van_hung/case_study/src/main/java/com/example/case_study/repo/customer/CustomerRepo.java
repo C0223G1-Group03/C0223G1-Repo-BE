@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerRepo implements ICustomerRepo {
-    private static final String DISPLAY_ALL = "select * from customer";
-    private static final String CREATE = "INSERT INTO `demo1`.`customer` (`id`, `name`, `address`, `dateOfBirth`, `gender`, `phone`, `email`, `citizen_id`) VALUES (?, ?, ?, ?,?, ?, ?, ?)";
-    private static final String DELETE = "delete from customer where id=?";
-    private static final String UPDATE = "UPDATE `demo1`.`customer` SET `name` = ?, `address` = ?, `dateOfBirth` = ?, `gender` = ?, `phone` = ?, `email` =?, `citizen_id` = ? WHERE (`id` = ?);";
+    private static final String DISPLAY_ALL = "select * from khach_hang";
+    private static final String CREATE = "INSERT INTO khach_hang (ma_khach_hang, ten_khach_hang, dia_chi, ngay_sinh, gioi_tinh, sdt, email, cccd) VALUES (?, ?, ?, ?,?, ?, ?, ?)";
+    private static final String DELETE = "delete from khach_hang where ma_khach_hang=?";
+    private static final String UPDATE = "UPDATE khach_hang SET ten_khach_hang = ?, dia_chi = ?, ngay_sinh = ?, gioi_tinh = ?, sdt = ?, email =?, cccd = ? WHERE (ma_khach_hang = ?);";
 
     @Override
     public List<Customer> displayList() {
@@ -22,14 +22,14 @@ public class CustomerRepo implements ICustomerRepo {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(DISPLAY_ALL);
             while (resultSet.next()) {
-                int id=resultSet.getInt("id");
-                String name = resultSet.getString("name");
-                String address = resultSet.getString("address");
-                String dateOfBirth = resultSet.getString("dateOfBirth");
-                boolean gender = resultSet.getBoolean("gender");
-                String phone = resultSet.getString("phone");
+                int id=resultSet.getInt("ma_khach_hang");
+                String name = resultSet.getString("ten_khach_hang");
+                String address = resultSet.getString("dia_chi");
+                String dateOfBirth = resultSet.getString("ngay_sinh");
+                boolean gender = resultSet.getBoolean("gioi_tinh");
+                String phone = resultSet.getString("sdt");
                 String email = resultSet.getString("email");
-                String citizenId = resultSet.getString("citizen_id");
+                String citizenId = resultSet.getString("cccd");
                 customerList.add(new Customer(id,name, address, dateOfBirth, gender, phone, email, citizenId));
             }
         } catch (SQLException e) {

@@ -18,7 +18,6 @@
 <table class="table table-dark table-hover container-f ">
     <thead>
     <tr style="text-align: center">
-        <th class="col-1" scope="col">Mã KH</th>
         <th class="col-2" scope="col">Họ và tên</th>
         <th class="col-1" scope="col">Ngày sinh</th>
         <th class="col-1" scope="col">Giới tính</th>
@@ -26,20 +25,20 @@
         <th class="col-1" scope="col">SĐT</th>
         <th class="col-3" scope="col">Địa chỉ</th>
         <th class="col-2" scope="col">Email</th>
+        <th class="col-1" scope="col"><a href="/customer"><span class="btn btn-outline-light"><i class="fa-solid fa-arrow-left"></i></span></a></th>
     </tr>
     </thead>
     <tbody style="text-align: center">
     <tr>
-       <td class="col-1 "><input scope="row" name="id"></td>
         <td class="col-2"><input name="name"></td>
         <td class="col-1" ><input name="dateOfBirth"></td>
         <td class="col-1" ><select name="gender">
-        <option   value="male">Nam
-        <option  value="female">Nữ
+        <option   value="Nam">Nam
+        <option  value="Nữ">Nữ
         </select></td>
         <td class="col-1"><input  name="citizenId"></td>
         <td class="col-1"><input  name="phone"></td>
-        <td class="col-2"><input  name="address"></td>
+        <td class="col-3"><input  name="address"></td>
         <td class="col-2"><input  name="email"></td>
         <td class="col-1">
             <button class="btn btn-outline-light" type="submit" style="width: 40px"><span>

@@ -2,11 +2,11 @@ package com.example.case_study.controller.product;
 
 
 
+import com.example.case_study.model.customer.Customer;
 import com.example.case_study.model.product.LoaiXe;
 import com.example.case_study.model.product.Product;
 import com.example.case_study.model.product.TinhTrang;
 import com.example.case_study.service.product.*;
-import com.mysql.cj.protocol.x.XMessage;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,11 +14,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.*;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
-
 
 @WebServlet(name="ProductServlet", value ="/product")
 public class ProductServlet extends HttpServlet {
@@ -50,12 +48,10 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action=req.getParameter("action");
-
         if(action==null){
             action="";
         }
         switch (action){
-
             case "add":
                 addProduct(req,resp);
                 break;
@@ -65,11 +61,26 @@ public class ProductServlet extends HttpServlet {
             case "edit":
                 edit(req,resp);
                 break;
+            case "search":
+                //search
+                search(req, resp);
+                break;
             default:
                  displayMenu(req,resp);
                 break;
         }
     }
+
+    private void search(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id=Integer.parseInt(req.getParameter("id"));
+        Product product=productService.findId(id);
+        List<Product> productList=new ArrayList<>();
+        productList.add(product);
+        req.setAttribute("list",productList);
+        RequestDispatcher requestDispatcher= req.getRequestDispatcher("/view/product/list.jsp");
+        requestDispatcher.forward(req, resp);
+    }
+
     private void showFormEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int ma_xe=Integer.parseInt(req.getParameter("id"));
         Product product=productService.findId(ma_xe);

@@ -522,7 +522,7 @@
                         <label for="step-1">Sign Up</label>
                     </li>
                     <li class="pure-steps_group-triggers_item">
-                        <label for="step-2"><input style="background-color: black" type="submit" value="Jump in"></label>
+                        <label for="step-2"><a style="background-color: black;color: white;text-underline: none"><input type="submit" value="Jump in"></a></label>
                     </li>
                 </ol>
             </div>

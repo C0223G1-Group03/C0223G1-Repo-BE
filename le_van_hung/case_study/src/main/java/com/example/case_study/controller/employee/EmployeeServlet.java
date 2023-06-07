@@ -101,7 +101,7 @@ public class EmployeeServlet extends HttpServlet {
         int id=Integer.parseInt(request.getParameter("id"));
         String name_edit= request.getParameter("name_edit");
         String dateOfBirth_edit= request.getParameter("dateOfBirth_edit");
-        boolean gender_edit= request.getParameter("gender").equals("Male");
+        boolean gender_edit= request.getParameter("gender").equals("Nam");
         String citizenId_edit= request.getParameter("citizenId");
         String phone_edit= request.getParameter("phone");
         String address_edit= request.getParameter("address");
@@ -123,7 +123,7 @@ public class EmployeeServlet extends HttpServlet {
     private void add(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String name= request.getParameter("name");
         String dateOfBirth= request.getParameter("dateOfBirth");
-        boolean gender= request.getParameter("gender").equals("Male");
+        boolean gender= request.getParameter("gender").equals("Nam");
         String citizenId= request.getParameter("citizenId");
         String phone= request.getParameter("phone");
         String address= request.getParameter("address");
