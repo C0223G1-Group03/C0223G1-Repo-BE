@@ -19,7 +19,7 @@ public class ProductRepository implements IProductRepository {
             "  join tinh_trang on xe.ma_tinh_trang=tinh_trang.ma_tinh_trang\n";
     private static final String DELETE = "delete from xe where ma_xe = ?";
 
-    private static final String EDIT = "update xe set ten_xe = ?,mau_sac_xe= ?, ngay_san_xuat =?,mo_ta=?,ma_loai_xe=?,ma_tinh_trang=?, gia=? where ma_xe = ?;";
+    private static final String EDIT = "update xe set ten_xe = ?,mau_sac_xe= ?, ngay_san_xuat =?,mo_ta=?,ma_loai_xe=?,ma_tinh_trang=?, gia=? where ma_xe = ?";
 
     private static final String SELECTBYTYPE = "select xe.*,tinh_trang.ten_tinh_trang,loai_xe.ten_loai_xe from xe\n" +
             "join loai_xe on xe.ma_loai_xe = loai_xe.ma_loai_xe\n" +
@@ -112,8 +112,8 @@ public class ProductRepository implements IProductRepository {
             PreparedStatement preparedStatement = connection.prepareStatement(EDIT);
             preparedStatement.setString(1, product.getTen_xe());
             preparedStatement.setString(2, product.getMau_sac_xe());
-            preparedStatement.setString(3, product.getNgay_san_xuat());
-            preparedStatement.setDate(4, Date.valueOf(product.getNgay_san_xuat()));
+            preparedStatement.setDate(3, Date.valueOf(product.getNgay_san_xuat()));
+            preparedStatement.setString(4, product.getMo_ta());
             preparedStatement.setInt(5, product.getLoaiXe().getMa_loai_xe());
             preparedStatement.setInt(6, product.getTinhTrang().getMa_tinh_trang());
             preparedStatement.setDouble(7, product.getGia());

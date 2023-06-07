@@ -62,7 +62,7 @@
                     </a>
                 </li>
                 <li class="nav-item dropdown text-center mx-2 mx-lg-1">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/order">
                         <div>
                             <i class="fa-solid fa-file-signature"></i>
                         </div>
