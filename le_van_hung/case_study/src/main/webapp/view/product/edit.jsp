@@ -11,10 +11,11 @@
 <head>
     <title>Title</title>
     <style>
-        table{
+        table {
             border: 2px black solid;
             background-color: black;
-            color: white;width: 100%;
+            color: white;
+            width: 100%;
             font-size: xx-large;
             height: 100%
         }
@@ -81,6 +82,13 @@
                         <option value="${tinhTrang.ma_tinh_trang}">Không Có Sẵn</option>
                     </c:forEach>
                 </select>
+            </td>
+            </th>
+        </tr>
+        <tr>
+            <th>Giá
+            <td>
+            <input type="number" name="gia" value="${product.getGia()}">
             </td>
             </th>
         </tr>

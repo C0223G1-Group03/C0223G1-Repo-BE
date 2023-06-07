@@ -35,4 +35,11 @@ INSERT INTO `demo1`.`nhan_vien` (`ten_nhan_vien`, `dia_chi`, `gioi_tinh`, `ngay_
 INSERT INTO `demo1`.`nhan_vien` (`ten_nhan_vien`, `dia_chi`, `gioi_tinh`, `ngay_sinh`, `sdt`, `email`, `cccd`,`tai_khoan`, `mat_khau`) VALUES ('vu', 'qn', 1, '1998', '9834567', 'vu@gmai.com', '34567','vu', '789');
 INSERT INTO `demo1`.`nhan_vien` (`ten_nhan_vien`, `dia_chi`, `gioi_tinh`, `ngay_sinh`, `sdt`, `email`, `cccd`,`tai_khoan`, `mat_khau`) VALUES ('huy', 'dn', 1, '2001', '675467', 'fhfjsdfh', '734637','huy', '1122');
 
-
+create table users(
+id int auto_increment primary key,
+tai_khoan varchar(250),
+mat_khau varchar(250)
+);
+insert into users(tai_khoan,mat_khau)
+values ("hung","hung123"),("hoa","hoa123");
+Insert into users(tai_khoan,mat_khau) values ("123","456")

@@ -2,6 +2,7 @@ package com.example.case_study.controller.product;
 
 
 
+import com.example.case_study.model.customer.Customer;
 import com.example.case_study.model.product.LoaiXe;
 import com.example.case_study.model.product.Product;
 import com.example.case_study.model.product.TinhTrang;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name="ProductServlet", value ="/product")
@@ -59,12 +61,30 @@ public class ProductServlet extends HttpServlet {
             case "edit":
                 edit(req,resp);
                 break;
+            case "search":
+                //search
+                search(req, resp);
+                break;
             default:
                  displayMenu(req,resp);
                 break;
         }
     }
+
+    private void search(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id=Integer.parseInt(req.getParameter("id"));
+        Product product=productService.findId(id);
+        List<Product> productList=new ArrayList<>();
+        productList.add(product);
+        req.setAttribute("list",productList);
+        RequestDispatcher requestDispatcher= req.getRequestDispatcher("/view/product/list.jsp");
+        requestDispatcher.forward(req, resp);
+    }
+
     private void showFormEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int ma_xe=Integer.parseInt(req.getParameter("id"));
+        Product product=productService.findId(ma_xe);
+        req.setAttribute("product",product);
         List<LoaiXe> loaiXeList = loaiXeService.display();
         List<TinhTrang> tinhTrangList = tinhTrangService.display();
         req.setAttribute("loaiXeList",loaiXeList);

@@ -19,12 +19,18 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String action = request.getParameter("action");
-        List<Employee> list = employeeService.displayList();
-        request.setAttribute("list",list);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/user/login_form.jsp");
-        requestDispatcher.forward(request,response);
-
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+        if (action.equals("logout")) {
+            response.sendRedirect("/display");
+        } else {
+            List<Employee> list = employeeService.displayList();
+            request.setAttribute("list", list);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/user/login_form.jsp");
+            requestDispatcher.forward(request, response);
+        }
     }
 
     @Override
@@ -32,19 +38,22 @@ public class UserServlet extends HttpServlet {
         String action = request.getParameter("action");
         String account = request.getParameter("account");
         String password = request.getParameter("password");
-        Employee employee = new Employee(account,password);
-        if(action == null){
+        Employee employee = new Employee(account, password);
+        if (action == null) {
             action = "";
         }
-        switch (action){
+        switch (action) {
             case "login":
-                if(employeeService.findEmployee(employee)){
-                    response.sendRedirect("view/main_menu/admin_show.jsp");
-                }else{
+                if (employeeService.findEmployee(employee)) {
+                    HttpSession session= request.getSession();
+                    session.setAttribute("employee", employee);
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/main_menu/admin_show.jsp");
+                    requestDispatcher.forward(request, response);
+                } else {
                     String message = "Tài khoản hoặc password không đúng";
-                    request.setAttribute("message",message);
+                    request.setAttribute("message", message);
                     RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/user/login_form.jsp");
-                    requestDispatcher.forward(request,response);
+                    requestDispatcher.forward(request, response);
                 }
                 break;
             default:
