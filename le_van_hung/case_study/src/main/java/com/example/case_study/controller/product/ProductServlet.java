@@ -82,6 +82,9 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showFormEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int ma_xe=Integer.parseInt(req.getParameter("id"));
+        Product product=productService.findId(ma_xe);
+        req.setAttribute("product",product);
         List<LoaiXe> loaiXeList = loaiXeService.display();
         List<TinhTrang> tinhTrangList = tinhTrangService.display();
         req.setAttribute("loaiXeList",loaiXeList);
