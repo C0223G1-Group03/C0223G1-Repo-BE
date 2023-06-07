@@ -10,78 +10,51 @@
 <html>
 <head>
   <title>Title</title>
-  <style>
-    table{
-      border: 2px black solid;
-      background-color: black;
-      color: white;width: 100%;
-      font-size: xx-large;
-      height: 100%
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 </head>
 <body>
 <form action="/product?action=add" method="post">
-  <table>
-    <tr>
-      <th>nhập tên xe :
-      <td>
-        <input type="text" name="name">
-      </td>
-      </th>
+  <table class="table table-dark table-hover container-f ">
+    <thead>
+    <tr style="text-align: center">
+      <th class="col-3" scope="col">Tên xe</th>
+      <th class="col-1" scope="col">Màu xe</th>
+      <th class="col-3" scope="col">Ngày sản xuất</th>
+      <th class="col-1" scope="col">Mô tả</th>
+      <th class="col-2" scope="col">Loại xe</th>
+      <th class="col-1" scope="col">Tình trạng</th>
+      <th class="col-1" scope="col"><a href="/product"><span class="btn btn-outline-light"><i class="fa-solid fa-arrow-left"></i></span></a></th>
     </tr>
+    </thead>
+    <tbody style="text-align: center">
     <tr>
-      <th>nhập màu xe :
-      <td>
-        <input type="text" name="color">
-      </td>
-      </th>
-    </tr>
-    <tr>
-      <th>nhập ngày sản xuất :
-      <td>
-        <input type="text" name="day">
-      </td>
-      </th>
-    </tr>
-    <tr>
-      <th>Nhập mô tả :
-      <td>
-        <input type="text" name="introduce">
-      </td>
-      </th>
-    </tr>
-    <tr>
-      <th>Nhập loại xe :
-      <td><select name="loai_xe">
-        <c:forEach items="${loaiXeList}" var="loaiXe">
-          <option value="${loaiXe.ma_loai_xe}">Sedan</option>
-          <option value="${loaiXe.ma_loai_xe}">SUV</option>
-          <option value="${loaiXe.ma_loai_xe}">coupe</option>
-          <option value="${loaiXe.ma_loai_xe}">Xe đa dụng</option>
-        </c:forEach>
-      </select>
-      </td>
-      </th>
-    </tr>
-    <tr>
-      <th>Nhập tình trạng :
-      <td><select name="tinh_trang">
+      <td class="col-3"><input name="name"></td>
+      <td class="col-1" ><input name="color"></td>
+      <td class="col-3" ><input name="day">
+      <td class="col-1"><input  name="introduce"></td>
+      <td class="col-2"><select name="loai_xe">
+      <c:forEach items="${loaiXeList}" var="loaiXe">
+        <option value="${loaiXe.ma_loai_xe}">Sedan</option>
+        <option value="${loaiXe.ma_loai_xe}">SUV</option>
+        <option value="${loaiXe.ma_loai_xe}">coupe</option>
+        <option value="${loaiXe.ma_loai_xe}">Xe đa dụng</option>
+      </c:forEach>
+    </select>
+    </td>
+      <td class="col-1"><select name="tinh_trang">
         <c:forEach items="${tinhTrangXe}" var="tinhTrang">
           <option value="${tinhTrang.ma_tinh_trang}">Có Sẵn</option>
           <option value="${tinhTrang.ma_tinh_trang}">Không có sẵn</option>
         </c:forEach>
-      </select>
+      </select></td>
+      <td class="col-1">
+        <button class="btn btn-outline-light" type="submit" style="width: 40px"><span>
+                <i class="fa-regular fa-circle-check"></i></span></button>
       </td>
-      </th>
     </tr>
-    <tr>
-      <th>
-      <td>
-        <button type="submit" style="">Thêm Mới</button>
-      </td>
-      </th>
-    </tr>
+    </tbody>
   </table>
 </form>
 </body>
