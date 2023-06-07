@@ -73,9 +73,9 @@
         </div>
     </div>
     <div class="nav-item dropdown text-center mx-2 mx-lg-1">
-        <a class="nav-link" href="/employee?action=logout&account=${user.account}" style="width: 200px;color: white">
+        <a class="nav-link" href="/user?action=logout" style="width: 200px;color: white">
             <div>
-                ${user.account} <i class="fa-solid fa-right-from-bracket"></i>
+                ${employee.account} <i class="fa-solid fa-right-from-bracket"></i>
             </div>
             Đăng xuất
         </a>

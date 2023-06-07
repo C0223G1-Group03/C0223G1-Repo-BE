@@ -69,16 +69,15 @@
     </style>
 
 </head>
+<jsp:include page="/view/main_menu/nav_bar_admin_show.jsp"></jsp:include>
 <body_1>
 <%--<jsp:include page="/view/main_menu/nav_bar_giao_dien.jsp"></jsp:include>--%>
-<jsp:include page="/view/main_menu/nav_bar_admin_show.jsp"></jsp:include>
+
 
 <table class="table table-dark table-hover container">
     <thead>
     <tr style="text-align: center">
         <th class="col-1" scope="col">
-            <a href="/product?action=showFormAdd">
-                <span style="color: white;border-radius: 100%;height: 100px"><i class="fa-solid fa-circle-down"></i></span></a>
             STT
         </th>
         <th class="col-2" scope="col">Tên Loại xe</th>
@@ -89,6 +88,8 @@
         <th class="col-1" scope="col">Tình Trạng</th>
         <th class="col-2" scope="col">Giá</th>
         <th class="col-1" scope="col">
+            <a href="/product?action=showFormAdd" style="color: white;border-radius: 100%;height: 100px;width: 100px">
+                <span><i class="fa-solid fa-circle-down"></i></span></a>
             <div class="box" style="padding-top: 10px">
                 <form action="/product?action=search" method="post">
                     <input type="search" class="input" id="id" name="id">
