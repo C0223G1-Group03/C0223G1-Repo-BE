@@ -128,9 +128,12 @@
                 <div class="card-body">
                     <p class="card-text">${list.ten_xe}</p>
                 </div>
-                <div class="card-body">
-                    <a href="/display?action=detail&id=${list.ma_xe}"><button class="menu">Chi tiết</button></a>
-                </div>
+                <button onclick="showModal('${list.ten_xe}','${list.mau_sac_xe}','${list.ngay_san_xuat}','${list.mo_ta}','${list.loaiXe.ten_loai_xe}',
+                        '${list.tinhTrang.ten_tinh_trang}','${list.gia}')"
+                        type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modelId" style="width: 100px">
+                    Chi tiết
+                </button>
+
                 <div class="card-body">
                     <a><button style="border: 0px"><i class="fa-solid fa-cart-shopping"></i></button></a>
                 </div>
@@ -139,6 +142,41 @@
         </c:forEach>
     </div>
 </div>
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modelTitleId">Chi tiết sản phẩm</h4>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Tên: <span id="name"></span></p>
+                <p>Màu sắc: <span id="color"></span></p>
+                <p>Ngày sản xuất: <span id="date"></span></p>
+                <p>Mô tả: <span id="desc"></span></p>
+                <p>Loại xe: <span id="type"></span></p>
+                <p>Tình trạng: <span id="status"></span></p>
+                <p>Giá: <span id="price"></span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function showModal(ten,mau,ngaysx,mota,loaixe,tinhtrangxe,gia){
+        document.getElementById("name").innerText = ten;
+        document.getElementById("color").innerText = mau;
+        document.getElementById("date").innerText = ngaysx;
+        document.getElementById("desc").innerText = mota;
+        document.getElementById("type").innerText = loaixe;
+        document.getElementById("status").innerText = tinhtrangxe;
+        document.getElementById("price").innerText = gia;
+    }
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
