@@ -111,7 +111,7 @@ public class OrderServlet extends HttpServlet {
         }
     }
     private void deleteOrder(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        int ma_hop_dong= Integer.parseInt(req.getParameter("idDelete"));
+        int ma_hop_dong= Integer.parseInt(req.getParameter("isDelete"));
         orderService.deleteOrder(ma_hop_dong);
         resp.sendRedirect("/order");
     }
