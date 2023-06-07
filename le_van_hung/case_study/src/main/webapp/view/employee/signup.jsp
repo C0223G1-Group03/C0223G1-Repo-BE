@@ -517,6 +517,7 @@
                 <ol class="pure-steps_group-triggers">
                     <li class="pure-steps_group-triggers_item">
                         <label for="step-0">Restart</label>
+                        <a href="/employee"><label>Back</label></a>
                     </li>
                     <li class="pure-steps_group-triggers_item">
                         <label for="step-1">Sign Up</label>
@@ -528,6 +529,7 @@
             </div>
             <br>
             <label for="step-0" style="padding-left: 290px">Restart</label>
+            <a href="/employee"><label style="padding-left: 290px;margin-top: 10px">Back</label></a>
         </form>
     </article>
 </section>
