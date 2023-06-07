@@ -39,7 +39,10 @@ public class UserServlet extends HttpServlet {
         switch (action){
             case "login":
                 if(employeeService.findEmployee(employee)){
+                    request.setAttribute("employee",employee);
                     response.sendRedirect("view/main_menu/admin_show.jsp");
+//                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/main_menu/admin_show.jsp");
+//                    requestDispatcher.forward(request,response);
                 }else{
                     String message = "Tài khoản hoặc password không đúng";
                     request.setAttribute("message",message);
