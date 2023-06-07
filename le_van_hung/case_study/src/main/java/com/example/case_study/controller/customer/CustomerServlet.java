@@ -118,8 +118,6 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void add(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int id;
-        id=Integer.parseInt(request.getParameter("id"));
         String name= request.getParameter("name");
         String dateOfBirth= request.getParameter("dateOfBirth");
         boolean gender= request.getParameter("gender").equals("Male");
@@ -127,7 +125,7 @@ public class CustomerServlet extends HttpServlet {
         String phone= request.getParameter("phone");
         String address= request.getParameter("address");
         String email= request.getParameter("email");
-        customerService.add(new Customer(id,name,dateOfBirth,citizenId,gender,phone,address,email));
+        customerService.add(new Customer(name,dateOfBirth,citizenId,gender,phone,address,email));
         response.sendRedirect("/customer");
     }
 }

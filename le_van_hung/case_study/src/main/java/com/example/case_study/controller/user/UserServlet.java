@@ -36,7 +36,10 @@ public class UserServlet extends HttpServlet {
         switch (action){
             case "login":
                 if(userService.findUser(user)){
-                    response.sendRedirect("view/main_menu/admin_show.jsp");
+                    request.setAttribute("user",user);
+                    RequestDispatcher requestDispatcher= request.getRequestDispatcher("view/main_menu/admin_show.jsp");
+                    requestDispatcher.forward(request,response);
+//                    response.sendRedirect("view/main_menu/admin_show.jsp");
                 }else{
                     String message = "Tài khoản hoặc password không đúng";
                     request.setAttribute("message",message);
@@ -44,6 +47,14 @@ public class UserServlet extends HttpServlet {
                     requestDispatcher.forward(request,response);
                 }
                 break;
+            case "logout":
+                HttpSession session = request.getSession(false);
+                if (session != null) {
+                    session.removeAttribute("user");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/view/user/login_form.jsp");
+                    dispatcher.forward(request, response);
+                }
+                    break;
             default:
                 break;
         }

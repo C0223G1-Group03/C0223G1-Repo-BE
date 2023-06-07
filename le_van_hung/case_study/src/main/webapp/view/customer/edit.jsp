@@ -120,9 +120,9 @@
             <td ><input name="email" value="${customer.getEmail()}"></td>
         </tr>
         <tr>
-            <th><a href="/customer">Back</a></th>
-            <td >
-                <button class="btn btn-outline-light" type="submit" style="width: 40px;"><span>
+            <th><a href="/customer"><span class="btn btn-outline-light"><i class="fa-solid fa-arrow-left"></i></span></a></th>
+            <td>
+                <button class="btn btn-outline-light" type="submit" style="width: 40px;margin-left: 300px"><span>
                 <i class="fa-regular fa-circle-check"></i></span></button>
             </td>
         </tr>
