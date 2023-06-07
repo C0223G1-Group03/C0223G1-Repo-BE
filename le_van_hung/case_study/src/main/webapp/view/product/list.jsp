@@ -22,6 +22,9 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
+<jsp:include page="/view/main_menu/nav_bar_giao_dien.jsp"></jsp:include>
+<jsp:include page="/view/main_menu/nav_bar_admin_show.jsp"></jsp:include>
+<h2>
 <nav class="navbar pt-0 navbar-expand-lg p-0">
     <div class="container-fluid menu" style="background-color: black">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

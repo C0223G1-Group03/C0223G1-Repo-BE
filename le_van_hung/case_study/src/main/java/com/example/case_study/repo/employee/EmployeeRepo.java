@@ -105,4 +105,16 @@ public class EmployeeRepo implements IEmployeeRepo {
 
         return null;
     }
+
+    @Override
+    public boolean findEmployee(Employee employee) {
+        List<Employee> employeeList=displayList();
+        for (Employee e: employeeList){
+            if(e.getAccount().equals(employee.getAccount()) && e.getPassword().equals(employee.getPassword())){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
