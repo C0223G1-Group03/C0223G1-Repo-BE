@@ -129,7 +129,8 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-    private void addProduct(HttpServletRequest req, HttpServletResponse resp) {
+    private void addProduct(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        resp.setContentType("text/html;charset=UTF-8");
         String name=req.getParameter("name");
         String color=req.getParameter("color");
         String date=req.getParameter("day");
@@ -153,6 +154,7 @@ public class ProductServlet extends HttpServlet {
         req.setAttribute("tinhTrangXe",tinhTrangList);
         RequestDispatcher requestDispatcher=req.getRequestDispatcher("view/product/add.jsp");
         requestDispatcher.forward(req,resp);
+
     }
 
     private void showList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
