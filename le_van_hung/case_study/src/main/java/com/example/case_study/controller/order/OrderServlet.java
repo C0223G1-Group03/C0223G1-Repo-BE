@@ -48,7 +48,7 @@ public class OrderServlet extends HttpServlet {
 
     private void showListOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Order> orderList = orderService.displayListOrder();
-        req.setAttribute("listOrder", orderList);
+        req.setAttribute("orderList", orderList);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/view/order/list_order.jsp");
         requestDispatcher.forward(req, resp);
     }

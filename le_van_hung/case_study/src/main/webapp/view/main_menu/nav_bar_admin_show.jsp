@@ -33,7 +33,7 @@
                     <a class="nav-link" href="/customer" style="color: black">Quản lý khách hàng</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: black">Quản lý hợp đồng</a>
+                    <a class="nav-link" href="/order" style="color: black">Quản lý hợp đồng</a>
                 </li>
             </ul>
         </div>
