@@ -1,7 +1,5 @@
 package com.example.case_study.repo.product;
 
-
-
 import com.example.case_study.model.product.LoaiXe;
 import com.example.case_study.model.product.Product;
 import com.example.case_study.model.product.TinhTrang;

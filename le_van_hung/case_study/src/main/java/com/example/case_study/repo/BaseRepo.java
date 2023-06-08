@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class BaseRepo {
-    private static final String URL = "jdbc:mysql://localhost:3307/case_study_2";
+    private static final String URL = "jdbc:mysql://localhost:3306/case_study_2";
     private static final String user = "root";
-    private static final String password ="mylinh0311" ;
+    private static final String password ="codegym" ;
 
     public static Connection createConnection(){
         Connection connection = null;
