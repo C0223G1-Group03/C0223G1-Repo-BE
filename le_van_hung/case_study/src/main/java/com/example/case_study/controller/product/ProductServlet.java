@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @WebServlet(name="ProductServlet", value ="/product")
 public class ProductServlet extends HttpServlet {
     private ILoaiXeService loaiXeService = new LoaiXeService();
@@ -62,7 +63,6 @@ public class ProductServlet extends HttpServlet {
                 edit(req,resp);
                 break;
             case "search":
-                //search
                 search(req, resp);
                 break;
             default:
@@ -89,7 +89,7 @@ public class ProductServlet extends HttpServlet {
         List<TinhTrang> tinhTrangList = tinhTrangService.display();
         req.setAttribute("loaiXeList",loaiXeList);
         req.setAttribute("tinhTrangXe",tinhTrangList);
-        RequestDispatcher requestDispatcher=req.getRequestDispatcher("view/product/edit.jsp");
+        RequestDispatcher requestDispatcher=req.getRequestDispatcher("/view/product/edit.jsp");
         requestDispatcher.forward(req,resp);
     }
     private void edit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -119,7 +119,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void displayMenu(HttpServletRequest req, HttpServletResponse resp) {
-        RequestDispatcher requestDispatcher= req.getRequestDispatcher("view/main_menu/giao_dien.jsp");
+        RequestDispatcher requestDispatcher= req.getRequestDispatcher("/view/main_menu/giao_dien.jsp");
         try {
             requestDispatcher.forward(req,resp);
         } catch (ServletException e) {
@@ -130,7 +130,6 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void addProduct(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        resp.setContentType("text/html;charset=UTF-8");
         String name=req.getParameter("name");
         String color=req.getParameter("color");
         String date=req.getParameter("day");
@@ -139,7 +138,9 @@ public class ProductServlet extends HttpServlet {
         LoaiXe loaiXe1 = new LoaiXe(loai_xe);
         int tinhTrang =Integer.parseInt(req.getParameter("tinh_trang"));
         TinhTrang tinhTrang1 = new TinhTrang(tinhTrang);
-        Product product = new Product(name,color,date,introduce,loaiXe1,tinhTrang1);
+        double gia= Double.parseDouble(req.getParameter("gia"));
+        String img=req.getParameter("img");
+        Product product = new Product(name,color,date,introduce,loaiXe1,tinhTrang1,gia,img);
         productService.add(product);
         try {
             resp.sendRedirect("/product");
@@ -152,7 +153,7 @@ public class ProductServlet extends HttpServlet {
         List<TinhTrang> tinhTrangList = tinhTrangService.display();
         req.setAttribute("loaiXeList",loaiXeList);
         req.setAttribute("tinhTrangXe",tinhTrangList);
-        RequestDispatcher requestDispatcher=req.getRequestDispatcher("view/product/add.jsp");
+        RequestDispatcher requestDispatcher=req.getRequestDispatcher("/view/product/add.jsp");
         requestDispatcher.forward(req,resp);
 
     }
