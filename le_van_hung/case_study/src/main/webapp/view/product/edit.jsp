@@ -12,80 +12,111 @@
     <title>Title</title>
     <meta charset="utf-8">
     <style>
-        table {
-            border: 2px white solid;
-            background-color: black;
-            color: white;
-            width: 100%;
-            font-size: medium;
+        body {
+            margin: 0;
+            padding: 0;
+            background: #19161c;
+            height: 100vh;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-direction: column;
+            align-content: center;
         }
+
+        .box:hover input {
+            width: 100px;
+            background: #3b3640;
+            border-radius: 10px;
+        }
+
+        .box i {
+            position: absolute;
+            top: 60%;
+            right: auto;
+            transform: translate(-50%, -50%);
+            font-size: 15px;
+            color: white;
+            transition: .2s;
+        }
+
+        .box:hover i {
+            opacity: 0;
+            z-index: -1;
+        }
+        th{
+            width: 200px;
+            text-align: center;
+        }
+        td,input{
+            width: 400px;
+        }
+
     </style>
 </head>
 <body>
 <form method="post" action="/product?action=edit">
-    <table>
+    <table class="table table-dark table-hover container-f">
+        <thead>
+        <tr style="text-align: center">
         <tr>
-            <th>Mã xe:
-                <input type="number" name="id" value="${product.getMa_xe()}" readonly>
-
-            </th>
-
-            <th>Tên xe:
-
-                <input type="text" name="name" value="${product.getTen_xe()}" required>
-
-            </th>
-
-            <th>Màu xe:
-
-                <input type="text" name="color" value="${product.getMau_sac_xe()}">
-
-            </th>
-            <th>Ngày sản xuất:
-
-                <input type="date" name="date" value="${product.getNgay_san_xuat()}" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
-
-            </th>
-            <th>Mô tả:
-
-                <input type="text" name="introduce" value="${product.getMo_ta()}" minlength="3" maxlength="20">
-            </th>
-
-            <th>Loại xe:
-
-                <select name="loaiXe">
-                    <c:forEach items="${loaiXeList}" var="loaiXe">
-                        <option value="${loaiXe.ma_loai_xe}">Sedan</option>
-                        <option value="${loaiXe.ma_loai_xe}">SUV</option>
-                        <option value="${loaiXe.ma_loai_xe}">Coupe</option>
-                        <option value="${loaiXe.ma_loai_xe}">Xe Đa Dụng</option>
-                    </c:forEach>
-                </select>
-            </th>
-
-            <th>Tình Trạng:
-
-                <select name="tinhTrang">
-                    <c:forEach items="${tinhTrangXe}" var="tinhTrang">
-                        <option value="${tinhTrang.ma_tinh_trang}">Có Sẵn</option>
-                        <option value="${tinhTrang.ma_tinh_trang}">Không Có Sẵn</option>
-                    </c:forEach>
-                </select>
-            </th>
-
-            <th>Giá (VND)
-
-                <input type="number" name="gia" value="${product.getGia()}" step="any" pattern="[-+]?[0-9]">
-            </th>
-            <th>Ảnh(img)
-                <input type="text" name="img" value="${product.getImage()}">
-            </th>
-            <th>
-                <button type="submit">sửa</button>
-            </th>
+            <th>Mã xe</th>
+            <td><input type="number" name="id" value="${product.getMa_xe()}" readonly></td>
         </tr>
+        <tr>
+            <th>Tên xe</th>
+            <td><input type="text" name="name" value="${product.getTen_xe()}" required></td>
+        </tr>
+        <tr>
+            <th>Màu xe</th>
+            <td><input type="text" name="color" value="${product.getMau_sac_xe()}"></td>
+        </tr>
+        <tr>
+            <th>Ngày sản xuất</th>
+            <td><input type="date" name="date" value="${product.getNgay_san_xuat()}"></td>
+        </tr>
+        <tr>
+            <th>Mô tả</th>
+            <td><input type="text" name="introduce" value="${product.getMo_ta()}" minlength="3" maxlength="20"></td>
+        </tr>
+        <tr>
+            <th>Loại xe</th>
+            <td><select name="loaiXe">
+                <c:forEach items="${loaiXeList}" var="loaiXe">
+                    <option value="${loaiXe.ma_loai_xe}">Sedan</option>
+                    <option value="${loaiXe.ma_loai_xe}">SUV</option>
+                    <option value="${loaiXe.ma_loai_xe}">Coupe</option>
+                    <option value="${loaiXe.ma_loai_xe}">Xe Đa Dụng</option>
+                </c:forEach>
+            </select></td>
+        </tr>
+        <tr>
+            <th>Tình Trạng</th>
+            <td><select name="tinhTrang">
+                <c:forEach items="${tinhTrangXe}" var="tinhTrang">
+                    <option value="${tinhTrang.ma_tinh_trang}">Có Sẵn</option>
+                    <option value="${tinhTrang.ma_tinh_trang}">Không Có Sẵn</option>
+                </c:forEach>
+            </select></td>
+        </tr>
+        <tr>
+            <th>Giá (VND)</th>
+            <td><input type="number" name="gia" value="${product.getGia()}" step="any" pattern="[-+]?[0-9]"></td>
+        </tr>
+        <tr>
+            <th>Ảnh(img)</th>
+            <td><input type="text" name="img" value="${product.getImage()}"></td>
+        </tr>
+        <tr>
+            <th><a href="/product"><span class="btn btn-outline-light"><i class="fa-solid fa-arrow-left"></i></span></a>
+            </th>
+            <td>
+                <button class="btn btn-outline-light" type="submit" style="width: 40px;margin-left: 300px"><span>
+                <i class="fa-regular fa-circle-check"></i></span></button>
+            </td>
+        </tr>
+        </thead>
     </table>
-
 </form>
 </body>
 </html>
