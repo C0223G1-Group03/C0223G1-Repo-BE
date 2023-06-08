@@ -10,4 +10,5 @@ public interface IOrderService {
     void deleteOrder(int ma_order);
     List<Order> displayListOrderByType(int id);
     Order findOrderById(int ma_order);
+    void addOrderByCusPro(Order order);
 }

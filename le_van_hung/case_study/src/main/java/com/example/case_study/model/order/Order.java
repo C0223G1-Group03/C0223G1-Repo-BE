@@ -15,6 +15,11 @@ public class Order {
     public Order() {
     }
 
+    public Order(Product product, Customer customer) {
+        this.product = product;
+        this.customer = customer;
+    }
+
     public Order(int ma_order, String ngay_lam_order, int so_luong_xe, Product product, Customer customer, Employee employee) {
         this.ma_order = ma_order;
         this.ngay_lam_order = ngay_lam_order;

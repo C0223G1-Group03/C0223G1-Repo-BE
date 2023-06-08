@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -27,10 +28,15 @@
         .nav-item a{
             color: white;
         }
+        .col  :hover{
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06)
+        }
         /*.ca{*/
         /*    box-shadow: 0px 0px 20px 30px white;*/
         /*}*/
     </style>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
@@ -65,27 +71,29 @@
             </div>
         </div>
     </nav>
-
-    <div class="row" style="margin-bottom: 20px">
-        <c:forEach items="${productList}" var="list">
-        <div class="col-3" style="margin-right: 20px; margin-left: 40px;margin-bottom: 40px" >
-            <div class="card" style="width: 18rem">
-                <img height="200px" src="<c:out value="${list.image}"/> " class="card-img-top" alt="..."/>
-                <div class="card-body">
-                    <p class="card-text">${list.ten_xe}</p>
-                </div>
-                <button onclick="showModal('${list.ten_xe}','${list.mau_sac_xe}','${list.ngay_san_xuat}','${list.mo_ta}','${list.loaiXe.ten_loai_xe}',
-                        '${list.tinhTrang.ten_tinh_trang}','${list.gia}')"
-                        type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modelId" style="width: 100px">
-                    Chi tiết
-                </button>
-
-                <div class="card-body">
-                    <a><button style="border: 0px"><i class="fa-solid fa-cart-shopping"></i></button></a>
+    <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
+        <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+            <c:forEach items="${productList}" var="list">
+            <div class="col hover">
+                <div class="card h-100 shadow-sm"><img
+                        src="<c:out value="${list.image}"/>"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <div class="clearfix mb-3">
+                            <span class="float-start badge rounded-pill bg-primary">Mercedes</span>
+                            </div>
+                        <h5 class="card-title"><c:out value="${list.ten_xe}"/></h5>
+                        <span class="float-start my-4"><button onclick="showModal('${list.ten_xe}','${list.mau_sac_xe}','${list.ngay_san_xuat}','${list.mo_ta}','${list.loaiXe.ten_loai_xe}',
+                                '${list.tinhTrang.ten_tinh_trang}','${list.gia}')"
+                                                              type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modelId" style="width: 100px">
+                            Chi tiết
+                        </button></span>
+                        <span class="float-end my-4"><a href="/user?action=order&id=${list.ma_xe}"><button style="border: 0px"><i class="fa-solid fa-cart-shopping"></i></button></a></span>
+                    </div>
                 </div>
             </div>
+            </c:forEach>
         </div>
-        </c:forEach>
     </div>
 </div>
 <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">

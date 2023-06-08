@@ -11,7 +11,7 @@ public class Product {
     private double gia;
     private String image;
 
-    public Product() {
+    public Product(String name, String color, String date, String introduce, LoaiXe loaiXe1, TinhTrang tinhTrang1, String img) {
     }
 
     public Product(int ma_xe, String ten_xe, String mau_sac_xe, String ngay_san_xuat, String mo_ta, LoaiXe loaiXe, TinhTrang tinhTrang, double gia) {
@@ -37,13 +37,15 @@ public class Product {
         this.image = image;
     }
 
-    public Product(String ten_xe, String mau_sac_xe, String ngay_san_xuat, String mo_ta, LoaiXe loaiXe, TinhTrang tinhTrang) {
+    public Product(String ten_xe, String mau_sac_xe, String ngay_san_xuat, String mo_ta, LoaiXe loaiXe, TinhTrang tinhTrang,double gia, String image) {
         this.ten_xe = ten_xe;
         this.mau_sac_xe = mau_sac_xe;
         this.ngay_san_xuat = ngay_san_xuat;
         this.mo_ta = mo_ta;
         this.loaiXe = loaiXe;
         this.tinhTrang = tinhTrang;
+        this.gia = gia;
+        this.image = image;
     }
 
     public Product(int ma_xe, String ten_xe, String mau_sac_xe, String ngay_san_xuat, String mo_ta, LoaiXe loaiXe, TinhTrang tinhTrang) {
@@ -64,7 +66,7 @@ public class Product {
         this.mo_ta = mo_ta;
         this.loaiXe = loaiXe;
         this.tinhTrang = tinhTrang;
-        this.image = image;
+
     }
 
     public Product(int ma_xe, String ten_xe) {
