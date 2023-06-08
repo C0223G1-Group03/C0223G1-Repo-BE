@@ -446,10 +446,11 @@
 <body>
 <section>
     <article>
-        <form class="pure-steps" action="/customer?action=add" method="post">
+        <form class="pure-steps" action="/user?action=order" method="post">
             <input type="radio" name="steps" class="pure-steps_radio" id="step-0" checked="">
             <input type="radio" name="steps" class="pure-steps_radio" id="step-1">
             <input type="radio" name="steps" class="pure-steps_radio" id="step-2">
+            <input type="hidden" name="idProduct" value="${idProduct}">
             <div class="pure-steps_group">
                 <ol>
                     <li class="pure-steps_group-step">
@@ -464,34 +465,35 @@
                                     style="padding-left: 10px"><i class="fa-regular fa-pen-to-square"></i></span>
                             </legend>
                             <p class="pure-steps_group-step_item flexy-item flexy-column reverse">
-                                <label><input type="text" placeholder="Nguyễn Văn A" name="name" id="input_name"></label>
+                                <label><input type="text" placeholder="Nguyễn Văn A" name="name" id="input_name" required pattern="^([a-z]+)((\s{1}[a-z]+){1,})$" title="Vui lòng nhập họ và tên"></label>
                                 <label for="input_name">Họ và tên</label>
                             </p>
                             <p class="pure-steps_group-step_item flexy-item flexy-column reverse">
-                                <label><input type="date" placeholder="dd/mm/yyyy" name="dateOfBirth" id="input_dayOfBirth"></label>
+                                <label><input type="date" placeholder="dd/mm/yyyy" name="dateOfBirth" id="input_dayOfBirth" required title="Vui lòng nhập ngày sinh" pattern="^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$"></label>
                                 <label for="input_dayOfBirth">Ngày sinh</label>
                             </p>
                             <p class="pure-steps_group-step_item flexy-item  reverse" >
                                 <span ><label>Giới tính</label></span>
-                                <span style="margin-left: 110px;margin-right: 50px" ><label><input type="radio" value="Nam" name="gender">Nam</label></span>
-                                <span style="margin-right: 250px"><label><input type="radio" value="Nữ" name="gender">Nữ</label></span>
+                                <span style="margin-left: 110px;margin-right: 50px" ><label><input type="radio" value="Nam" name="gender" required>Nam</label></span>
+                                <span style="margin-right: 250px"><label><input type="radio" value="Nữ" name="gender" required>Nữ</label></span>
                             </p>
 
 
                             <p class="pure-steps_group-step_item flexy-item flexy-column reverse">
-                                <label><input type="text" placeholder=" CCCD" name="citizenId" id="input_cccd"></label>
+                                <label><input type="number" placeholder=" CCCD" name="citizenId" id="input_cccd" required title="Vui lòng nhập CCCD"></label>
                                 <label for="input_cccd">CCCD</label>
                             </p>
                             <p class="pure-steps_group-step_item flexy-item flexy-column reverse">
-                                <label><input type="text" placeholder="(+84)-0xxxxxxxxx" name="phone" id="input_phone"></label>
+                                <label><input type="phone" placeholder="(+84)-0xxxxxxxxx" name="phone" id="input_phone" title="Vui lòng nhập số điện thoại"
+                                              required pattern="^(0|84)(2(0[3-9]|1[0-6|8|9]|2[0-2|5-9]|3[2-9]|4[0-9]|5[1|2|4-9]|6[0-3|9]|7[0-7]|8[0-9]|9[0-4|6|7|9])|3[2-9]|5[5|6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])([0-9]{7})$"></label>
                                 <label for="input_phone">Số điện thoại</label>
                             </p>
                             <p class="pure-steps_group-step_item flexy-item flexy-column reverse">
-                                <label><input type="text" placeholder="Số nhà,đường,phường,quận/huyện,tỉnh/thành phố" name="address" id="input_address"></label>
+                                <label><input type="text" placeholder="Số nhà,đường,phường,quận/huyện,tỉnh/thành phố" name="address" id="input_address" required title="Vui lòng nhập địa chỉ"></label>
                                 <label for="input_address">Địa chỉ</label>
                             </p>
                             <p class="pure-steps_group-step_item flexy-item flexy-column reverse">
-                                <label><input type="text" placeholder="example@gmail.com" name="email" id="input_email"></label>
+                                <label><input type="email" placeholder="example@gmail.com" name="email" id="input_email" required pattern="^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$" tilte="Vui lòng nhập Email"></label>
                                 <label for="input_email">Email</label>
                             </p>
                         </fieldset>
@@ -509,17 +511,21 @@
                 <ol class="pure-steps_group-triggers">
                     <li class="pure-steps_group-triggers_item">
                         <label for="step-0">Restart</label>
+                        <br>
+                        <a href="/employee"><label style="padding-left: 290px;padding-top: 10px">Back</label></a>
                     </li>
                     <li class="pure-steps_group-triggers_item">
                         <label for="step-1">Sign Up</label>
                     </li>
                     <li class="pure-steps_group-triggers_item">
-                        <label for="step-2"><input type="submit" >Jump in</label>
+                        <a><label for="step-2"><input type="submit" >Jump in</label></a>
                     </li>
                 </ol>
             </div>
             <br>
             <label for="step-0" style="padding-left: 290px">Restart</label>
+            <br>
+            <a href="/employee"><label style="padding-left: 290px;padding-top: 10px">Back</label></a>
         </form>
     </article>
 </section>

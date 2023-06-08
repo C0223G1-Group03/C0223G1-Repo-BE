@@ -10,14 +10,14 @@
 <html>
 <head>
     <title>Title</title>
+    <meta charset="utf-8">
     <style>
         table {
-            border: 2px black solid;
+            border: 2px white solid;
             background-color: black;
             color: white;
             width: 100%;
-            font-size: xx-large;
-            height: 100%
+            font-size: medium;
         }
     </style>
 </head>
@@ -26,42 +26,33 @@
     <table>
         <tr>
             <th>Mã xe:
-            <td>
                 <input type="number" name="id" value="${product.getMa_xe()}" readonly>
-            </td>
+
             </th>
-        </tr>
-        <tr>
+
             <th>Tên xe:
-            <td>
-                <input type="text" name="name" value="${product.getTen_xe()}">
-            </td>
+
+                <input type="text" name="name" value="${product.getTen_xe()}" required>
+
             </th>
-        </tr>
-        <tr>
+
             <th>Màu xe:
-            <td>
+
                 <input type="text" name="color" value="${product.getMau_sac_xe()}">
-            </td>
+
             </th>
-        </tr>
-        <tr>
             <th>Ngày sản xuất:
-            <td>
-                <input type="text" name="date" value="${product.getNgay_san_xuat()}">
-            </td>
+
+                <input type="date" name="date" value="${product.getNgay_san_xuat()}" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
+
             </th>
-        </tr>
-        <tr>
             <th>Mô tả:
-            <td>
-                <input type="text" name="introduce" value="${product.getMo_ta()}">
-            </td>
+
+                <input type="text" name="introduce" value="${product.getMo_ta()}" minlength="3" maxlength="20">
             </th>
-        </tr>
-        <tr>
+
             <th>Loại xe:
-            <td>
+
                 <select name="loaiXe">
                     <c:forEach items="${loaiXeList}" var="loaiXe">
                         <option value="${loaiXe.ma_loai_xe}">Sedan</option>
@@ -70,33 +61,27 @@
                         <option value="${loaiXe.ma_loai_xe}">Xe Đa Dụng</option>
                     </c:forEach>
                 </select>
-            </td>
             </th>
-        </tr>
-        <tr>
+
             <th>Tình Trạng:
-            <td>
+
                 <select name="tinhTrang">
                     <c:forEach items="${tinhTrangXe}" var="tinhTrang">
                         <option value="${tinhTrang.ma_tinh_trang}">Có Sẵn</option>
                         <option value="${tinhTrang.ma_tinh_trang}">Không Có Sẵn</option>
                     </c:forEach>
                 </select>
-            </td>
             </th>
-        </tr>
-        <tr>
-            <th>Giá
-            <td>
-            <input type="number" name="gia" value="${product.getGia()}">
-            </td>
+
+            <th>Giá (VND)
+
+                <input type="number" name="gia" value="${product.getGia()}" step="any" pattern="[-+]?[0-9]">
             </th>
-        </tr>
-        <tr>
+            <th>Ảnh(img)
+                <input type="text" name="img" value="${product.getImage()}">
+            </th>
             <th>
-            <td>
                 <button type="submit">sửa</button>
-            </td>
             </th>
         </tr>
     </table>

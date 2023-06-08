@@ -105,11 +105,11 @@
         </tr>
         <tr>
             <th>CCCD</th>
-            <td ><input name="citizenId" value="${customer.getCitizenId()}"></td>
+            <td ><input type="number" name="citizenId" value="${customer.getCitizenId()}"></td>
         </tr>
         <tr>
             <th>SĐT</th>
-            <td ><input name="phone" value="${customer.getPhone()}"></td>
+            <td ><input name="phone" type="phone" value="${customer.getPhone()}"></td>
         </tr>
         <tr>
             <th >Địa chỉ</th>
@@ -117,7 +117,7 @@
         </tr>
         <tr>
             <th >Email</th>
-            <td ><input name="email" value="${customer.getEmail()}"></td>
+            <td ><input name="email" type="email" value="${customer.getEmail()}"></td>
         </tr>
         <tr>
             <th><a href="/customer"><span class="btn btn-outline-light"><i class="fa-solid fa-arrow-left"></i></span></a></th>
