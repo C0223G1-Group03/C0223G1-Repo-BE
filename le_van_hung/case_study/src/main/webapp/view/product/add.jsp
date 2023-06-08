@@ -32,20 +32,21 @@
         <tr style="text-align: center">
             <th class="col-3" scope="col">Tên xe</th>
             <th class="col-1" scope="col">Màu xe</th>
-            <th class="col-3" scope="col">Ngày sản xuất</th>
+            <th class="col-2" scope="col">Ngày sản xuất</th>
             <th class="col-1" scope="col">Mô tả</th>
             <th class="col-1" scope="col">Loại xe</th>
             <th class="col-1" scope="col">Tình trạng</th>
-            <th class="col-1" scope="col">Giá</th>
+            <th class="col-1" scope="col">Giá (VND)</th>
+            <th class="col-1" scope="col">Ảnh (img) </th>
             <th class="col-1" scope="col"><a href="/product"><span class="btn btn-outline-light"><i
                     class="fa-solid fa-arrow-left"></i></span></a></th>
         </tr>
         </thead>
         <tbody style="text-align: center">
         <tr>
-            <td class="col-3"><input name="name"></td>
+            <td class="col-3"><input name="name"  required></td>
             <td class="col-1"><input name="color"></td>
-            <td class="col-3"><input name="day">
+            <td class="col-2"><input name="day" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
             <td class="col-1"><input name="introduce"></td>
             <td class="col-1"><select name="loai_xe">
 
@@ -63,7 +64,8 @@
                     <option value="${tinhTrang.ma_tinh_trang}">Không có sẵn</option>
                 </c:forEach>
             </select></td>
-            <td class="col-1"><input name="gia">
+            <td class="col-1"><input name="gia" required>
+            <td class="col-1"><input name="img" required>
             <td class="col-1">
                 <button class="btn btn-outline-light" type="submit" style="width: 40px"><span>
                 <i class="fa-regular fa-circle-check"></i></span></button>

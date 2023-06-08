@@ -88,7 +88,8 @@
             <th class="col-1" scope="col">Mô Tả</th>
             <th class="col-1" scope="col">Tên Loại Xe</th>
             <th class="col-1" scope="col">Tình Trạng</th>
-            <th class="col-2" scope="col">Giá</th>
+            <th class="col-1" scope="col">Giá(VND)</th>
+            <th class="col-1" scope="col">Ảnh(img)</th>
             <th class="col-1" scope="col">
                 <a href="/product?action=showFormAdd"
                    style="color: white;border-radius: 100%;height: 100px;width: 100px">
@@ -113,6 +114,7 @@
                 <td class="col-1"><c:out value="${list.loaiXe.ten_loai_xe}"/></td>
                 <td class="col-1"><c:out value="${list.tinhTrang.ten_tinh_trang}"/></td>
                 <td class="col-2"><c:out value="${list.gia}"/></td>
+                <td class="col-2"><c:out value="${list.image}"/></td>
                 <td class="col-1">
                     <a href="/product?action=showFormEdit&id=${list.ma_xe}"/>
                     <button class="btn btn-outline-light col-6" type="button" style="width: 40px"><span><i

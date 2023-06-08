@@ -32,7 +32,7 @@
 
             <th>Tên xe:
 
-                <input type="text" name="name" value="${product.getTen_xe()}">
+                <input type="text" name="name" value="${product.getTen_xe()}" required>
 
             </th>
 
@@ -43,12 +43,12 @@
             </th>
             <th>Ngày sản xuất:
 
-                <input type="date" name="date" value="${product.getNgay_san_xuat()}">
+                <input type="date" name="date" value="${product.getNgay_san_xuat()}" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
 
             </th>
             <th>Mô tả:
 
-                <input type="text" name="introduce" value="${product.getMo_ta()}" minlength="3"
+                <input type="text" name="introduce" value="${product.getMo_ta()}" minlength="3" maxlength="20">
             </th>
 
             <th>Loại xe:
@@ -73,11 +73,13 @@
                 </select>
             </th>
 
-            <th>Giá
+            <th>Giá (VND)
 
-                <input type="number" name="gia" value="${product.getGia()}" step="any" pattern="[-+]?[0-9]*[.,]?[0-9]+">
+                <input type="number" name="gia" value="${product.getGia()}" step="any" pattern="[-+]?[0-9]">
             </th>
-
+            <th>Ảnh(img)
+                <input type="text" name="img" value="${product.getImage()}">
+            </th>
             <th>
                 <button type="submit">sửa</button>
             </th>

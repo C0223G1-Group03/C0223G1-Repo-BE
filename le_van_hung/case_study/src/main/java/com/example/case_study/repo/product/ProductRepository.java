@@ -10,16 +10,17 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Date;
 
 public class ProductRepository implements IProductRepository {
-    private static final String INSERT = "insert into xe(ten_xe,mau_sac_xe,ngay_san_xuat,mo_ta,ma_loai_xe,ma_tinh_trang,gia)" +
-            " values(?,?,?,?,?,?,?)";
+    private static final String INSERT = "insert into xe(ten_xe,mau_sac_xe,ngay_san_xuat,mo_ta,ma_loai_xe,ma_tinh_trang,gia,image)" +
+            " values(?,?,?,?,?,?,?,?)";
     private static final String SELECT = " select xe.*,tinh_trang.ten_tinh_trang,loai_xe.ten_loai_xe from xe \n" +
             "  join loai_xe on xe.ma_loai_xe = loai_xe.ma_loai_xe\n" +
             "  join tinh_trang on xe.ma_tinh_trang=tinh_trang.ma_tinh_trang\n";
     private static final String DELETE = "delete from xe where ma_xe = ?";
 
-    private static final String EDIT = "update xe set ten_xe = ?,mau_sac_xe= ?, ngay_san_xuat =?,mo_ta=?,ma_loai_xe=?,ma_tinh_trang=?, gia=? where ma_xe = ?";
+    private static final String EDIT = "update xe set ten_xe = ?,mau_sac_xe= ?, ngay_san_xuat =?,mo_ta=?,ma_loai_xe=?,ma_tinh_trang=?, gia=?,image=? where ma_xe = ?";
 
     private static final String SELECTBYTYPE = "select xe.*,tinh_trang.ten_tinh_trang,loai_xe.ten_loai_xe from xe\n" +
             "join loai_xe on xe.ma_loai_xe = loai_xe.ma_loai_xe\n" +
@@ -75,6 +76,7 @@ public class ProductRepository implements IProductRepository {
             preparedStatement.setInt(5, product.getLoaiXe().getMa_loai_xe());
             preparedStatement.setInt(6, product.getTinhTrang().getMa_tinh_trang());
             preparedStatement.setDouble(7, product.getGia());
+            preparedStatement.setString(8, product.getImage());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -117,7 +119,8 @@ public class ProductRepository implements IProductRepository {
             preparedStatement.setInt(5, product.getLoaiXe().getMa_loai_xe());
             preparedStatement.setInt(6, product.getTinhTrang().getMa_tinh_trang());
             preparedStatement.setDouble(7, product.getGia());
-            preparedStatement.setInt(8, product.getMa_xe());
+            preparedStatement.setString(8, product.getImage());
+            preparedStatement.setInt(9, product.getMa_xe());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
