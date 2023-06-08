@@ -88,7 +88,7 @@
                                                               type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modelId" style="width: 100px">
                             Chi tiết
                         </button></span>
-                        <span class="float-end my-4"><a><button style="border: 0px"><i class="fa-solid fa-cart-shopping"></i></button></a></span>
+                        <span class="float-end my-4"><a href="/user?action=order&id=${list.ma_xe}"><button style="border: 0px"><i class="fa-solid fa-cart-shopping"></i></button></a></span>
                     </div>
                 </div>
             </div>

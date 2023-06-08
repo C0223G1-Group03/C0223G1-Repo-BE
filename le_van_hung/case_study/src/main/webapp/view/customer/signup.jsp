@@ -446,10 +446,11 @@
 <body>
 <section>
     <article>
-        <form class="pure-steps" action="/customer?action=add" method="post">
+        <form class="pure-steps" action="/user?action=order" method="post">
             <input type="radio" name="steps" class="pure-steps_radio" id="step-0" checked="">
             <input type="radio" name="steps" class="pure-steps_radio" id="step-1">
             <input type="radio" name="steps" class="pure-steps_radio" id="step-2">
+            <input type="hidden" name="idProduct" value="${idProduct}">
             <div class="pure-steps_group">
                 <ol>
                     <li class="pure-steps_group-step">

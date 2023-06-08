@@ -1,9 +1,15 @@
 package com.example.case_study.controller.user;
 
+import com.example.case_study.model.customer.Customer;
 import com.example.case_study.model.employee.Employee;
+import com.example.case_study.model.product.Product;
 import com.example.case_study.model.user.User;
+import com.example.case_study.service.customer.CustomerService;
+import com.example.case_study.service.customer.ICustomerService;
 import com.example.case_study.service.employee.EmployeeService;
 import com.example.case_study.service.employee.IEmployeeService;
+import com.example.case_study.service.product.IProductService;
+import com.example.case_study.service.product.ProductService;
 import com.example.case_study.service.user.IUserService;
 import com.example.case_study.service.user.UserService;
 
@@ -16,6 +22,8 @@ import java.util.List;
 @WebServlet(name = "UserServlet", value = "/user")
 public class UserServlet extends HttpServlet {
     private IEmployeeService employeeService = new EmployeeService();
+    private ICustomerService customerService = new CustomerService();
+    private IProductService productService = new ProductService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,6 +33,11 @@ public class UserServlet extends HttpServlet {
         }
         if (action.equals("logout")) {
             response.sendRedirect("/display");
+        } else if (action.equals("order")) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            request.setAttribute("idProduct",id);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/customer/signup.jsp");
+            requestDispatcher.forward(request,response);
         } else {
             List<Employee> list = employeeService.displayList();
             request.setAttribute("list", list);
@@ -45,7 +58,7 @@ public class UserServlet extends HttpServlet {
         switch (action) {
             case "login":
                 if (employeeService.findEmployee(employee)) {
-                    HttpSession session= request.getSession();
+                    HttpSession session = request.getSession();
                     session.setAttribute("employee", employee);
                     RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/main_menu/admin_show.jsp");
                     requestDispatcher.forward(request, response);
@@ -56,7 +69,24 @@ public class UserServlet extends HttpServlet {
                     requestDispatcher.forward(request, response);
                 }
                 break;
+            case "order":
+                int idProduct = Integer.parseInt(request.getParameter("idProduct"));
+                Product product = productService.findId(idProduct);
+                String nameCustomer = request.getParameter("name");
+                String dateOfBirth = request.getParameter("dateOfBirth");
+                boolean gender = request.getParameter("gender").equals("Nam");
+                String citizenId = request.getParameter("citizenId");
+                String phone = request.getParameter("phone");
+                String address = request.getParameter("address");
+                String email = request.getParameter("email");
+//                int id, String name, String address, String dateOfBirth, boolean gender, String phone, String email, String citizenId
+                Customer customer = new Customer(nameCustomer,address,dateOfBirth,gender,phone,email,citizenId);
+                customerService.add(customer);
+                response.sendRedirect("/display?action=display");
+                break;
+
             default:
+                response.sendRedirect("/view/main_menu/giao_dien.jsp");
                 break;
         }
     }
