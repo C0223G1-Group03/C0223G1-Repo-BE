@@ -128,7 +128,18 @@ public class CustomerServlet extends HttpServlet {
         String phone= request.getParameter("phone");
         String address= request.getParameter("address");
         String email= request.getParameter("email");
-        customerService.add(new Customer(name,dateOfBirth,citizenId,gender,phone,address,email));
+        customerService.add(new Customer(name,address,dateOfBirth,gender,phone,email,citizenId));
         response.sendRedirect("/customer");
+//        if(true){
+//            String message="success";
+//            request.setAttribute("message",message);
+//            RequestDispatcher requestDispatcher=request.getRequestDispatcher("/customer");
+//            requestDispatcher.forward(request,response);
+//        }else {
+//            String message="error";
+//            request.setAttribute("message",message);
+//            RequestDispatcher requestDispatcher=request.getRequestDispatcher("/customer");
+//            requestDispatcher.forward(request,response);
+//        }
     }
 }
