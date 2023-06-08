@@ -129,7 +129,9 @@ public class CustomerServlet extends HttpServlet {
         String address= request.getParameter("address");
         String email= request.getParameter("email");
         customerService.add(new Customer(name,address,dateOfBirth,gender,phone,email,citizenId));
+//        request.setAttribute("status","success");
         response.sendRedirect("/customer");
+
 //        if(true){
 //            String message="success";
 //            request.setAttribute("message",message);
