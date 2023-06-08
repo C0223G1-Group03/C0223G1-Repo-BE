@@ -67,6 +67,15 @@ public class Product {
         this.image = image;
     }
 
+    public Product(int ma_xe, String ten_xe) {
+        this.ma_xe = ma_xe;
+        this.ten_xe = ten_xe;
+    }
+
+    public Product(int ma_xe) {
+        this.ma_xe = ma_xe;
+    }
+
     public int getMa_xe() {
         return ma_xe;
     }
