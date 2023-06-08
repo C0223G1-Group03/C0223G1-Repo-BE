@@ -66,7 +66,7 @@
                         <div>
                             <i class="fa-solid fa-file-signature"></i>
                         </div>
-                        Quản lý hợp đồng
+                        Quản lý đặt hàng
                     </a>
                 </li>
             </ul>
