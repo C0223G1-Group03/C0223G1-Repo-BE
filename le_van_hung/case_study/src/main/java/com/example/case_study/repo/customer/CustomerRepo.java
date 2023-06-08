@@ -10,7 +10,7 @@ import java.util.List;
 
 public class CustomerRepo implements ICustomerRepo {
     private static final String DISPLAY_ALL = "select * from khach_hang";
-    private static final String CREATE = "INSERT INTO khach_hang (ma_khach_hang, ten_khach_hang, dia_chi, ngay_sinh, gioi_tinh, sdt, email, cccd) VALUES (?, ?, ?, ?,?, ?, ?, ?)";
+    private static final String CREATE = "INSERT INTO khach_hang ( ten_khach_hang, dia_chi, ngay_sinh, gioi_tinh, sdt, email, cccd) VALUES ( ?, ?, ?,?, ?, ?, ?)";
     private static final String DELETE = "delete from khach_hang where ma_khach_hang=?";
     private static final String UPDATE = "UPDATE khach_hang SET ten_khach_hang = ?, dia_chi = ?, ngay_sinh = ?, gioi_tinh = ?, sdt = ?, email =?, cccd = ? WHERE (ma_khach_hang = ?);";
 
@@ -43,15 +43,13 @@ public class CustomerRepo implements ICustomerRepo {
         Connection connection = BaseRepository.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE);
-            preparedStatement.setInt(1,customer.getId());
-            preparedStatement.setString(2, customer.getName());
-            preparedStatement.setString(3, customer.getAddress());
-            preparedStatement.setString(4, customer.getDateOfBirth());
-            preparedStatement.setBoolean(5, customer.isGender());
-            preparedStatement.setString(6, customer.getPhone());
-            preparedStatement.setString(7, customer.getEmail());
-            preparedStatement.setString(8, customer.getCitizenId());
-
+            preparedStatement.setString(1, customer.getName());
+            preparedStatement.setString(2, customer.getAddress());
+            preparedStatement.setString(3, customer.getDateOfBirth());
+            preparedStatement.setBoolean(4, customer.isGender());
+            preparedStatement.setString(5, customer.getPhone());
+            preparedStatement.setString(6, customer.getEmail());
+            preparedStatement.setString(7, customer.getCitizenId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

@@ -2,12 +2,15 @@ package com.example.case_study.controller.user;
 
 import com.example.case_study.model.customer.Customer;
 import com.example.case_study.model.employee.Employee;
+import com.example.case_study.model.order.Order;
 import com.example.case_study.model.product.Product;
 import com.example.case_study.model.user.User;
 import com.example.case_study.service.customer.CustomerService;
 import com.example.case_study.service.customer.ICustomerService;
 import com.example.case_study.service.employee.EmployeeService;
 import com.example.case_study.service.employee.IEmployeeService;
+import com.example.case_study.service.order.IOrderService;
+import com.example.case_study.service.order.OrderService;
 import com.example.case_study.service.product.IProductService;
 import com.example.case_study.service.product.ProductService;
 import com.example.case_study.service.user.IUserService;
@@ -24,6 +27,7 @@ public class UserServlet extends HttpServlet {
     private IEmployeeService employeeService = new EmployeeService();
     private ICustomerService customerService = new CustomerService();
     private IProductService productService = new ProductService();
+    private IOrderService orderService = new OrderService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -82,6 +86,8 @@ public class UserServlet extends HttpServlet {
 //                int id, String name, String address, String dateOfBirth, boolean gender, String phone, String email, String citizenId
                 Customer customer = new Customer(nameCustomer,address,dateOfBirth,gender,phone,email,citizenId);
                 customerService.add(customer);
+                Order order = new Order(product,customer);
+                orderService.addOrderByCusPro(order);
                 response.sendRedirect("/display?action=display");
                 break;
 
