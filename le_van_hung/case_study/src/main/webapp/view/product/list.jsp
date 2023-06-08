@@ -74,15 +74,13 @@
     </style>
 
 </head>
-<div style="margin-top: 100px">
 <jsp:include page="/view/main_menu/nav_bar_admin_show.jsp"></jsp:include>
-</div>
-<div>
-<h2 style="text-align: center;">
-    Quản Lý Sản Phẩm
-</h2>
-</div>
 <body>
+<div>
+    <h2 style="text-align: center;">
+        Quản Lý Sản Phẩm
+    </h2>
+</div>
     <%--<jsp:include page="/view/main_menu/nav_bar_giao_dien.jsp"></jsp:include>--%>
     <table id="table" class="table table-dark table-hover"  >
         <thead style="padding-bottom: 50px">
