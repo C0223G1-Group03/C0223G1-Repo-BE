@@ -12,13 +12,65 @@
     <title>Title</title>
     <meta charset="UTF-8">
     <style>
-        table {
-            border: 2px white solid;
-            background-color: black;
-            color: white;
-            width: 100%;
-            font-size: medium;
+        body {
+            margin: 0;
+            padding: 0;
+            background: #19161c;
+            height: 100vh;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-direction: column;
+            align-content: center;
         }
+
+        .box {
+            position: relative;
+        }
+
+        .input {
+            padding: 10px;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: 4px solid white;
+            border-radius: 50px;
+            box-sizing: border-box;
+            font-family: Comic Sans MS;
+            font-size: 20px;
+            color: white;
+            outline: none;
+            transition: .5s;
+        }
+
+        .box:hover input {
+            width: 100px;
+            background: #3b3640;
+            border-radius: 10px;
+        }
+
+        .box i {
+            position: absolute;
+            top: 60%;
+            right: auto;
+            transform: translate(-50%, -50%);
+            font-size: 15px;
+            color: white;
+            transition: .2s;
+        }
+
+        .box:hover i {
+            opacity: 0;
+            z-index: -1;
+        }
+        th{
+            width: 200px;
+            text-align: center;
+        }
+        td,input{
+            width: 400px;
+        }
+
     </style>
     <title>Title</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -29,6 +81,7 @@
 <form action="/product?action=add" method="post">
     <table class="table table-dark table-hover container-f ">
         <thead>
+        <tr style="color: white;text-align: center"><th>THÊM SẢN PHẨM</th></tr>
         <tr style="text-align: center">
             <tr>
             <th class="col-3" scope="col">Tên xe</th>
@@ -87,5 +140,8 @@
         </thead>
     </table>
 </form>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 </body>
 </html>
