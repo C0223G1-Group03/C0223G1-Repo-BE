@@ -23,13 +23,18 @@ public class OrderService implements IOrderService{
         orderRepository.deleteOrder(ma_order);
     }
 
-    @Override
-    public List<Order> displayListOrderByType(int id) {
-        return orderRepository.displayListOrderByType(id);
-    }
+//    @Override
+//    public List<Order> displayListOrderByType(int id) {
+//        return orderRepository.displayListOrderByType(id);
+//    }
 
     @Override
     public Order findOrderById(int ma_order) {
         return orderRepository.findOrderById(ma_order);
+    }
+
+    @Override
+    public void addOrderByCusPro(Order order) {
+        orderRepository.addOrderByCusPro(order);
     }
 }
