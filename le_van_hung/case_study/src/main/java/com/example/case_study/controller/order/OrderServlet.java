@@ -40,6 +40,9 @@ public class OrderServlet extends HttpServlet {
             case "showFormAddOrder":
                 showFormAddOrder(req, resp);
                 break;
+            case "showDetailOrder":
+                showDetailOrder(req, resp);
+                break;
             default:
                 showListOrder(req, resp);
                 break;
@@ -50,6 +53,14 @@ public class OrderServlet extends HttpServlet {
         List<Order> orderList = orderService.displayListOrder();
         req.setAttribute("orderList", orderList);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/view/order/list_order.jsp");
+        requestDispatcher.forward(req, resp);
+    }
+
+    private void showDetailOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int ma_hop_dong= Integer.parseInt(req.getParameter("id"));
+        Order orderDetail = orderService.findOrderById(ma_hop_dong);
+        req.setAttribute("orderDetail", orderDetail);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/view/order/order_detail.jsp");
         requestDispatcher.forward(req, resp);
     }
 
