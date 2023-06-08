@@ -30,8 +30,8 @@ public class OrderRepository implements IOrderRepository {
             "join khach_hang on orders.ma_khach_hang = khach_hang.ma_khach_hang\n" +
             "join nhan_vien on orders.ma_nhan_vien = nhan_vien.ma_nhan_vien\n" +
             "where orders.ma_order = ?";
-
-
+    private static final String INSERT_BY_CUS_PRO ="INSERT INTO orders (`ma_xe`, `ma_nhan_vien`, `ma_khach_hang`) VALUES (?, 1, ?)";
+    private static final String SELECT_INT = " select ma_khach_hang from khach_hang order by ma_khach_hang desc limit 1";
     @Override
     public List<Order> displayListOrder() {
         Connection connection = BaseRepository.getConnection();
@@ -157,5 +157,29 @@ public class OrderRepository implements IOrderRepository {
             }
         }
         return null;
+    }
+
+    @Override
+    public void addOrderByCusPro(Order order) {
+        Connection connection = BaseRepository.getConnection();
+        try {
+            PreparedStatement preparedStatement1 = connection.prepareStatement(SELECT_INT);
+            ResultSet resultSet = preparedStatement1.executeQuery();
+            int idCustomer=0;
+            while (resultSet.next()){
+          idCustomer = resultSet.getInt("ma_khach_hang");}
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_BY_CUS_PRO);
+            preparedStatement.setInt(1,order.getProduct().getMa_xe());
+            preparedStatement.setInt(2,idCustomer);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
