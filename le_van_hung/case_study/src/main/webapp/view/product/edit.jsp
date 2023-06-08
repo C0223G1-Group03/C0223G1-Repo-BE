@@ -24,6 +24,25 @@
             align-content: center;
         }
 
+        .box {
+            position: relative;
+        }
+
+        .input {
+            padding: 10px;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: 4px solid white;
+            border-radius: 50px;
+            box-sizing: border-box;
+            font-family: Comic Sans MS;
+            font-size: 20px;
+            color: white;
+            outline: none;
+            transition: .5s;
+        }
+
         .box:hover input {
             width: 100px;
             background: #3b3640;
@@ -118,5 +137,8 @@
         </thead>
     </table>
 </form>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 </body>
 </html>
