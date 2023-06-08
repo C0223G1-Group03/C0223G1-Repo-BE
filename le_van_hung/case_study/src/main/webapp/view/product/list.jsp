@@ -105,6 +105,7 @@
                 <div class="box" style="padding-top: 10px">
                     <form action="/product?action=search" method="post">
                         <input type="search" class="input" id="id" name="id">
+<%--                        <button type="submit" >tìm kiếm</button>--%>
                     </form>
                     <i class="fas fa-search"></i>
                 </div>
