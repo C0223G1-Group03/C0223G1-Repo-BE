@@ -47,10 +47,8 @@
 
             </th>
             <th>Mô tả:
-
                 <input type="text" name="introduce" value="${product.getMo_ta()}" minlength="3" maxlength="20">
             </th>
-
             <th>Loại xe:
 
                 <select name="loaiXe">

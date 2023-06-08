@@ -115,7 +115,7 @@
         <tbody style="text-align: center;">
         <c:forEach items="${list}" var="list" varStatus="loop">
             <tr>
-                <th class="col-1" scope="row"><c:out value="${loop.count}"/></th>
+                <th class="col-1" scope="row"><c:out value="${lo2p.count}"/></th>
                 <td class="col-2"><c:out value="${list.ten_xe}"/></td>
                 <td class="col-1"><c:out value="${list.mau_sac_xe}"/></td>
                 <td class="col-2"><c:out value="${list.ngay_san_xuat}"/></td>
@@ -123,7 +123,7 @@
                 <td class="col-1"><c:out value="${list.loaiXe.ten_loai_xe}"/></td>
                 <td class="col-1"><c:out value="${list.tinhTrang.ten_tinh_trang}"/></td>
                 <td class="col-1"><c:out value="${list.gia}"/></td>
-                <td class="col-1"><c:out value="${list.image}"/></td>
+                <td class="col-1"><img height="60px" width="60px" src="<c:out value="${list.image}"/>"/></td>
                 <td class="col-1">
                     <a href="/product?action=showFormEdit&id=${list.ma_xe}"/>
                     <button class="btn btn-outline-light col-6" type="button" style="width: 40px"><span><i
@@ -172,7 +172,7 @@
     <script>
         $(document).ready(function () {
             $('#table').dataTable({
-                "dom": 'lrtip',
+                "dom": 'lrtp',
                 "lengthChange": false,
                 "pageLength": 5,
                 "scrollY": true,
