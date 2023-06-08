@@ -22,7 +22,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <!-- Container wrapper -->
-    <div class="">
+    <div class="container-fluid">
         <!-- Navbar brand -->
         <a class="navbar-brand" href="#"></a>
 

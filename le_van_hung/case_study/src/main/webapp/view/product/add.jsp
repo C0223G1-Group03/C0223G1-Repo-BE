@@ -30,6 +30,7 @@
     <table class="table table-dark table-hover container-f ">
         <thead>
         <tr style="text-align: center">
+            <tr>
             <th class="col-3" scope="col">Tên xe</th>
             <th class="col-1" scope="col">Màu xe</th>
             <th class="col-2" scope="col">Ngày sản xuất</th>

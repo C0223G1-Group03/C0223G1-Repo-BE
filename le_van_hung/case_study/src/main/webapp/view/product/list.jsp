@@ -113,8 +113,8 @@
                 <td class="col-1"><c:out value="${list.mo_ta}"/></td>
                 <td class="col-1"><c:out value="${list.loaiXe.ten_loai_xe}"/></td>
                 <td class="col-1"><c:out value="${list.tinhTrang.ten_tinh_trang}"/></td>
-                <td class="col-2"><c:out value="${list.gia}"/></td>
-                <td class="col-2"><c:out value="${list.image}"/></td>
+                <td class="col-1"><c:out value="${list.gia}"/></td>
+                <td class="col-1"><c:out value="${list.image}"/></td>
                 <td class="col-1">
                     <a href="/product?action=showFormEdit&id=${list.ma_xe}"/>
                     <button class="btn btn-outline-light col-6" type="button" style="width: 40px"><span><i
