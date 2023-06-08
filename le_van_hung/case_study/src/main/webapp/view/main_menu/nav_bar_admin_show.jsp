@@ -73,7 +73,7 @@
         </div>
     </div>
     <div class="nav-item dropdown text-center mx-2 mx-lg-1">
-        <a class="nav-link" href="/user?action=logout" style="width: 200px;color: white">
+        <a class="nav-link" href="/user?action=logout" style="width: 200px;color: white; padding-left: 600px">
             <div>
                 ${employee.account} <i class="fa-solid fa-right-from-bracket"></i>
             </div>

@@ -24,6 +24,7 @@
             justify-content: space-evenly;
             /*align-items: center;*/
             flex-direction: column;
+
                 align-content: center;
         }
 
@@ -66,19 +67,26 @@
             opacity: 0;
             z-index: -1;
         }
+        .table{
+            background-color: #101f27;
+        }
 
     </style>
 
 </head>
+<div style="margin-top: 100px">
 <jsp:include page="/view/main_menu/nav_bar_admin_show.jsp"></jsp:include>
-<h2 style="text-align: center">
+</div>
+<div>
+<h2 style="text-align: center;">
     Quản Lý Sản Phẩm
 </h2>
+</div>
 <body>
     <%--<jsp:include page="/view/main_menu/nav_bar_giao_dien.jsp"></jsp:include>--%>
-    <table id="table" class="table table-dark table-hover">
-        <thead>
-        <tr style="text-align: center" >
+    <table id="table" class="table table-dark table-hover"  >
+        <thead style="padding-bottom: 50px">
+        <tr style="text-align: center;" >
             <th class="col-1" scope="col">
                 STT
             </th>
@@ -163,10 +171,16 @@
     <script>
         $(document).ready(function () {
             $('#table').dataTable({
-                "dom": 'lrtp',
+                "dom": 'lrtip',
                 "lengthChange": false,
                 "pageLength": 5,
                 "scrollY": true,
+                // columnDefs: [
+                //     {
+                //         targets: -1,
+                //         className: 'dt-body-right'
+                //     }
+                // ]
             });
         });
     </script>
