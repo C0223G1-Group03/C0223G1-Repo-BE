@@ -62,7 +62,6 @@ public class ProductServlet extends HttpServlet {
                 edit(req,resp);
                 break;
             case "search":
-                //search
                 search(req, resp);
                 break;
             default:
@@ -89,7 +88,7 @@ public class ProductServlet extends HttpServlet {
         List<TinhTrang> tinhTrangList = tinhTrangService.display();
         req.setAttribute("loaiXeList",loaiXeList);
         req.setAttribute("tinhTrangXe",tinhTrangList);
-        RequestDispatcher requestDispatcher=req.getRequestDispatcher("view/product/edit.jsp");
+        RequestDispatcher requestDispatcher=req.getRequestDispatcher("/view/product/edit.jsp");
         requestDispatcher.forward(req,resp);
     }
     private void edit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -119,7 +118,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void displayMenu(HttpServletRequest req, HttpServletResponse resp) {
-        RequestDispatcher requestDispatcher= req.getRequestDispatcher("view/main_menu/giao_dien.jsp");
+        RequestDispatcher requestDispatcher= req.getRequestDispatcher("/view/main_menu/giao_dien.jsp");
         try {
             requestDispatcher.forward(req,resp);
         } catch (ServletException e) {
@@ -152,7 +151,7 @@ public class ProductServlet extends HttpServlet {
         List<TinhTrang> tinhTrangList = tinhTrangService.display();
         req.setAttribute("loaiXeList",loaiXeList);
         req.setAttribute("tinhTrangXe",tinhTrangList);
-        RequestDispatcher requestDispatcher=req.getRequestDispatcher("view/product/add.jsp");
+        RequestDispatcher requestDispatcher=req.getRequestDispatcher("/view/product/add.jsp");
         requestDispatcher.forward(req,resp);
 
     }
