@@ -465,7 +465,7 @@
                                     style="padding-left: 10px"><i class="fa-regular fa-pen-to-square"></i></span>
                             </legend>
                             <p class="pure-steps_group-step_item flexy-item flexy-column reverse">
-                                <label><input type="text" placeholder="Nguyễn Văn A" name="name" id="input_name" required pattern="^([a-z]+)((\s{1}[a-z]+){1,})$" title="Vui lòng nhập họ và tên"></label>
+                                <label><input type="text" placeholder="Nguyễn Văn A" name="name" id="input_name" required title="Vui lòng nhập họ và tên"></label>
                                 <label for="input_name">Họ và tên</label>
                             </p>
                             <p class="pure-steps_group-step_item flexy-item flexy-column reverse">
@@ -484,7 +484,7 @@
                                 <label for="input_cccd">CCCD</label>
                             </p>
                             <p class="pure-steps_group-step_item flexy-item flexy-column reverse">
-                                <label><input type="phone" placeholder="(+84)-0xxxxxxxxx" name="phone" id="input_phone" title="Vui lòng nhập số điện thoại"
+                                <label><input type="tel" placeholder="(+84)-0xxxxxxxxx" name="phone" id="input_phone" title="Vui lòng nhập số điện thoại"
                                               required pattern="^(0|84)(2(0[3-9]|1[0-6|8|9]|2[0-2|5-9]|3[2-9]|4[0-9]|5[1|2|4-9]|6[0-3|9]|7[0-7]|8[0-9]|9[0-4|6|7|9])|3[2-9]|5[5|6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])([0-9]{7})$"></label>
                                 <label for="input_phone">Số điện thoại</label>
                             </p>
@@ -518,7 +518,7 @@
                         <label for="step-1">Sign Up</label>
                     </li>
                     <li class="pure-steps_group-triggers_item">
-                        <a><label for="step-2"><input type="submit" >Jump in</label></a>
+                        <label for="step-2"><a><input style="background-color: black;color: white" type="submit" value="Gửi"></a></label>
                     </li>
                 </ol>
             </div>
