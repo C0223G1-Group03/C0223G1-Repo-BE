@@ -86,15 +86,15 @@
         <tr style="text-align: center">
         <tr>
             <th>Mã NV</th>
-            <td><input name="id" readonly value="${employee.getId()}"></td>
+            <td><input name="id" disabled value="${employee.getId()}" ></td>
         </tr>
         <tr>
             <th >Họ và tên</th>
-            <td ><input name="name_edit" value="${employee.getName()}"></td>
+            <td ><input name="name_edit" value="${employee.getName()}" pattern="[a-z]+)((\s{1}[a-z]+){1,})" title="Vui lòng nhập họ và tên" required></td>
         </tr>
         <tr>
             <th >Ngày sinh</th>
-            <td ><input name="dateOfBirth_edit" value="${employee.getDateOfBirth()}"></td>
+            <td ><input name="dateOfBirth_edit" value="${employee.getDateOfBirth()}" required title="Vui lòng nhập ngày sinh" pattern="^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$"></td>
         </tr>
         <tr>
             <th >Giới tính</th>
@@ -105,27 +105,28 @@
         </tr>
         <tr>
             <th>CCCD</th>
-            <td ><input name="citizenId" value="${employee.getCitizenId()}"></td>
+            <td ><input name="citizenId" value="${employee.getCitizenId()}" required title="Vui lòng nhập CCCD"></td>
         </tr>
         <tr>
             <th>SĐT</th>
-            <td ><input name="phone" value="${employee.getPhone()}"></td>
+            <td ><input name="phone" type="tel" value="${employee.getPhone()}" title="Vui lòng nhập số điện thoại"
+                        required ></td>
         </tr>
         <tr>
             <th >Địa chỉ</th>
-            <td ><input name="address" value="${employee.getAddress()}"></td>
+            <td ><input type="text" name="address" value="${employee.getAddress()}"  required title="Vui lòng nhập địa chỉ"></td>
         </tr>
         <tr>
             <th >Email</th>
-            <td ><input name="email" value="${employee.getEmail()}"></td>
+            <td ><input name="email" type="email" value="${employee.getEmail()}" required pattern="^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$" tilte="Vui lòng nhập Email"></td>
         </tr>
         <tr>
             <th >Tài khoản</th>
-            <td ><input name="account" value="${employee.getAccount()}"></td>
+            <td ><input name="account" value="${employee.getAccount()}" required title="Vui lòng nhập tài khoản"></td>
         </tr>
         <tr>
             <th>Mật khẩu</th>
-            <td ><input name="password" value="${employee.getPassword()}"></td>
+            <td ><input name="password" value="${employee.getPassword()}" required></td>
         </tr>
         <tr>
             <th><a href="/employee"><span class="btn btn-outline-light"><i class="fa-solid fa-arrow-left"></i></span></a></th>
