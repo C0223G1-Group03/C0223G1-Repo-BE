@@ -32,4 +32,9 @@ public class OrderService implements IOrderService{
     public Order findOrderById(int ma_order) {
         return orderRepository.findOrderById(ma_order);
     }
+
+    @Override
+    public void addOrderByCusPro(Order order) {
+        orderRepository.addOrderByCusPro(order);
+    }
 }

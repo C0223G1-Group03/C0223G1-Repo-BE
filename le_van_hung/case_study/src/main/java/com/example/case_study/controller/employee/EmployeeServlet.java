@@ -49,7 +49,6 @@ public class EmployeeServlet extends HttpServlet {
         request.setAttribute("employee",employee);
         RequestDispatcher requestDispatcher= request.getRequestDispatcher("/view/employee/edit.jsp");
         requestDispatcher.forward(request, response);
-        response.sendRedirect("/view/employee/edit.jsp");
     }
 
     private void showList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -4,7 +4,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -72,7 +72,7 @@
 <jsp:include page="/view/main_menu/nav_bar_admin_show.jsp"></jsp:include>
 
 <body_1>
-<table class="table table-dark table-hover container">
+<table class="table table-dark table-hover container" >
     <thead>
     <tr style="text-align: center">
         <th class="col-1" scope="col">Mã KH</th>
@@ -95,7 +95,7 @@
         </th>
     </tr>
     </thead>
-    <tbody style="text-align: center">
+    <tbody style="text-align: center" >
     <c:forEach items="${customerList}" var="c">
         <tr>
             <th class="col-1" scope="row"><c:out value="${c.id}"/></th>
@@ -128,6 +128,7 @@
         document.getElementById("nameDelete").innerText = name;
     }
 
+    
     function searchId(id){
         console.log(id)
         document.getElementById("id").value=id;
@@ -158,10 +159,11 @@
     </div>
 </div>
 <%-- sign_up--%>
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
 </body_1>
+<script src="jquery/jquery-3.5.1.min.js"></script>
+<script src="datatables/js/jquery.dataTables.min.js"></script>
+<script src="datatables/js/dataTables.bootstrap5.min.js"></script>
 </html>
