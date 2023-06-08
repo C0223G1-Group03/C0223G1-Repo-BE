@@ -87,10 +87,10 @@
         <th class="col-1" scope="col">Số lượng xe</th>
         <th class="col-1" scope="col">Mã xe </th>
         <th class="col-1" scope="col">Tên xe</th>
-        <th class="col-1" scope="col">Mã nhân viên</th>
-        <th class="col-2" scope="col">Tên nhân viên</th>
         <th class="col-1" scope="col">Mã khách hàng</th>
         <th class="col-1" scope="col">Tên khách hàng</th>
+        <th class="col-1" scope="col">Mã nhân viên</th>
+        <th class="col-2" scope="col">Tên nhân viên</th>
         <th class="col-1" scope="col">
             <a href="/order?action=showFormAddOrder">
                 <span style="color: white;border-radius: 100%"><i class="fa-solid fa-user-plus"></i></span></a>
@@ -110,7 +110,7 @@
             <td class="col-1"><c:out value="${o.employee.id}"/></td>
             <td class="col-1"><c:out value="${o.employee.name}"/></td>
             <td class="col-1">
-                <a href="/order?action=showUpdateForm&id=${o.ma_order}">
+                <a href="/order?action=showDetailOrder&id=${o.ma_order}">
                     <button class="btn btn-outline-light col-6" type="button" style="width: 40px"><span><i
                             class="fa-regular fa-pen-to-square"></i></span></button>
                 </a>

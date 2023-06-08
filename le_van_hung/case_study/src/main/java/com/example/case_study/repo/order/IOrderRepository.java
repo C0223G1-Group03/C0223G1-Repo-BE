@@ -8,6 +8,6 @@ public interface IOrderRepository {
     List<Order> displayListOrder();
     void addOrder(Order order);
     void deleteOrder(int ma_order);
-    List<Order> displayListOrderByType(int id);
+//    List<Order> displayListOrderByType(int id);
     Order findOrderById(int ma_order);
 }
