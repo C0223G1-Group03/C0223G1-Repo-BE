@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Title</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <style>
         body {
             margin: 0;
