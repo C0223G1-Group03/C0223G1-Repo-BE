@@ -64,11 +64,13 @@
             opacity: 0;
             z-index: -1;
         }
-        th{
+
+        th {
             width: 200px;
             text-align: center;
         }
-        td,input{
+
+        td, input {
             width: 400px;
         }
 
@@ -82,11 +84,13 @@
 <form action="/product?action=add" method="post">
     <table class="table table-dark table-hover">
         <thead>
-        <tr style="color: white;text-align: center"><th>THÊM SẢN PHẨM</th></tr>
+        <tr style="color: white;text-align: center">
+            <th>THÊM SẢN PHẨM</th>
+        </tr>
         <tr style="text-align: center">
-            <tr>
+        <tr>
             <th class="col-3" scope="col">Tên xe</th>
-            <td class="col-3"><input name="name"  required></td>
+            <td class="col-3"><input name="name" required></td>
         </tr>
         <tr>
             <th class="col-1" scope="col">Màu xe</th>
@@ -94,7 +98,7 @@
         </tr>
         <tr>
             <th class="col-2" scope="col">Ngày sản xuất</th>
-            <td class="col-2"><input type="date" name="day"required ></td>
+            <td class="col-2"><input type="date" name="day" required></td>
         </tr>
         <tr>
             <th class="col-1" scope="col">Mô tả</th>
@@ -102,34 +106,34 @@
         </tr>
         <tr>
             <th class="col-1" scope="col">Loại xe</th>
-            <td class="col-1"><select name="loai_xe" required>
-                    <option value="${loaiXe.ma_loai_xe}">Sedan</option>
-                    <option value="${loaiXe.ma_loai_xe}">SUV</option>
-                    <option value="${loaiXe.ma_loai_xe}">coupe</option>
-                    <option value="${loaiXe.ma_loai_xe}">Xe đa dụng</option>
+            <td class="col-1"><select name="loai_xe">
+                <option value="1"/>1<span> : Sedan</span>
+                <option value="2"/>2<span> : SUV</span>
+                <option value="3"/>3<span> : Coupé</span>
+                <option value="4"/>4<span> : Xe Đa Dụng</span>
             </select>
-            </td>
         </tr>
         <tr>
             <th class="col-1" scope="col">Tình trạng</th>
-            <td class="col-1"><select name="tinh_trang" required>
-                    <option value="${tinhTrang.ma_tinh_trang}">Có Sẵn</option>
-                    <option value="${tinhTrang.ma_tinh_trang}">Không có sẵn</option>
-            </select></td>
+            <td class="col-1">
+                <select name="tinh_trang">
+                    <option value="1"/>1<span> : Có Sẵn</span>
+                    <option value="2"/>2<span> : Không Có Sẵn</span>
+                </select></td>
         </tr>
         <tr>
             <th class="col-1" scope="col">Giá(VND)</th>
             <td class="col-1"><input name="gia" required></td>
         </tr>
         <tr>
-            <th class="col-1" scope="col">Ảnh(img) </th>
+            <th class="col-1" scope="col">Ảnh(img)</th>
             <td class="col-1"><input name="img" required></td>
         </tr>
         <tr>
             <th class="col-1" scope="col"><a href="/product"><span class="btn btn-outline-light"><i
                     class="fa-solid fa-arrow-left"></i></span></a></th>
             <td class="col-1">
-                <button class="btn btn-outline-light" type="submit">style="width: 40px;margin-left: 300px"><span>
+                <button class="btn btn-outline-light" type="submit" style="width: 40px;margin-left: 300px"><span>
                 <i class="fa-regular fa-circle-check"></i></span></button>
             </td>
         </tr>

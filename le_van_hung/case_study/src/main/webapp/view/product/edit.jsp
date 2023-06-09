@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -85,17 +86,17 @@
         <tr>
             <th>Loại xe</th>
             <td><select name="loaiXe">
-                    <option>Sedan</option>
-                    <option>SUV</option>
-                    <option>Coupe</option>
-                    <option>Xe Đa Dụng</option>
+                    <option value="1"/>1<span> : Sedan</span>
+                    <option value="2"/>2<span> : SUV</span>
+                    <option value="3"/>3<span> : Coupé</span>
+                    <option value="4"/>4<span> : Xe Đa Dụng</span>
             </select></td>
         </tr>
         <tr>
             <th>Tình Trạng</th>
             <td><select name="tinhTrang">
-                    <option>Có Sẵn</option>
-                    <option>Không Có Sẵn</option>
+                    <option value="1"/>1<span> : Có Sẵn</span>
+                    <option value="2"/>2<span> : Không Có Sẵn</span>
             </select></td>
         </tr>
         <tr>
