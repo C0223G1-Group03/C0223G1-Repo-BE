@@ -118,6 +118,10 @@
                         style="width: 40px" data-bs-toggle="modal" data-bs-target="#modelId"><span
                         style="color: red;width: 10px"><i
                         class="fa-solid fa-trash-can"></i></span></button>
+                <a href="/send">
+                    <button class="btn btn-outline-light col-6" type="button" style="width: 40px"><span><i
+                            class="fa-regular fa-pen-to-square"></i></span></button>
+                </a>
             </td>
         </tr>
     </c:forEach>
