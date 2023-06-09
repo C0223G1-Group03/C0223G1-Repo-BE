@@ -36,7 +36,20 @@
         /*    box-shadow: 0px 0px 20px 30px white;*/
         /*}*/
     </style>
-
+    <style>
+        /* Styling for the toast message */
+        .toast {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1;
+            display: none;
+        }
+    </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
@@ -84,7 +97,7 @@
                             </div>
                         <h5 class="card-title"><c:out value="${list.ten_xe}"/></h5>
                         <span class="float-start my-4"><button onclick="showModal('${list.ten_xe}','${list.mau_sac_xe}','${list.ngay_san_xuat}','${list.mo_ta}','${list.loaiXe.ten_loai_xe}',
-                                '${list.tinhTrang.ten_tinh_trang}','${list.gia}')"
+                                '${list.tinhTrang.ten_tinh_trang}','<fmt:formatNumber type="number" maxFractionDigits="3" value="${list.gia}"/>')"
                                                               type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modelId" style="width: 100px">
                             Chi tiết
                         </button></span>
@@ -112,7 +125,8 @@
                 <p>Mô tả: <span id="desc"></span></p>
                 <p>Loại xe: <span id="type"></span></p>
                 <p>Tình trạng: <span id="status"></span></p>
-                <p>Giá: <span id="price"></span></p>
+                <p>Giá: <span id="price"></span><span>&nbsp&nbspVND</span></p>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -120,6 +134,24 @@
         </div>
     </div>
 </div>
+<c:if test="${order!=null}">
+<div id="toastMessage" class="toast" style="background-color: black"></div>
+</c:if>
+<script>
+    // Function to show the toast message
+    function showToast(message) {
+        var toast = document.getElementById("toastMessage");
+        toast.style.display = "block";
+        toast.innerText = message;
+        setTimeout(function() {
+            toast.style.display = "none";
+        }, 3000); // Hide the toast message after 3 seconds
+    }
+    // Automatically show the toast message when the page is reloaded
+    window.addEventListener('load', function() {
+        showToast("${order}");
+    });
+</script>
 <script>
     function showModal(ten,mau,ngaysx,mota,loaixe,tinhtrangxe,gia){
         document.getElementById("name").innerText = ten;
