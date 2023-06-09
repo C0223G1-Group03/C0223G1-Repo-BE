@@ -142,7 +142,7 @@
     <h2 style="padding-top: 150px">Tìm Hiểu Thêm</h2>
     <div class="col-4">
         <br>
-        <div class="card" style="width: 100%;height:400px; color: black">
+        <div class="card" style="width: 100%;height:500px;; color: black">
             <img src="https://images.drive.com.au/driveau/image/upload/c_fill,f_auto,g_auto,h_675,q_auto:eco,w_1200/v1/cms/uploads/jrb4ysxfzzbr0udce9kj"
                  c...lass="card-img-top" alt="...">
             <div class="card-body">
@@ -152,9 +152,9 @@
             </div>
         </div>
     </div>
-    <div class="col-4">
+    <div class="col-4" >
         <br>
-        <div class="card" style="width: 100%;height:400px; color: black">
+        <div class="card" style="width: 100%;height:500px; color: black">
             <img src="https://cdn.dailyxe.com.vn/image/lan-truyen-tin-don-mercedes-benz-c300-amg-2022-sap-ve-viet-nam-gia-chenh-lech-gan-200-trieu-dong(1)-235609j.jpg"
                  c...lass="card-img-top" alt="...">
             <div class="card-body">
@@ -166,7 +166,7 @@
     </div>
     <div class="col-4">
         <br>
-        <div class="card" style="width: 100%;height:400px;color: black">
+        <div class="card" style="width: 100%;height:500px;color: black">
             <img src="https://mercedes-center.com.vn/gw-content/images/gia-lan-banh-mercedes-benz-eclass-RhqvK.jpg"
                  c...lass="card-img-top" alt="...">
             <div class="card-body">
