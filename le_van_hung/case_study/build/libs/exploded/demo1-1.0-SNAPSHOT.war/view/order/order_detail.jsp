@@ -116,8 +116,8 @@
 </head>
 <body>
 <form>
-    <h2 style="color: chartreuse">Chi tiết Order</h2>
 <table class="table table-dark table-hover container-f">
+    <tr style="color: Red;text-align: center"><th>Chi tiết order</th></tr>
     <thead>
     <tr style="text-align: center">
     <tr>
