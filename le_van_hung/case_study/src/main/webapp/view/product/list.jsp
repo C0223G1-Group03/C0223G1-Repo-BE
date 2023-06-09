@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -120,8 +121,10 @@
                 <td class="col-1"><c:out value="${list.mo_ta}"/></td>
                 <td class="col-1"><c:out value="${list.loaiXe.ten_loai_xe}"/></td>
                 <td class="col-1"><c:out value="${list.tinhTrang.ten_tinh_trang}"/></td>
-                <td class="col-1"><c:out value="${list.gia}"/></td>
-                <td class="col-1"><img height="60px" width="60px" src="<c:out value="${list.image}"/>"/></td>
+                <td class="col-1">
+                <fmt:formatNumber type="number" maxFractionDigits="3" value="${list.gia}"/>
+                </td>
+                <td class="col-1"><img height="50px" width="50px" src="<c:out value="${list.image}"/>"/></td>
                 <td class="col-1">
                     <a href="/product?action=showFormEdit&id=${list.ma_xe}"/>
                     <button class="btn btn-outline-light col-6" type="button" style="width: 40px"><span><i
@@ -147,9 +150,9 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h3>Bạn có chắc chắn xóa sản phẩm có tên:
+                    <h4>Bạn có chắc chắn xóa sản phẩm có tên:
                         <span style="color:red" id="nameDelete"></span>
-                    </h3>
+                    </h4>
                 </div>
                 <div class="modal-footer">
                     <form action="/product?action=delete" method="post">
@@ -174,12 +177,6 @@
                 "lengthChange": false,
                 "pageLength": 5,
                 "scrollY": true,
-                // columnDefs: [
-                //     {
-                //         targets: -1,
-                //         className: 'dt-body-right'
-                //     }
-                // ]
             });
         });
     </script>

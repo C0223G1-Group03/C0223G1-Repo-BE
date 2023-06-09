@@ -27,25 +27,6 @@
             align-content: center;
         }
 
-        .box {
-            position: relative;
-        }
-
-        .input {
-            padding: 10px;
-            width: 40px;
-            height: 40px;
-            background: none;
-            border: 4px solid white;
-            border-radius: 50px;
-            box-sizing: border-box;
-            font-family: Comic Sans MS;
-            font-size: 20px;
-            color: white;
-            outline: none;
-            transition: .5s;
-        }
-
         .box:hover input {
             width: 100px;
             background: #3b3640;
@@ -104,25 +85,21 @@
         <tr>
             <th>Loại xe</th>
             <td><select name="loaiXe">
-                <c:forEach items="${loaiXeList}" var="loaiXe">
-                    <option value="${loaiXe.ma_loai_xe}">Sedan</option>
-                    <option value="${loaiXe.ma_loai_xe}">SUV</option>
-                    <option value="${loaiXe.ma_loai_xe}">Coupe</option>
-                    <option value="${loaiXe.ma_loai_xe}">Xe Đa Dụng</option>
-                </c:forEach>
+                    <option>Sedan</option>
+                    <option>SUV</option>
+                    <option>Coupe</option>
+                    <option>Xe Đa Dụng</option>
             </select></td>
         </tr>
         <tr>
             <th>Tình Trạng</th>
             <td><select name="tinhTrang">
-                <c:forEach items="${tinhTrangXe}" var="tinhTrang">
-                    <option value="${tinhTrang.ma_tinh_trang}">Có Sẵn</option>
-                    <option value="${tinhTrang.ma_tinh_trang}">Không Có Sẵn</option>
-                </c:forEach>
+                    <option>Có Sẵn</option>
+                    <option>Không Có Sẵn</option>
             </select></td>
         </tr>
         <tr>
-            <th>Giá (VND)</th>
+            <th>Giá(VND)</th>
             <td><input type="number" name="gia" value="${product.getGia()}" step="any" pattern="[-+]?[0-9]"></td>
         </tr>
         <tr>

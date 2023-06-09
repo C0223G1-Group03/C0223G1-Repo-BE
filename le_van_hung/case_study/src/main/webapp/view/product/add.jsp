@@ -12,36 +12,37 @@
     <title>Title</title>
     <meta charset="UTF-8">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #19161c;
-            height: 100vh;
+        .table {
+            background-image: image("https://carpassion.vn/wp-content/uploads/2020/01/GT-R-Pro-1024x576.jpg");
+            background-color: #212529;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
             flex-direction: column;
             align-content: center;
+            width: 100%;
+            height: 100%;
+            font-size: large;
         }
 
-        .box {
-            position: relative;
-        }
+        /*.box {*/
+        /*    position: relative;*/
+        /*}*/
 
-        .input {
-            padding: 10px;
-            width: 40px;
-            height: 40px;
-            background: none;
-            border: 4px solid white;
-            border-radius: 50px;
-            box-sizing: border-box;
-            font-family: Comic Sans MS;
-            font-size: 20px;
-            color: white;
-            outline: none;
-            transition: .5s;
-        }
+        /*.input {*/
+        /*    padding: 10px;*/
+        /*    width: 40px;*/
+        /*    height: 40px;*/
+        /*    background: none;*/
+        /*    border: 4px solid white;*/
+        /*    border-radius: 50px;*/
+        /*    box-sizing: border-box;*/
+        /*    font-family: Comic Sans MS;*/
+        /*    font-size: 20px;*/
+        /*    color: white;*/
+        /*    outline: none;*/
+        /*    transition: .5s;*/
+        /*}*/
 
         .box:hover input {
             width: 100px;
@@ -79,7 +80,7 @@
 </head>
 <body>
 <form action="/product?action=add" method="post">
-    <table class="table table-dark table-hover container-f ">
+    <table class="table table-dark table-hover">
         <thead>
         <tr style="color: white;text-align: center"><th>THÊM SẢN PHẨM</th></tr>
         <tr style="text-align: center">
@@ -89,51 +90,46 @@
         </tr>
         <tr>
             <th class="col-1" scope="col">Màu xe</th>
-            <td class="col-1"><input name="color"></td>
+            <td class="col-1"><input name="color" required></td>
         </tr>
         <tr>
             <th class="col-2" scope="col">Ngày sản xuất</th>
-            <td class="col-2"><input name="day" ></td>
+            <td class="col-2"><input type="date" name="day"required ></td>
         </tr>
         <tr>
             <th class="col-1" scope="col">Mô tả</th>
-            <td class="col-1"><input name="introduce"></td>
+            <td class="col-1"><input name="introduce" required></td>
         </tr>
         <tr>
             <th class="col-1" scope="col">Loại xe</th>
-            <td class="col-1"><select name="loai_xe">
-
-                <c:forEach items="${loaiXeList}" var="loaiXe">
+            <td class="col-1"><select name="loai_xe" required>
                     <option value="${loaiXe.ma_loai_xe}">Sedan</option>
                     <option value="${loaiXe.ma_loai_xe}">SUV</option>
                     <option value="${loaiXe.ma_loai_xe}">coupe</option>
                     <option value="${loaiXe.ma_loai_xe}">Xe đa dụng</option>
-                </c:forEach>
             </select>
             </td>
         </tr>
         <tr>
             <th class="col-1" scope="col">Tình trạng</th>
-            <td class="col-1"><select name="tinh_trang">
-                <c:forEach items="${tinhTrangXe}" var="tinhTrang">
+            <td class="col-1"><select name="tinh_trang" required>
                     <option value="${tinhTrang.ma_tinh_trang}">Có Sẵn</option>
                     <option value="${tinhTrang.ma_tinh_trang}">Không có sẵn</option>
-                </c:forEach>
             </select></td>
         </tr>
         <tr>
-            <th class="col-1" scope="col">Giá (VND)</th>
+            <th class="col-1" scope="col">Giá(VND)</th>
             <td class="col-1"><input name="gia" required></td>
         </tr>
         <tr>
-            <th class="col-1" scope="col">Ảnh (img) </th>
+            <th class="col-1" scope="col">Ảnh(img) </th>
             <td class="col-1"><input name="img" required></td>
         </tr>
         <tr>
             <th class="col-1" scope="col"><a href="/product"><span class="btn btn-outline-light"><i
                     class="fa-solid fa-arrow-left"></i></span></a></th>
             <td class="col-1">
-                <button class="btn btn-outline-light" type="submit" style="width: 40px;margin-left: 300px"><span>
+                <button class="btn btn-outline-light" type="submit">style="width: 40px;margin-left: 300px"><span>
                 <i class="fa-regular fa-circle-check"></i></span></button>
             </td>
         </tr>
