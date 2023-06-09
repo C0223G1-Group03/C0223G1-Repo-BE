@@ -39,11 +39,15 @@
           <textarea class="form-control" rows="3" name="content"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Send</button>
-        <button type="reset" class="btn btn-primary">Cancel</button>
+        <button type="submit" class="btn btn-primary"><a href="/order"></a>Cancel</button>
       </form>
     </div>
   </div>
 </div>
+
+<script>
+
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
