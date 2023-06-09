@@ -48,7 +48,6 @@
 <jsp:include page="nav_bar_giao_dien.jsp"></jsp:include>
 <body>
 <div class=" container-fluid" >
-
     <h1 style="color: white">Các dòng xe Mercedes-Benz</h1>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -126,7 +125,7 @@
 </div>
 <script>
     function showModal(ten,mau,ngaysx,mota,loaixe,tinhtrangxe,gia){
-        document.getElementById("name").innerText = ten;h
+        document.getElementById("name").innerText = ten;
         document.getElementById("color").innerText = mau;
         document.getElementById("date").innerText = ngaysx;
         document.getElementById("desc").innerText = mota;
