@@ -83,17 +83,17 @@
     <thead>
     <tr style="text-align: center">
         <th class="col-1" scope="col">Mã Order</th>
-        <th class="col-2" scope="col">Ngày làm order</th>
+        <th class="col-1" scope="col">Ngày làm order</th>
         <th class="col-1" scope="col">Số lượng xe</th>
         <th class="col-1" scope="col">Mã xe </th>
         <th class="col-1" scope="col">Tên xe</th>
         <th class="col-1" scope="col">Mã khách hàng</th>
         <th class="col-1" scope="col">Tên khách hàng</th>
         <th class="col-1" scope="col">Mã nhân viên</th>
-        <th class="col-2" scope="col">Tên nhân viên</th>
-        <th class="col-1" scope="col">
+        <th class="col-1" scope="col">Tên nhân viên</th>
+        <th class="col-3" scope="col">
             <a href="/order?action=showFormAddOrder">
-                <span style="color: white;border-radius: 100%"><i class="fa-solid fa-user-plus"></i></span></a>
+                <span style="color: white;border-radius: 100%"><i class="fa-solid fa-file-circle-plus"></i></span></a>
         </th>
     </tr>
     </thead>
@@ -101,7 +101,7 @@
     <c:forEach items="${orderList}" var="o">
         <tr>
             <th class="col-1" scope="row"><c:out value="${o.ma_order}"/></th>
-            <td class="col-2"><c:out value="${o.ngay_lam_order}"/></td>
+            <td class="col-1"><c:out value="${o.ngay_lam_order}"/></td>
             <td class="col-1"><c:out value="${o.so_luong_xe}"/></td>
             <td class="col-1"><c:out value="${o.product.ma_xe}"/></td>
             <td class="col-1"><c:out value="${o.product.ten_xe}"/></td>
@@ -109,15 +109,19 @@
             <td class="col-1"><c:out value="${o.customer.name}"/></td>
             <td class="col-1"><c:out value="${o.employee.id}"/></td>
             <td class="col-1"><c:out value="${o.employee.name}"/></td>
-            <td class="col-1">
+            <td class="col-3">
                 <a href="/order?action=showDetailOrder&id=${o.ma_order}">
-                    <button class="btn btn-outline-light col-6" type="button" style="width: 40px"><span><i
-                            class="fa-regular fa-pen-to-square"></i></span></button>
+                    <button class="btn btn-outline-light col-6" type="button" style="width: 40px"><span>
+                        <i class="fa-regular fa-rectangle-list"></i></span></button>
                 </a>
                 <button onclick="remove(${o.ma_order},'${o.ngay_lam_order}')" class="btn btn-outline-light col-6" type="button"
                         style="width: 40px" data-bs-toggle="modal" data-bs-target="#modelId"><span
                         style="color: red;width: 10px"><i
                         class="fa-solid fa-trash-can"></i></span></button>
+                <a href="/send">
+                    <button class="btn btn-outline-light col-6" type="button" style="width: 40px"><span>
+                        <i class="fa-solid fa-file-signature"></i></span></button>
+                </a>
             </td>
         </tr>
     </c:forEach>

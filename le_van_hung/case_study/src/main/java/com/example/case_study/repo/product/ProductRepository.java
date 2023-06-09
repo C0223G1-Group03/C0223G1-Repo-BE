@@ -11,6 +11,7 @@ import java.util.List;
 import java.sql.Date;
 
 public class ProductRepository implements IProductRepository {
+    private static  final  String FINDBYNAME="select xe.ten_xe from xe where xe.ten_xe like'%Mercedes%'";
     private static final String INSERT = "insert into xe(ten_xe,mau_sac_xe,ngay_san_xuat,mo_ta,ma_loai_xe,ma_tinh_trang,gia,image)" +
             " values(?,?,?,?,?,?,?,?)";
     private static final String SELECT = " select xe.*,tinh_trang.ten_tinh_trang,loai_xe.ten_loai_xe from xe \n" +
@@ -178,6 +179,14 @@ public class ProductRepository implements IProductRepository {
                 return p;
             }
         }
+        return null;
+    }
+
+    @Override
+    public Product findByName(int ten_xe) {
+        List<Product>list=displayList();
+        Connection connection=BaseRepository.getConnection();
+
         return null;
     }
 }

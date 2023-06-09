@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -105,6 +106,8 @@ public class ProductServlet extends HttpServlet {
         TinhTrang tinhTrang1 = new TinhTrang(tinhTrang);
         Product product = new Product(ma_xe,ten_xe,mau_sac_xe,ngay_san_xuat,introduce,loaiXe1,tinhTrang1,gia);
         productService.edit(product);
+        HttpSession session=req.getSession();
+        session.setAttribute("EditProduct","Sua Thanh Cong");
         try {
             resp.sendRedirect("/product");
         } catch (IOException e) {
@@ -115,7 +118,7 @@ public class ProductServlet extends HttpServlet {
     private void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         int ma_xe= Integer.parseInt(req.getParameter("idDelete"));
         productService.delete(ma_xe);
-        resp.sendRedirect("/product");
+        resp.sendRedirect("/product?massage= Xoa Thanh Cong");
     }
 
     private void displayMenu(HttpServletRequest req, HttpServletResponse resp) {
@@ -143,7 +146,7 @@ public class ProductServlet extends HttpServlet {
         Product product = new Product(name,color,date,introduce,loaiXe1,tinhTrang1,gia,img);
         productService.add(product);
         try {
-            resp.sendRedirect("/product");
+            resp.sendRedirect("/product?massage= Them Thanh Cong");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -160,6 +163,8 @@ public class ProductServlet extends HttpServlet {
 
     private void showList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Product> list=productService.displayList();
+        String massage = req.getParameter("massage");
+        req.setAttribute("massage",massage);
         req.setAttribute("list",list);
         RequestDispatcher requestDispatcher= req.getRequestDispatcher("/view/product/list.jsp");
         requestDispatcher.forward(req,resp);
