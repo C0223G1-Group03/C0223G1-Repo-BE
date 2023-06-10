@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -110,6 +111,8 @@ public class CustomerServlet extends HttpServlet {
         String email_edit= request.getParameter("email");
         customerService.update(new Customer(id,name_edit,address_edit,dateOfBirth_edit,gender_edit,phone_edit
                 ,email_edit,citizenId_edit));
+        HttpSession session= request.getSession();
+        session.setAttribute("editCustomer","Chỉnh sửa thành công !");
         response.sendRedirect("/customer");
     }
 
@@ -117,6 +120,8 @@ public class CustomerServlet extends HttpServlet {
         int id;
         id=Integer.parseInt(request.getParameter("isDelete"));
         customerService.delete(id);
+        HttpSession session= request.getSession();
+        session.setAttribute("deleteCustomer","Xóa thành công !");
         response.sendRedirect("/customer");
     }
 
@@ -129,7 +134,8 @@ public class CustomerServlet extends HttpServlet {
         String address= request.getParameter("address");
         String email= request.getParameter("email");
         customerService.add(new Customer(name,address,dateOfBirth,gender,phone,email,citizenId));
-//        request.setAttribute("status","success");
+        HttpSession session= request.getSession();
+        session.setAttribute("addCustomer","Thêm mới thành công !");
         response.sendRedirect("/customer");
 
 //        if(true){
