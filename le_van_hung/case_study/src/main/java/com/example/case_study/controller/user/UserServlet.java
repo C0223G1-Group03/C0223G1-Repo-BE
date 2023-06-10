@@ -64,6 +64,7 @@ public class UserServlet extends HttpServlet {
                 if (employeeService.findEmployee(employee)) {
                     HttpSession session = request.getSession();
                     session.setAttribute("employee", employee);
+                    request.setAttribute("dangnhap","Đăng nhập thành công");
                     RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/main_menu/admin_show.jsp");
                     requestDispatcher.forward(request, response);
                 } else {
@@ -88,6 +89,8 @@ public class UserServlet extends HttpServlet {
                 customerService.add(customer);
                 Order order = new Order(product,customer);
                 orderService.addOrderByCusPro(order);
+                HttpSession session = request.getSession();
+                session.setAttribute("order","Thông tin đã được lưu, nhân viên sẽ sớm liên hệ với bạn");
                 response.sendRedirect("/display?action=display");
                 break;
 
