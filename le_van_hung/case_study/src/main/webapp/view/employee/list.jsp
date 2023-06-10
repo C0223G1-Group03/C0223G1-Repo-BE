@@ -12,7 +12,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-
+    <style>
+        /* Styling for the toast message */
+        .toast {
+            background-color: #333;
+            color: black;
+            padding: 15px;
+            border-radius: 5px;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1;
+            display: none;
+        }
+    </style>
     <style>
         body_1 {
             margin: 0;
@@ -100,7 +113,7 @@
     <c:forEach items="${employeeList}" var="e">
         <tr>
             <th class="col-1" scope="row"><c:out value="${e.id}"/></th>
-            <td class="col-1"><c:out value="${e.name}"/></td>
+            <td class="col-1" style="text-align: left"><c:out value="${e.name}"/></td>
             <td class="col-1"><c:out value="${e.dateOfBirth}"/></td>
             <td class="col-1"><c:if test="${e.gender==false}">Nữ</c:if>
                 <c:if test="${e.gender==true}">Nam</c:if></td>
@@ -162,7 +175,24 @@
     </div>
 </div>
 <%-- sign_up--%>
-
+    <c:if test="${massage!= null}">
+    <div id="toastMessage" class="toast"></div>
+    </c:if>
+    <script>
+        // Function to show the toast message
+        function showToast(message) {
+            var toast = document.getElementById("toastMessage");
+            toast.style.display = "block";
+            toast.innerText = message;
+            setTimeout(function() {
+                toast.style.display = "none";
+            }, 3000); // Hide the toast message after 3 seconds
+        }
+        // Automatically show the toast message when the page is reloaded
+        window.addEventListener('load', function() {
+            showToast("${massage}");
+        });
+    </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

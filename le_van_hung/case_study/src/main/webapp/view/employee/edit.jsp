@@ -86,7 +86,7 @@
         <tr style="text-align: center">
         <tr>
             <th>Mã NV</th>
-            <td><input name="id" disabled value="${employee.getId()}" ></td>
+            <td><input name="id" readonly value="${employee.getId()}" ></td>
         </tr>
         <tr>
             <th >Họ và tên</th>
@@ -94,7 +94,7 @@
         </tr>
         <tr>
             <th >Ngày sinh</th>
-            <td ><input name="dateOfBirth_edit" value="${employee.getDateOfBirth()}" required title="Vui lòng nhập ngày sinh" pattern="^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$"></td>
+            <td ><input name="dateOfBirth_edit" value="${employee.getDateOfBirth()}" required title="Vui lòng nhập ngày sinh" type="date"></td>
         </tr>
         <tr>
             <th >Giới tính</th>

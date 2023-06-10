@@ -92,7 +92,7 @@
         <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
             <c:forEach items="${productList}" var="list">
             <div class="col hover">
-                <div class="card h-100 shadow-sm"><img
+                <div class="card h-100 shadow-sm"><img style="height: 200px;"
                         src="<c:out value="${list.image}"/>"
                         class="card-img-top" alt="...">
                     <div class="card-body">
@@ -102,8 +102,9 @@
                         <h5 class="card-title"><c:out value="${list.ten_xe}"/></h5>
                         <span class="float-start my-4"><button onclick="showModal('${list.ten_xe}','${list.mau_sac_xe}','${list.ngay_san_xuat}','${list.mo_ta}','${list.loaiXe.ten_loai_xe}',
                                 '${list.tinhTrang.ten_tinh_trang}','<fmt:formatNumber type="number" maxFractionDigits="3" value="${list.gia}"/>')"
-                                                              type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modelId" style="width: 100px">
-                            Chi tiết
+                                                               type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modelId"
+                                                               style="width: 80px;color: white">
+                            <span style="font-size:small;"> Chi tiết</span>
                         </button></span>
                         <span class="float-end my-4"><a href="/user?action=order&id=${list.ma_xe}"><button style="border: 0px"><i class="fa-solid fa-cart-shopping"></i></button></a></span>
                     </div>

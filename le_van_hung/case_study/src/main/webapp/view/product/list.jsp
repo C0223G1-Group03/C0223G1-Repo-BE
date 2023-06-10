@@ -106,7 +106,7 @@
 <body>
 <div>
     <h2 style="text-align: center;">
-        Quản Lý Sản Phẩm
+       QUẢN LÝ SẢN PHẨM
     </h2>
 </div>
 <%--<jsp:include page="/view/main_menu/nav_bar_giao_dien.jsp"></jsp:include>--%>
@@ -142,13 +142,13 @@
     <c:forEach items="${list}" var="list" varStatus="loop">
         <tr>
             <th class="col-1" scope="row"><c:out value="${loop.count}"/></th>
-            <td class="col-2"><c:out value="${list.ten_xe}"/></td>
+            <td class="col-2" style="text-align:left"><c:out value="${list.ten_xe}"/></td>
             <td class="col-1"><c:out value="${list.mau_sac_xe}"/></td>
             <td class="col-2"><c:out value="${list.ngay_san_xuat}"/></td>
             <td class="col-1"><c:out value="${list.mo_ta}"/></td>
-            <td class="col-1"><c:out value="${list.loaiXe.ten_loai_xe}"/></td>
+            <td class="col-1" style="text-align:left"><c:out value="${list.loaiXe.ten_loai_xe}"/></td>
             <td class="col-1"><c:out value="${list.tinhTrang.ten_tinh_trang}"/></td>
-            <td class="col-1">
+            <td class="col-1" style="text-align: right">
                 <fmt:formatNumber type="number" maxFractionDigits="3" value="${list.gia}"/>
             </td>
             <td class="col-1"><img height="50px" width="50px" src="<c:out value="${list.image}"/>"/></td>
@@ -214,11 +214,7 @@
     }
 
     window.addEventListener('load', function () {
-        if ("${massage}" != "") {
             showToast("${massage}")
-        } else if ("${EditProduct}" != ""){
-            showToast("${EditProduct}");
-        }
     });
 </script>
 
