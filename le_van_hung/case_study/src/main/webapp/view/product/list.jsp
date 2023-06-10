@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -15,6 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap">
     <style>
         body {
             margin: 0;
@@ -22,10 +22,11 @@
             background: #19161c;
             height: 100vh;
             display: flex;
-            justify-content: space-evenly;
+            /*justify-content: space-evenly;*/
             /*align-items: center;*/
             flex-direction: column;
 
+            align-content: center;
             align-content: center;
         }
 
@@ -99,6 +100,42 @@
             font-size: medium;
         }
 
+        html,
+        body {
+            height: 100%
+        }
+
+        .modal-content {
+            border-radius: 5rem;
+        }
+
+
+        .modal-content:hover {
+            box-shadow: 2px 2px 2px black;
+        }
+
+        .fa {
+            color: #be2b3c;
+            font-size: 90px;
+            padding: 30px 0px;
+            text-align: center;
+        }
+
+        .b1 {
+            background-color: #2b84be;
+            box-shadow: 0px 4px #337095;
+            font-size: 17px;
+        }
+
+        .r3 {
+            color: #c1c1c1;
+            font-weight: 500;
+        }
+
+        a, a:hover {
+            text-decoration: none;
+        }
+
     </style>
 
 </head>
@@ -159,7 +196,7 @@
                 </a>
                 <button onclick="remove(${list.ma_xe},'${list.ten_xe}')" class="btn btn-outline-light col-6"
                         type="button"
-                        style="width: 40px" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        style="width: 40px" data-bs-toggle="modal" data-bs-target="#modelId">
                         <span
                                 style="color: red;width: 10px"><i
                                 class="fa-solid fa-trash-can"></i></span>
@@ -169,31 +206,47 @@
     </c:forEach>
     </tbody>
 </table>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Xóa sản phẩm</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <h4>Bạn có chắc chắn xóa sản phẩm có tên:
-                    <span style="color:red" id="nameDelete"></span>
-                </h4>
-            </div>
-            <div class="modal-footer">
-                <form action="/product?action=delete" method="post">
-                    <input type="hidden" name="idDelete" id="idDelete">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
-                    <button type="submit" class="btn btn-primary">Có</button>
-                </form>
-            </div>
+
+
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content py-md-5 px-md-4 p-sm-3 p-4">
+            <h4 style="text-align: center">Xóa sản phẩm</h4>
+            <i class=" fa fa-solid fa-trash-can"></i>
+            <h5 style="text-align: center" class="r3 px-md-5 px-sm-1">Bạn có chắc chắn muốn xóa sản phẩm <span
+                    style="color: black" id="nameDelete"></span> ?</h5>
+            <form action="/customer?action=delete" method="post">
+                <input type="hidden" id="isDelete" name="isDelete">
+                <div class="text-center mb-3">
+                    <button class="btn btn-outline-dark w-50 rounded-pill b1" type="submit">Có</button>
+                </div>
+                <div class="text-center mb-3">
+                    <button type="button" class="btn btn-outline-dark w-50 rounded-pill b1" data-bs-dismiss="modal">
+                        Không
+                    </button>
+                </div>
+
+            </form>
         </div>
     </div>
 </div>
-<%--<c:if test="${AddProduct !=null}">--%>
-<%--    <div id="toastMessage" class="toast"></div>--%>
-<%--</c:if>--%>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+<script src="jquery/jquery-3.5.1.min.js"></script>
+<script src="datatables/js/jquery.dataTables.min.js"></script>
+<script src="datatables/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#table').dataTable({
+            "dom": 'lrtp',
+            "lengthChange": false,
+            "pageLength": 5,
+            "scrollY": true,
+        });
+    });
+</script>
 <c:if test="${EditProduct !=null}">
     <div id="toastMessage" class="toast"></div>
 </c:if>
@@ -204,21 +257,26 @@
     <div id="toastMessage" class="toast"></div>
 </c:if>
 <script>
-    function showToast(message) {
+    function remove(ma_xe, ten_xe) {
+        document.getElementById("nameDelete").innerText = ten_xe;
+        document.getElementById("idDelete").value = ma_xe;
+    }
+
+        function showToast(message) {
         var toast = document.getElementById("toastMessage");
         toast.style.display = "block";
         toast.innerText = message;
         setTimeout(function () {
-            toast.style.display = "none";
-        }, 3000); // Hide the toast message after 3 seconds
+        toast.style.display = "none";
+    }, 3000); // Hide the toast message after 3 seconds
     }
 
-    window.addEventListener('load', function () {
+        window.addEventListener('load', function () {
         if ("${massage}" != "") {
-            showToast("${massage}")
-        } else if ("${EditProduct}" != ""){
-            showToast("${EditProduct}");
-        }
+        showToast("${massage}")
+    } else if ("${EditProduct}" != ""){
+        showToast("${EditProduct}");
+    }
     });
 </script>
 

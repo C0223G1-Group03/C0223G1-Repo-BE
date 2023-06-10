@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -109,6 +110,8 @@ public class EmployeeServlet extends HttpServlet {
         String password_edit=request.getParameter("password");
         employeeService.update(new Employee(id,name_edit,address_edit,dateOfBirth_edit,gender_edit,phone_edit
                 ,email_edit,citizenId_edit,account_edit,password_edit));
+        HttpSession session= request.getSession();
+        session.setAttribute("editEmployee","Chỉnh sửa thành công !");
         response.sendRedirect("/employee");
     }
 
@@ -116,6 +119,8 @@ public class EmployeeServlet extends HttpServlet {
         int id;
         id=Integer.parseInt(request.getParameter("isDelete"));
         employeeService.delete(id);
+        HttpSession session= request.getSession();
+        session.setAttribute("deleteEmployee","Xóa thành công !");
         response.sendRedirect("/employee");
     }
 
@@ -130,6 +135,8 @@ public class EmployeeServlet extends HttpServlet {
         String account=request.getParameter("account");
         String password=request.getParameter("password");
         employeeService.add(new Employee(name,address,dateOfBirth,gender,phone,email,citizenId,account,password));
+        HttpSession session= request.getSession();
+        session.setAttribute("addEmployee","Thêm mới thành công !");
         response.sendRedirect("/employee");
     }
 }
