@@ -116,9 +116,12 @@
 </head>
 <body>
 <form>
-    <fieldset style="color: Red;text-align: center"><th>Chi tiết order</th></fieldset>
+<%--    <button style="background-color:black; color: white;text-align: center"><th>Chi tiết order</th></button>--%>
     <table class="table table-dark table-hover container-f">
     <thead>
+    <tr style="color: white;text-align: center">
+        <th>Chi Tiết Order</th>
+    </tr>
     <tr style="text-align: center">
     <tr>
         <th>Mã Order</th>
@@ -142,7 +145,7 @@
     </tr>
     <tr>
         <th>Giá</th>
-        <td><input name="nameCar" readonly value="${orderDetail.product.gia}"></td>
+        <td><input name="gia" readonly value="${orderDetail.product.gia}"></td>
     </tr>
     <tr>
         <th>Mã khách hàng</th>

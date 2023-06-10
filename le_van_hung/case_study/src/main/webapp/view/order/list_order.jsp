@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!doctype html>
 <html lang="en">
@@ -72,99 +73,144 @@
             opacity: 0;
             z-index: -1;
         }
-
+        .toast {
+            background-color: white;
+            color: red;
+            padding: 25px;
+            border-radius: 5px;
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            z-index: 1;
+            display: none;
+            font-size: medium;}
     </style>
 
 </head>
 <jsp:include page="/view/main_menu/nav_bar_admin_show.jsp"></jsp:include>
 
 <body_1>
-<table class="table table-dark table-hover container">
-    <thead>
-    <tr style="text-align: center">
-        <th class="col-1" scope="col">Mã Order</th>
-        <th class="col-2" scope="col">Ngày làm order</th>
-        <th class="col-1" scope="col">Số lượng xe</th>
-        <th class="col-1" scope="col">Mã xe </th>
-        <th class="col-1" scope="col">Tên xe</th>
-        <th class="col-1" scope="col">Giá</th>
-        <th class="col-1" scope="col">Mã khách hàng</th>
-        <th class="col-1" scope="col">Tên khách hàng </th>
-        <th class="col-3" scope="col">
-            <a href="/order?action=showFormAddOrder">
-                <span style="color: white;border-radius: 100%"><i class="fa-solid fa-file-circle-plus"></i></span></a>
-        </th>
-    </tr>
-    </thead>
-    <tbody style="text-align: center ;color: white">
-    <c:forEach items="${orderList}" var="o">
-        <tr>
-            <th class="col-1" scope="row"><c:out value="${o.ma_order}"/></th>
-            <td class="col-2"><c:out value="${o.ngay_lam_order}"/></td>
-            <td class="col-1"><c:out value="${o.so_luong_xe}"/></td>
-            <td class="col-1"><c:out value="${o.product.ma_xe}"/></td>
-            <td class="col-1"><c:out value="${o.product.ten_xe}"/></td>
-            <td class="col-1"><c:out value="${o.product.gia}"/></td>
-            <td class="col-1"><c:out value="${o.customer.id}"/></td>
-            <td class="col-1"><c:out value="${o.customer.name}"/></td>
-            <td class="col-3">
-                <a href="/order?action=showDetailOrder&id=${o.ma_order}">
-                    <button class="btn btn-outline-light col-6" type="button" style="width: 40px"><span>
-                        <i class="fa-regular fa-rectangle-list"></i></span></button>
-                </a>
-                <button onclick="remove(${o.ma_order},'${o.ngay_lam_order}')" class="btn btn-outline-light col-6" type="button"
-                        style="width: 40px" data-bs-toggle="modal" data-bs-target="#modelId"><span
-                        style="color: red;width: 10px"><i
-                        class="fa-solid fa-trash-can"></i></span></button>
-                <a href="/send">
-                    <button class="btn btn-outline-light col-6" type="button" style="width: 40px"><span>
-                        <i class="fa-solid fa-file-signature"></i></span></button>
-                </a>
-            </td>
+    <table class="table table-dark table-hover container">
+        <thead>
+        <tr style="text-align: center">
+            <th class="col-1" scope="col">Mã Order</th>
+            <th class="col-2" scope="col">Ngày làm order</th>
+            <th class="col-1" scope="col">Số lượng xe</th>
+            <th class="col-1" scope="col">Mã xe</th>
+            <th class="col-1" scope="col">Tên xe</th>
+            <th class="col-1" scope="col">Giá</th>
+            <th class="col-1" scope="col">Mã khách hàng</th>
+            <th class="col-1" scope="col">Tên khách hàng</th>
+            <th class="col-3" scope="col">
+                <a href="/order?action=showFormAddOrder">
+                    <span style="color: white;border-radius: 100%"><i
+                            class="fa-solid fa-file-circle-plus"></i></span></a>
+            </th>
         </tr>
-    </c:forEach>
-    </tbody>
-</table>
-<script>
-    function remove(id, name) {
-        console.log(id, name)
-        document.getElementById("isDelete").value = id;
-        document.getElementById("ngay_lam_order").innerText = name;
-    }
+        </thead>
+        <tbody style="text-align: center ;color: white">
+        <c:forEach items="${orderList}" var="o">
+            <tr>
+                <th class="col-1" scope="row"><c:out value="${o.ma_order}"/></th>
+                <td class="col-2"><c:out value="${o.ngay_lam_order}"/></td>
+                <td class="col-1"><c:out value="${o.so_luong_xe}"/></td>
+                <td class="col-1"><c:out value="${o.product.ma_xe}"/></td>
+                <td class="col-1"><c:out value="${o.product.ten_xe}"/></td>
+                    <%--            <td class="col-1"><c:out value="${o.product.gia}"/></td>--%>
+                <td class="col-1">
+                    <fmt:formatNumber type="number" maxFractionDigits="3" value="${o.product.gia}"/>
+                </td>
+                <td class="col-1"><c:out value="${o.customer.id}"/></td>
+                <td class="col-1"><c:out value="${o.customer.name}"/></td>
+                <td class="col-3">
+                    <a href="/order?action=showDetailOrder&id=${o.ma_order}">
+                        <button class="btn btn-outline-light col-6" type="button" style="width: 40px"><span>
+                        <i class="fa-regular fa-rectangle-list"></i></span></button>
+                    </a>
+                    <button onclick="remove(${o.ma_order},'${o.ngay_lam_order}')" class="btn btn-outline-light col-6"
+                            type="button"
+                            style="width: 40px" data-bs-toggle="modal" data-bs-target="#modelId"><span
+                            style="color: red;width: 10px"><i
+                            class="fa-solid fa-trash-can"></i></span></button>
+                    <a href="/send">
+                        <button class="btn btn-outline-light col-6" type="button" style="width: 40px"><span>
+                        <i class="fa-solid fa-file-signature"></i></span></button>
+                    </a>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 
-    function searchId(id){
-        console.log(id)
-        document.getElementById("id").value=id;
-    }
-</script>
+    <script>
+        function remove(id, name) {
+            console.log(id, name)
+            document.getElementById("isDelete").value = id;
+            document.getElementById("ngay_lam_order").innerText = name;
+        }
 
-<!-- Modal -->
-<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="modelTitleId"></h4>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h3>Do you want to delete <span id="ngay_lam_order"></span> ?</h3>
-            </div>
-            <div class="modal-footer">
-                <form action="/order?action=delete" method="post">
-                    <input type="hidden" id="isDelete" name="isDelete">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                    <button type="submit" class="btn btn-primary">Yes</button>
-                </form>
+        function searchId(id) {
+            console.log(id)
+            document.getElementById("id").value = id;
+        }
+    </script>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modelTitleId"></h4>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Do you want to delete <span id="ngay_lam_order"></span> ?</h3>
+                </div>
+                <div class="modal-footer">
+                    <form action="/order?action=delete" method="post">
+                        <input type="hidden" id="isDelete" name="isDelete">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-primary">Yes</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+<%--    toarst--%>
+    <c:if test="${massage !=null}">
+        <div id="toastMessage" class="toast"></div>
+    </c:if>
+    <script>
+        function showToast(message) {
+            var toast = document.getElementById("toastMessage");
+            toast.style.display = "block";
+            toast.innerText = message;
+            setTimeout(function () {
+                toast.style.display = "none";
+            }, 3000); // Hide the toast message after 3 seconds
+        }
+
+        window.addEventListener('load', function () {
+            if ("${massage}" != "") {
+                showToast("${massage}")
+            } else if ("${AddOrder}" != ""){
+                showToast("${AddOrder}");
+            }
+        });
+    </script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    <script src="jquery/jquery-3.5.1.min.js"></script>
+    <script src="datatables/js/jquery.dataTables.min.js"></script>
+    <script src="datatables/js/dataTables.bootstrap5.min.js"></script>
 </body_1>
 </html>
