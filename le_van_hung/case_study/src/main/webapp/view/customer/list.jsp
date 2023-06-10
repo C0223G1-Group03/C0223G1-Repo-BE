@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap">
     <style>
         /* Styling for the toast message */
         .toast {
@@ -31,12 +32,13 @@
             margin: 0;
             padding: 0;
             background: #19161c;
-            height: 100vh;
+            height: 10000vh;
             display: flex;
             /*justify-content: space-evenly;*/
             align-items: center;
             flex-direction: column;
             align-content: center;
+            place-items: center;
         }
 
         .box {
@@ -79,93 +81,130 @@
             z-index: -1;
         }
 
+
+
+        html,
+        body {
+            height: 100%
+        }
+
+        .modal-content {
+            border-radius: 5rem;
+        }
+
+
+        .modal-content:hover {
+            box-shadow: 2px 2px 2px black;
+        }
+
+        .fa {
+            color: #be2b3c;
+            font-size: 90px;
+            padding: 30px 0px;
+            text-align: center;
+        }
+
+        .b1 {
+            background-color: #2b84be;
+            box-shadow: 0px 4px #337095;
+            font-size: 17px;
+        }
+
+        .r3 {
+            color: #c1c1c1;
+            font-weight: 500;
+        }
+
+        a, a:hover {
+            text-decoration: none;
+        }
     </style>
 
 </head>
 <jsp:include page="/view/main_menu/nav_bar_admin_show.jsp"></jsp:include>
 
 <body_1>
-<table class="table table-dark table-hover container" >
-    <thead>
-    <tr style="text-align: center">
-        <th class="col-1" scope="col">Mã KH</th>
-        <th class="col-2" scope="col">Họ và tên</th>
-        <th class="col-1" scope="col">Ngày sinh</th>
-        <th class="col-1" scope="col">Giới tính</th>
-        <th class="col-1" scope="col">CCCD</th>
-        <th class="col-1" scope="col">SĐT</th>
-        <th class="col-2" scope="col">Địa chỉ</th>
-        <th class="col-2" scope="col">Email</th>
-        <th class="col-1" scope="col">
-            <a href="/customer?action=showAddForm">
-                <span style="color: white;border-radius: 100%"><i class="fa-solid fa-user-plus"></i></span></a>
-            <div class="box" style="padding-top: 10px">
-                <form action="/customer?action=search" method="post">
-                    <input onchange="searchId(this.value)" type="search" class="input" id="id" name="id" onmouseout="this.value = ''; this.blur();">
-                </form>
-                <i class="fas fa-search"></i>
-            </div>
-        </th>
-    </tr>
-    </thead>
-    <tbody style="text-align: center" >
-    <c:forEach items="${customerList}" var="c">
-        <tr>
-            <th class="col-1" scope="row"><c:out value="${c.id}"/></th>
-            <td class="col-2" style="text-align: left"><c:out value="${c.name}"/></td>
-            <td class="col-1"><c:out value="${c.dateOfBirth}"/></td>
-            <td class="col-1"><c:if test="${c.gender==false}">Nữ</c:if>
-                <c:if test="${c.gender==true}">Nam</c:if></td>
-            <td class="col-1"><c:out value="${c.citizenId}"/></td>
-            <td class="col-1"><c:out value="${c.phone}"/></td>
-            <td class="col-2"><c:out value="${c.address}"/></td>
-            <td class="col-2"><c:out value="${c.email}"/></td>
-            <td class="col-1">
-                <a href="/customer?action=showUpdateForm&id=${c.id}">
-                    <button class="btn btn-outline-light col-6" type="button" style="width: 40px"><span><i
-                            class="fa-regular fa-pen-to-square"></i></span></button>
-                </a>
-                <button onclick="remove(${c.id},'${c.name}')" class="btn btn-outline-light col-6" type="button"
-                        style="width: 40px" data-bs-toggle="modal" data-bs-target="#modelId"><span
-                        style="color: red;width: 10px"><i
-                        class="fa-solid fa-trash-can"></i></span></button>
-            </td>
+    <table class="table table-dark table-hover container">
+        <thead>
+        <tr style="text-align: center">
+            <th class="col-1" scope="col">Mã KH</th>
+            <th class="col-2" scope="col">Họ và tên</th>
+            <th class="col-1" scope="col">Ngày sinh</th>
+            <th class="col-1" scope="col">Giới tính</th>
+            <th class="col-1" scope="col">CCCD</th>
+            <th class="col-1" scope="col">SĐT</th>
+            <th class="col-2" scope="col">Địa chỉ</th>
+            <th class="col-2" scope="col">Email</th>
+            <th class="col-1" scope="col">
+                <a href="/customer?action=showAddForm">
+                    <span style="color: white;border-radius: 100%"><i class="fa-solid fa-user-plus"></i></span></a>
+                <div class="box" style="padding-top: 10px">
+                    <form action="/customer?action=search" method="post">
+                        <input onchange="searchId(this.value)" type="search" class="input" id="id" name="id"
+                               onmouseout="this.value = ''; this.blur();">
+                    </form>
+                    <i class="fas fa-search"></i>
+                </div>
+            </th>
         </tr>
-    </c:forEach>
-    </tbody>
-</table>
-<script>
-    function remove(id, name) {
-        console.log(id, name)
-        document.getElementById("isDelete").value = id;
-        document.getElementById("nameDelete").innerText = name;
-    }
+        </thead>
+        <tbody style="text-align: center">
+        <c:forEach items="${customerList}" var="c">
+            <tr>
+                <th class="col-1" scope="row"><c:out value="${c.id}"/></th>
+                <td class="col-2"><c:out value="${c.name}"/></td>
+                <td class="col-1"><c:out value="${c.dateOfBirth}"/></td>
+                <td class="col-1"><c:if test="${c.gender==false}">Nữ</c:if>
+                    <c:if test="${c.gender==true}">Nam</c:if></td>
+                <td class="col-1"><c:out value="${c.citizenId}"/></td>
+                <td class="col-1"><c:out value="${c.phone}"/></td>
+                <td class="col-2"><c:out value="${c.address}"/></td>
+                <td class="col-2"><c:out value="${c.email}"/></td>
+                <td class="col-1">
+                    <a href="/customer?action=showUpdateForm&id=${c.id}">
+                        <button class="btn btn-outline-light col-6" type="button" style="width: 40px"><span><i
+                                class="fa-regular fa-pen-to-square"></i></span></button>
+                    </a>
+                    <button onclick="remove(${c.id},'${c.name}')" class="btn btn-outline-light col-6" type="button"
+                            style="width: 40px" data-bs-toggle="modal" data-bs-target="#modelId"><span
+                            style="color: red;width: 10px"><i
+                            class="fa-solid fa-trash-can"></i></span></button>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+    <script>
+        function remove(id, name) {
+            console.log(id, name)
+            document.getElementById("isDelete").value = id;
+            document.getElementById("nameDelete").innerText = name;
+        }
 
-    
-    function searchId(id){
-        console.log(id)
-        document.getElementById("id").value=id;
-    }
-</script>
 
-<!-- Modal -->
-<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="modelTitleId"></h4>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h3>Do you want to delete <span id="nameDelete"></span> ?</h3>
-            </div>
-            <div class="modal-footer">
+        function searchId(id) {
+            console.log(id)
+            document.getElementById("id").value = id;
+        }
+    </script>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content py-md-5 px-md-4 p-sm-3 p-4">
+                <h4 style="text-align: center">Xóa khách hàng</h4>
+                <i class=" fa fa-solid fa-trash-can"></i>
+                <h5 style="text-align: center" class="r3 px-md-5 px-sm-1">Bạn có chắc chắn muốn xóa khách hàng <span style="color: black" id="nameDelete"></span> ?</h5>
                 <form action="/customer?action=delete" method="post">
                     <input type="hidden" id="isDelete" name="isDelete">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                    <button type="submit" class="btn btn-primary">Yes</button>
+                    <div class="text-center mb-3">
+                        <button class="btn btn-outline-dark w-50 rounded-pill b1" type="submit">Có</button>
+                    </div>
+                    <div class="text-center mb-3">
+                        <button type="button" class="btn btn-outline-dark w-50 rounded-pill b1" data-bs-dismiss="modal" >Không</button>
+                    </div>
+
                 </form>
             </div>
         </div>
@@ -193,8 +232,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
+    <script src="jquery/jquery-3.5.1.min.js"></script>
+    <script src="datatables/js/jquery.dataTables.min.js"></script>
+    <script src="datatables/js/dataTables.bootstrap5.min.js"></script>
 </body_1>
-<script src="jquery/jquery-3.5.1.min.js"></script>
-<script src="datatables/js/jquery.dataTables.min.js"></script>
-<script src="datatables/js/dataTables.bootstrap5.min.js"></script>
+
 </html>
