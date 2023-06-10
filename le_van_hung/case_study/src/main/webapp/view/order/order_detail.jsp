@@ -116,8 +116,8 @@
 </head>
 <body>
 <form>
-<table class="table table-dark table-hover container-f">
-<%--    <tr style="color: Red;text-align: center"><th>Chi tiết order</th></tr>--%>
+    <fieldset style="color: Red;text-align: center"><th>Chi tiết order</th></fieldset>
+    <table class="table table-dark table-hover container-f">
     <thead>
     <tr style="text-align: center">
     <tr>

@@ -35,11 +35,11 @@
                  class="form-control" name="subject" placeholder="Enter Subject">
         </div>
         <div class="form-group">
-          <label for="">Content: </label>
+          <label >Content: </label>
           <textarea class="form-control" rows="3" name="content"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Send</button>
-        <button type="submit" class="btn btn-primary"><a href="/order"></a>Cancel</button>
+        <button type="reset" class="btn btn-primary">Reset</button>
       </form>
     </div>
   </div>
