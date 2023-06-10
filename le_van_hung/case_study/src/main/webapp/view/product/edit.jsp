@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -25,25 +26,6 @@
             align-items: center;
             flex-direction: column;
             align-content: center;
-        }
-
-        .box {
-            position: relative;
-        }
-
-        .input {
-            padding: 10px;
-            width: 40px;
-            height: 40px;
-            background: none;
-            border: 4px solid white;
-            border-radius: 50px;
-            box-sizing: border-box;
-            font-family: Comic Sans MS;
-            font-size: 20px;
-            color: white;
-            outline: none;
-            transition: .5s;
         }
 
         .box:hover input {
@@ -104,25 +86,21 @@
         <tr>
             <th>Loại xe</th>
             <td><select name="loaiXe">
-                <c:forEach items="${loaiXeList}" var="loaiXe">
-                    <option value="${loaiXe.ma_loai_xe}">Sedan</option>
-                    <option value="${loaiXe.ma_loai_xe}">SUV</option>
-                    <option value="${loaiXe.ma_loai_xe}">Coupe</option>
-                    <option value="${loaiXe.ma_loai_xe}">Xe Đa Dụng</option>
-                </c:forEach>
+                    <option value="1"/>1<span> : Sedan</span>
+                    <option value="2"/>2<span> : SUV</span>
+                    <option value="3"/>3<span> : Coupé</span>
+                    <option value="4"/>4<span> : Xe Đa Dụng</span>
             </select></td>
         </tr>
         <tr>
             <th>Tình Trạng</th>
             <td><select name="tinhTrang">
-                <c:forEach items="${tinhTrangXe}" var="tinhTrang">
-                    <option value="${tinhTrang.ma_tinh_trang}">Có Sẵn</option>
-                    <option value="${tinhTrang.ma_tinh_trang}">Không Có Sẵn</option>
-                </c:forEach>
+                    <option value="1"/>1<span> : Có Sẵn</span>
+                    <option value="2"/>2<span> : Không Có Sẵn</span>
             </select></td>
         </tr>
         <tr>
-            <th>Giá (VND)</th>
+            <th>Giá(VND)</th>
             <td><input type="number" name="gia" value="${product.getGia()}" step="any" pattern="[-+]?[0-9]"></td>
         </tr>
         <tr>

@@ -464,7 +464,7 @@
                                     style="padding-left: 10px"><i class="fa-regular fa-pen-to-square"></i></span>
                             </legend>
                             <p class="pure-steps_group-step_item flexy-item flexy-column reverse">
-                                <label><input type="text" placeholder="Nguyễn Văn A" name="name" id="input_name" required pattern="^([a-z]+)((\s{1}[a-z]+){1,})$" title="Vui lòng nhập họ và tên"></label>
+                                <label><input type="text" placeholder="Nguyễn Văn A" name="name" id="input_name" required title="Vui lòng nhập họ và tên"></label>
                                 <label for="input_name">Họ và tên</label>
                             </p>
                             <p class="pure-steps_group-step_item flexy-item flexy-column reverse">
@@ -525,7 +525,7 @@
                         <label for="step-1">Sign Up</label>
                     </li>
                     <li class="pure-steps_group-triggers_item">
-                        <label for="step-2"><a><input style="background-color: black" type="submit" value="">Jump in</a></label>
+                        <label for="step-2"><a><input style="background-color: black;color: white" type="submit"></a></label>
                     </li>
                 </ol>
             </div>
