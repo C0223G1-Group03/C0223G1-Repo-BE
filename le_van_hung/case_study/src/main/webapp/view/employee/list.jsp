@@ -12,18 +12,32 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-
+    <style>
+        /* Styling for the toast message */
+        .toast {
+            background-color: #333;
+            color: black;
+            padding: 15px;
+            border-radius: 5px;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1;
+            display: none;
+        }
+    </style>
     <style>
         body_1 {
             margin: 0;
             padding: 0;
             background: #19161c;
-            height: 1000vh;
+            height: 10000vh;
             display: flex;
             /*justify-content: space-evenly;*/
             align-items: center;
             flex-direction: column;
             align-content: center;
+            place-items: center;
         }
 
         .box {
@@ -66,18 +80,7 @@
             z-index: -1;
         }
 
-        .toast {
-            background-color: black;
-            color: #07101f;
-            padding: 15px;
-            border-radius: 5px;
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1;
-            display: none;
-            text-align: center;
-        }
+
 
         html,
         body {
@@ -148,7 +151,7 @@
     <c:forEach items="${employeeList}" var="e">
         <tr>
             <th class="col-1" scope="row"><c:out value="${e.id}"/></th>
-            <td class="col-1"><c:out value="${e.name}"/></td>
+            <td class="col-1" style="text-align: left"><c:out value="${e.name}"/></td>
             <td class="col-1"><c:out value="${e.dateOfBirth}"/></td>
             <td class="col-1"><c:if test="${e.gender==false}">Nữ</c:if>
                 <c:if test="${e.gender==true}">Nam</c:if></td>
@@ -203,61 +206,26 @@
             </div>
         </div>
     </div>
-
-<%--<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">--%>
-<%--    <div class="modal-dialog" role="document">--%>
-<%--        <div class="modal-content">--%>
-<%--            <div class="modal-header">--%>
-<%--                <h4 class="modal-title" id="modelTitleId"></h4>--%>
-<%--                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">--%>
-<%--                    <span aria-hidden="true">&times;</span>--%>
-<%--                </button>--%>
-<%--            </div>--%>
-<%--            <div class="modal-body">--%>
-<%--                <h3>Do you want to delete <span id="nameDelete"></span> ?</h3>--%>
-<%--            </div>--%>
-<%--            <div class="modal-footer">--%>
-<%--                <form action="/employee?action=delete" method="post">--%>
-<%--                    <input type="hidden" id="isDelete" name="isDelete">--%>
-<%--                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>--%>
-<%--                    <button type="submit" class="btn btn-primary">Yes</button>--%>
-<%--                </form>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
+</div>
 <%-- sign_up--%>
-    <c:if test="${addEmployee !=null}">
-        <div id="toastMessage" class="toast"></div>
+    <c:if test="${massage!= null}">
+    <div id="toastMessage" class="toast"></div>
     </c:if>
-    <c:if test="${editEmployee !=null}">
-        <div id="toastMessage" class="toast"></div>
-    </c:if>
-    <c:if test="${deleteEmployee !=null}">
-        <div id="toastMessage" class="toast"></div>
-    </c:if>
-
-<%--    <script>--%>
-<%--        // Function to show the toast message--%>
-<%--        function showToast(message) {--%>
-<%--            var toast = document.getElementById("toastMessage");--%>
-<%--            toast.style.display = "block";--%>
-<%--            toast.innerText = message;--%>
-<%--            setTimeout(function() {--%>
-<%--                toast.style.display = "none";--%>
-<%--            }, 3000); // Hide the toast message after 3 seconds--%>
-<%--        }--%>
-<%--        // Automatically show the toast message when the page is reloaded--%>
-<%--        window.addEventListener('load', function() {--%>
-<%--            if ("${addEmployee}" != "") {--%>
-<%--                showToast("${addEmployee}");--%>
-<%--            } else if ("${deleteEmployee}" != "") {--%>
-<%--                showToast("${deleteEmployee}");--%>
-<%--            } else {--%>
-<%--                showToast("${editEmployee}");--%>
-<%--            };--%>
-<%--        });--%>
-<%--    </script>--%>
+    <script>
+        // Function to show the toast message
+        function showToast(message) {
+            var toast = document.getElementById("toastMessage");
+            toast.style.display = "block";
+            toast.innerText = message;
+            setTimeout(function() {
+                toast.style.display = "none";
+            }, 3000); // Hide the toast message after 3 seconds
+        }
+        // Automatically show the toast message when the page is reloaded
+        window.addEventListener('load', function() {
+            showToast("${massage}");
+        });
+    </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

@@ -86,7 +86,7 @@
         <th class="col-1" scope="col">Ngày làm order</th>
         <th class="col-1" scope="col">Số lượng xe</th>
         <th class="col-1" scope="col">Mã xe </th>
-        <th class="col-1" scope="col">Tên xe</th>
+        <th class="col-1" scope="col" >Tên xe</th>
         <th class="col-1" scope="col">Mã khách hàng</th>
         <th class="col-1" scope="col">Tên khách hàng</th>
         <th class="col-1" scope="col">Mã nhân viên</th>
@@ -104,11 +104,11 @@
             <td class="col-1"><c:out value="${o.ngay_lam_order}"/></td>
             <td class="col-1"><c:out value="${o.so_luong_xe}"/></td>
             <td class="col-1"><c:out value="${o.product.ma_xe}"/></td>
-            <td class="col-1"><c:out value="${o.product.ten_xe}"/></td>
+            <td class="col-1" style="text-align: left"><c:out value="${o.product.ten_xe}"/></td>
             <td class="col-1"><c:out value="${o.customer.id}"/></td>
-            <td class="col-1"><c:out value="${o.customer.name}"/></td>
+            <td class="col-1" style="text-align: left"><c:out value="${o.customer.name}"/></td>
             <td class="col-1"><c:out value="${o.employee.id}"/></td>
-            <td class="col-1"><c:out value="${o.employee.name}"/></td>
+            <td class="col-1" style="text-align: left"><c:out value="${o.employee.name}"/></td>
             <td class="col-3">
                 <a href="/order?action=showDetailOrder&id=${o.ma_order}">
                     <button class="btn btn-outline-light col-6" type="button" style="width: 40px"><span>

@@ -12,7 +12,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +21,8 @@ public class EmployeeServlet extends HttpServlet {
     private IEmployeeService employeeService=new EmployeeService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         String action=request.getParameter("action");
         if(action==null){
             action="";
@@ -53,14 +54,18 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void showList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String massage = request.getParameter("massage");
         List<Employee> employeeList= employeeService.displayList();
         request.setAttribute("employeeList",employeeList);
+        request.setAttribute("massage",massage);
         RequestDispatcher requestDispatcher= request.getRequestDispatcher("/view/employee/list.jsp");
         requestDispatcher.forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         String action=request.getParameter("action");
         if(action==null){
             action="";
@@ -110,18 +115,14 @@ public class EmployeeServlet extends HttpServlet {
         String password_edit=request.getParameter("password");
         employeeService.update(new Employee(id,name_edit,address_edit,dateOfBirth_edit,gender_edit,phone_edit
                 ,email_edit,citizenId_edit,account_edit,password_edit));
-        HttpSession session= request.getSession();
-        session.setAttribute("editEmployee","Chỉnh sửa thành công !");
-        response.sendRedirect("/employee");
+        response.sendRedirect("/employee?massage=Sua thanh cong");
     }
 
     private void delete(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int id;
         id=Integer.parseInt(request.getParameter("isDelete"));
         employeeService.delete(id);
-        HttpSession session= request.getSession();
-        session.setAttribute("deleteEmployee","Xóa thành công !");
-        response.sendRedirect("/employee");
+        response.sendRedirect("/employee?massage=Xoa thanh cong");
     }
 
     private void add(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -135,8 +136,6 @@ public class EmployeeServlet extends HttpServlet {
         String account=request.getParameter("account");
         String password=request.getParameter("password");
         employeeService.add(new Employee(name,address,dateOfBirth,gender,phone,email,citizenId,account,password));
-        HttpSession session= request.getSession();
-        session.setAttribute("addEmployee","Thêm mới thành công !");
-        response.sendRedirect("/employee");
+        response.sendRedirect("/employee?massage=Them thanh cong");
     }
 }

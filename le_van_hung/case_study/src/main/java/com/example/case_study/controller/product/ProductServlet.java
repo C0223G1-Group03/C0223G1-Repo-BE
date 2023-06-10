@@ -27,6 +27,8 @@ public class ProductServlet extends HttpServlet {
     private IProductService productService= new ProductService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html;charset=UTF-8");
        String action=req.getParameter("action");
        if(action==null){
            action="";
@@ -49,6 +51,8 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html;charset=UTF-8");
         String action=req.getParameter("action");
         if(action==null){
             action="";
@@ -106,10 +110,8 @@ public class ProductServlet extends HttpServlet {
         TinhTrang tinhTrang1 = new TinhTrang(tinhTrang);
         Product product = new Product(ma_xe,ten_xe,mau_sac_xe,ngay_san_xuat,introduce,loaiXe1,tinhTrang1,gia);
         productService.edit(product);
-        HttpSession session=req.getSession();
-        session.setAttribute("EditProduct","Sua Thanh Cong");
         try {
-            resp.sendRedirect("/product");
+            resp.sendRedirect("/product?massage=Sua Thanh Cong");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

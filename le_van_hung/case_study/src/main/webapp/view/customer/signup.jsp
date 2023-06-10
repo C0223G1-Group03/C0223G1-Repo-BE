@@ -37,6 +37,7 @@
 </head>
 <body>
 <form action="/user?action=order" method="post">
+    <input type="hidden" name="idProduct" value="${idProduct}">
     <section class="100% gradient-custom">
         <div class="container py-5 h-100">
             <div class="row justify-content-center align-items-center h-100">
@@ -106,7 +107,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-4 pt-2">
-                                    <input class="btn btn-outline-dark btn-lg" type="submit"/>
+                                    <button id="button" class="btn btn-outline-dark btn-lg" type="submit">Gửi</button>
                                 </div>
                             </form>
                         </div>
@@ -119,5 +120,48 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+<script>
+    function checkCCCD() {
+        let message_cccd=document.getElementById("cccd_error");
+        let cccd=document.getElementById("input_cccd").value;
+        if(!cccd.match(/^[0-9]{12,}/)){
+            message_cccd.textContent="CCCD không hợp lệ";
+            message_cccd.style.color="#C71010FF"
+            document.getElementById('button').style.display='none'
+        }else{
+            message_cccd.textContent="";
+            document.getElementById('button').style.display='block';
+        }
+
+    }
+
+    function checkPhone(){
+        let message_phone=document.getElementById("phone_error");
+        let phone=document.getElementById("phoneNumber").value;
+        if(!phone.match(/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/)){
+            message_phone.textContent="Số điện thoại không hợp lệ";
+            message_phone.style.color="#C71010FF"
+            document.getElementById('button').style.display='none'
+        }else{
+            message_phone.textContent="";
+            document.getElementById('button').style.display='block';
+        }
+    }
+
+    function checkEmail(){
+        let message_mail=document.getElementById("error_mail");
+        let mail=document.getElementById("emailAddress").value;
+        if(!mail.match(/^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/)){
+            message_mail.textContent="Email không đúng định dạng";
+            message_mail.style.color="#C71010FF"
+            document.getElementById('button').style.display='none'
+        }else{
+            message_mail.textContent="";
+            document.getElementById('button').style.display='block';
+        }
+    }
+
+
+</script>
 </body>
 </html>

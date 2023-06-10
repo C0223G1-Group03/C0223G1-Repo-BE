@@ -9,10 +9,40 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+    <style>
+        /* Styling for the toast message */
+        .toast {
+            background-color: blue;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1;
+            display: none;
+        }
+    </style>
 </head>
 <body>
 <%--<jsp:include page="nav_bar_giao_dien.jsp"></jsp:include>--%>
 <jsp:include page="nav_bar_admin_show.jsp"></jsp:include>
+<div id="toastMessage" class="toast" style="background-color: black"></div>
+<script>
+    // Function to show the toast message
+    function showToast(message) {
+        var toast = document.getElementById("toastMessage");
+        toast.style.display = "block";
+        toast.innerText = message;
+        setTimeout(function() {
+            toast.style.display = "none";
+        }, 3000); // Hide the toast message after 3 seconds
+    }
+    // Automatically show the toast message when the page is reloaded
+    window.addEventListener('load', function() {
+        showToast("${dangnhap}");
+    });
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>

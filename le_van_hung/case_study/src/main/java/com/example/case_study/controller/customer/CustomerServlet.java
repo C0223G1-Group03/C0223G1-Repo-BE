@@ -12,7 +12,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +21,8 @@ public class CustomerServlet extends HttpServlet {
     private ICustomerService customerService=new CustomerService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
     String action=request.getParameter("action");
     if(action==null){
         action="";
@@ -56,13 +57,17 @@ public class CustomerServlet extends HttpServlet {
 
     private void showList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Customer> customerList= customerService.displayList();
+        String massage = request.getParameter("massage");
         request.setAttribute("customerList",customerList);
+        request.setAttribute("massage",massage);
         RequestDispatcher requestDispatcher= request.getRequestDispatcher("view/customer/list.jsp");
         requestDispatcher.forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         String action=request.getParameter("action");
         if(action==null){
             action="";
@@ -111,18 +116,14 @@ public class CustomerServlet extends HttpServlet {
         String email_edit= request.getParameter("email");
         customerService.update(new Customer(id,name_edit,address_edit,dateOfBirth_edit,gender_edit,phone_edit
                 ,email_edit,citizenId_edit));
-        HttpSession session= request.getSession();
-        session.setAttribute("editCustomer","Chỉnh sửa thành công !");
-        response.sendRedirect("/customer");
+        response.sendRedirect("/customer?massage=Sua thanh cong");
     }
 
     private void delete(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int id;
         id=Integer.parseInt(request.getParameter("isDelete"));
         customerService.delete(id);
-        HttpSession session= request.getSession();
-        session.setAttribute("deleteCustomer","Xóa thành công !");
-        response.sendRedirect("/customer");
+        response.sendRedirect("/customer?massage=Xoa thanh cong");
     }
 
     private void add(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -134,9 +135,8 @@ public class CustomerServlet extends HttpServlet {
         String address= request.getParameter("address");
         String email= request.getParameter("email");
         customerService.add(new Customer(name,address,dateOfBirth,gender,phone,email,citizenId));
-        HttpSession session= request.getSession();
-        session.setAttribute("addCustomer","Thêm mới thành công !");
-        response.sendRedirect("/customer");
+//        request.setAttribute("status","success");
+        response.sendRedirect("/customer?massage=Them thanh cong");
 
 //        if(true){
 //            String message="success";

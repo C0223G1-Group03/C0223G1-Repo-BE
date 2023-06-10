@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -26,7 +27,6 @@
             /*align-items: center;*/
             flex-direction: column;
 
-            align-content: center;
             align-content: center;
         }
 
@@ -143,7 +143,7 @@
 <body>
 <div>
     <h2 style="text-align: center;">
-        Quản Lý Sản Phẩm
+       QUẢN LÝ SẢN PHẨM
     </h2>
 </div>
 <%--<jsp:include page="/view/main_menu/nav_bar_giao_dien.jsp"></jsp:include>--%>
@@ -179,13 +179,13 @@
     <c:forEach items="${list}" var="list" varStatus="loop">
         <tr>
             <th class="col-1" scope="row"><c:out value="${loop.count}"/></th>
-            <td class="col-2"><c:out value="${list.ten_xe}"/></td>
+            <td class="col-2" style="text-align:left"><c:out value="${list.ten_xe}"/></td>
             <td class="col-1"><c:out value="${list.mau_sac_xe}"/></td>
             <td class="col-2"><c:out value="${list.ngay_san_xuat}"/></td>
             <td class="col-1"><c:out value="${list.mo_ta}"/></td>
-            <td class="col-1"><c:out value="${list.loaiXe.ten_loai_xe}"/></td>
+            <td class="col-1" style="text-align:left"><c:out value="${list.loaiXe.ten_loai_xe}"/></td>
             <td class="col-1"><c:out value="${list.tinhTrang.ten_tinh_trang}"/></td>
-            <td class="col-1">
+            <td class="col-1" style="text-align: right">
                 <fmt:formatNumber type="number" maxFractionDigits="3" value="${list.gia}"/>
             </td>
             <td class="col-1"><img height="50px" width="50px" src="<c:out value="${list.image}"/>"/></td>
@@ -216,8 +216,8 @@
             <i class=" fa fa-solid fa-trash-can"></i>
             <h5 style="text-align: center" class="r3 px-md-5 px-sm-1">Bạn có chắc chắn muốn xóa sản phẩm <span
                     style="color: black" id="nameDelete"></span> ?</h5>
-            <form action="/customer?action=delete" method="post">
-                <input type="hidden" id="isDelete" name="isDelete">
+            <form action="/product?action=delete" method="post">
+                <input type="hidden" id="idDelete" name="idDelete">
                 <div class="text-center mb-3">
                     <button class="btn btn-outline-dark w-50 rounded-pill b1" type="submit">Có</button>
                 </div>
@@ -231,22 +231,9 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-<script src="jquery/jquery-3.5.1.min.js"></script>
-<script src="datatables/js/jquery.dataTables.min.js"></script>
-<script src="datatables/js/dataTables.bootstrap5.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#table').dataTable({
-            "dom": 'lrtp',
-            "lengthChange": false,
-            "pageLength": 5,
-            "scrollY": true,
-        });
-    });
-</script>
+<%--<c:if test="${AddProduct !=null}">--%>
+<%--    <div id="toastMessage" class="toast"></div>--%>
+<%--</c:if>--%>
 <c:if test="${EditProduct !=null}">
     <div id="toastMessage" class="toast"></div>
 </c:if>
@@ -257,26 +244,17 @@
     <div id="toastMessage" class="toast"></div>
 </c:if>
 <script>
-    function remove(ma_xe, ten_xe) {
-        document.getElementById("nameDelete").innerText = ten_xe;
-        document.getElementById("idDelete").value = ma_xe;
-    }
-
-        function showToast(message) {
+    function showToast(message) {
         var toast = document.getElementById("toastMessage");
         toast.style.display = "block";
         toast.innerText = message;
         setTimeout(function () {
-        toast.style.display = "none";
-    }, 3000); // Hide the toast message after 3 seconds
+            toast.style.display = "none";
+        }, 3000); // Hide the toast message after 3 seconds
     }
 
-        window.addEventListener('load', function () {
-        if ("${massage}" != "") {
-        showToast("${massage}")
-    } else if ("${EditProduct}" != ""){
-        showToast("${EditProduct}");
-    }
+    window.addEventListener('load', function () {
+            showToast("${massage}")
     });
 </script>
 

@@ -114,6 +114,7 @@
         }
 
     </style>
+
     <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <link rel="stylesheet" href="(../../bootstrap-5.1.3-dist/bootstrap-5.1.3-dist/css/bootstrap.min.css))">
@@ -339,7 +340,6 @@
         </div>
     </div>
 </div>
-<button onclick="topFunction()" id="myBtn" title="Quay Về Đầu Trang">BackToTop</button>
 <script>
     window.onscroll = function () {
         scrollFunction()

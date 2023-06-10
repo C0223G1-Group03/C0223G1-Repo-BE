@@ -14,6 +14,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap">
     <style>
+        /* Styling for the toast message */
+        .toast {
+            background-color: #333;
+            color: black;
+            padding: 15px;
+            border-radius: 5px;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1;
+            display: none;
+        }
+    </style>
+    <style>
         body_1 {
             margin: 0;
             padding: 0;
@@ -67,19 +81,6 @@
             z-index: -1;
         }
 
-
-        .toast {
-            background-color: white;
-            color: black;
-            padding: 25px;
-            border-radius: 5px;
-            position: fixed;
-            top: 60px;
-            right: 20px;
-            z-index: 1;
-            display: none;
-            font-size: medium;
-        }
 
 
         html,
@@ -208,10 +209,26 @@
             </div>
         </div>
     </div>
-
-
-
-    <%-- sign_up--%>
+</div>
+<%-- sign_up--%>
+    <c:if test="${massage!=null}">
+    <div id="toastMessage" class="toast"></div>
+    </c:if>
+    <script>
+        // Function to show the toast message
+        function showToast(message) {
+            var toast = document.getElementById("toastMessage");
+            toast.style.display = "block";
+            toast.innerText = message;
+            setTimeout(function() {
+                toast.style.display = "none";
+            }, 3000); // Hide the toast message after 3 seconds
+        }
+        // Automatically show the toast message when the page is reloaded
+        window.addEventListener('load', function() {
+            showToast("${massage}");
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
