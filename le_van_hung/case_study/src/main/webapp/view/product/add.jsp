@@ -106,7 +106,7 @@
         </tr>
         <tr>
             <th class="col-1" scope="col">Loại xe</th>
-            <td class="col-1"><select name="loai_xe">
+            <td class="col-1"><select name="loai_xe" required>
                 <option value="1"/>1<span> : Sedan</span>
                 <option value="2"/>2<span> : SUV</span>
                 <option value="3"/>3<span> : Coupé</span>
@@ -116,13 +116,13 @@
         <tr>
             <th class="col-1" scope="col">Tình trạng</th>
             <td class="col-1">
-                <select name="tinh_trang">
+                <select name="tinh_trang" required>
                     <option value="1"/>1<span> : Có Sẵn</span>
                     <option value="2"/>2<span> : Không Có Sẵn</span>
                 </select></td>
         </tr>
         <tr>
-            <th class="col-1" scope="col">Giá(VND)</th>
+            <th class="col-1" scope="col" >Giá(VND)</th>
             <td class="col-1"><input name="gia" required></td>
         </tr>
         <tr>

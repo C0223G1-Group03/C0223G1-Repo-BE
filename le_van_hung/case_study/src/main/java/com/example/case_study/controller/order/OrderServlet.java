@@ -53,6 +53,8 @@ public class OrderServlet extends HttpServlet {
     }
 
     private void showListOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String message = req.getParameter("message");
+        req.setAttribute("message",message);
         List<Order> orderList = orderService.displayListOrder();
         req.setAttribute("orderList", orderList);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/view/order/list_order.jsp");
@@ -120,10 +122,10 @@ public class OrderServlet extends HttpServlet {
         Employee employee1 = new Employee(ma_nhan_vien);
         Order order = new Order(ngay_lam_order,so_luong_xe,product1,customer1,employee1);
         orderService.addOrder(order);
-        HttpSession session=req.getSession();
-        session.setAttribute("AddOrder","Them Thanh Cong");
+//        HttpSession session=req.getSession();
+//        session.setAttribute("AddOrder","Them Thanh Cong");
         try {
-            resp.sendRedirect("/order");
+            resp.sendRedirect("/order?message=Them Thanh Cong");
         }catch (IOException e){
             throw  new RuntimeException(e);
         }
@@ -131,7 +133,7 @@ public class OrderServlet extends HttpServlet {
     private void deleteOrder(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         int ma_hop_dong= Integer.parseInt(req.getParameter("isDelete"));
         orderService.deleteOrder(ma_hop_dong);
-        resp.sendRedirect("/order?message= xoa thanh cong");
+        resp.sendRedirect("/order?message=Xoa Thanh Cong");
     }
 
 }

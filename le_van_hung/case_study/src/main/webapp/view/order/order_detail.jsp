@@ -41,6 +41,7 @@
 <%--</html>--%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -145,7 +146,8 @@
     </tr>
     <tr>
         <th>Giá</th>
-        <td><input name="gia" readonly value="${orderDetail.product.gia}"></td>
+        <td><input name="gia" readonly value="<fmt:formatNumber type="number" maxFractionDigits="3" value="${orderDetail.product.gia}"/>"></td>
+
     </tr>
     <tr>
         <th>Mã khách hàng</th>

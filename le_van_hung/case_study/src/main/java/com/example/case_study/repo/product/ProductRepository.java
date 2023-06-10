@@ -155,8 +155,9 @@ public class ProductRepository implements IProductRepository {
                 String ten_loai_xe = resultSet.getString("ten_loai_xe");
                 TinhTrang tinhTrang = new TinhTrang(ma_tinh_trang, ten_tinh_tang);
                 LoaiXe loaiXe = new LoaiXe(ma_loai_xe, ten_loai_xe);
+                double gia = resultSet.getDouble("gia");
                 String image = resultSet.getString("image");
-                Product product = new Product(ma_xe, ten_xe, mau_sac_xe, ngay_san_xuat, mo_ta, loaiXe, tinhTrang,image);
+                Product product = new Product(ma_xe, ten_xe, mau_sac_xe, ngay_san_xuat, mo_ta, loaiXe, tinhTrang,gia,image);
                 list.add(product);
             }
         } catch (SQLException e) {

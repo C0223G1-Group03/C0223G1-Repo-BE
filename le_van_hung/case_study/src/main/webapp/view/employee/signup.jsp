@@ -131,7 +131,7 @@
                             </div>
                             <p id="message"></p>
                             <div class="mt-4 pt-2">
-                                <input id="button" class="btn btn-outline-dark btn-lg" type="submit"/>
+                                <button id="button" class="btn btn-outline-dark btn-lg" type="submit">Gửi</button>
                             </div>
                         </form>
                     </div>

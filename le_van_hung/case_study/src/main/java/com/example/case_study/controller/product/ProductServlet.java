@@ -107,8 +107,9 @@ public class ProductServlet extends HttpServlet {
         LoaiXe loaiXe1 = new LoaiXe(loai_xe);
         int tinhTrang =Integer.parseInt(req.getParameter("tinhTrang"));
         double gia = Double.parseDouble(req.getParameter("gia"));
+        String img = req.getParameter("img");
         TinhTrang tinhTrang1 = new TinhTrang(tinhTrang);
-        Product product = new Product(ma_xe,ten_xe,mau_sac_xe,ngay_san_xuat,introduce,loaiXe1,tinhTrang1,gia);
+        Product product = new Product(ma_xe,ten_xe,mau_sac_xe,ngay_san_xuat,introduce,loaiXe1,tinhTrang1,gia,img);
         productService.edit(product);
         try {
             resp.sendRedirect("/product?massage=Sua Thanh Cong");
