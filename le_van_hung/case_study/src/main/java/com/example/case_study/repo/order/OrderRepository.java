@@ -19,10 +19,11 @@ public class OrderRepository implements IOrderRepository {
     private static final String INSERT = "insert into orders(ngay_lam_order,so_luong_xe,ma_xe,ma_nhan_vien,ma_khach_hang)" +
             " values(?,?,?,?,?)";
     private static final String SELECT =
-            "select orders.*,xe.ma_xe,xe.ten_xe,khach_hang.ma_khach_hang,khach_hang.ten_khach_hang,nhan_vien.ma_nhan_vien,nhan_vien.ten_nhan_vien from orders\n" +
-            "join xe on orders.ma_xe = xe.ma_xe\n" +
-            "join khach_hang on orders.ma_khach_hang = khach_hang.ma_khach_hang\n" +
-            "join nhan_vien on orders.ma_nhan_vien = nhan_vien.ma_nhan_vien;";
+            "select o.ma_order,o.ngay_lam_order, o.so_luong_xe, o.ma_xe ,xe.ten_xe, xe.gia, o.ma_khach_hang,kh.ten_khach_hang\n" +
+            "from orders o\n" +
+            "left join xe on o.ma_xe = xe.ma_xe\n" +
+            "left join khach_hang kh on o.ma_khach_hang = kh.ma_khach_hang;";
+
     private static final String DELETE = "delete from orders where ma_order = ?";
 
     private static final String ORDER_DETAIL =
@@ -47,14 +48,15 @@ public class OrderRepository implements IOrderRepository {
                 int so_luong_xe = resultSet.getInt("so_luong_xe");
                 int ma_xe = resultSet.getInt("ma_xe");
                 String ten_xe = resultSet.getString("ten_xe");
+                double gia = resultSet.getDouble("gia");
                 int ma_khach_hang = resultSet.getInt("ma_khach_hang");
                 String ten_khach_hang = resultSet.getString("ten_khach_hang");
-                int ma_nhan_vien = resultSet.getInt("ma_nhan_vien");
-                String ten_nhan_vien = resultSet.getString("ten_nhan_vien");
-                Product product = new Product(ma_xe, ten_xe);
+//                int ma_nhan_vien = resultSet.getInt("ma_nhan_vien");
+//                String ten_nhan_vien = resultSet.getString("ten_nhan_vien");
+                Product product = new Product(ma_xe, ten_xe, gia);
                 Customer customer = new Customer(ma_khach_hang, ten_khach_hang);
-                Employee employee = new Employee(ma_nhan_vien, ten_nhan_vien);
-                Order order = new Order(ma_order, ngay_lam_order, so_luong_xe, product, customer, employee);
+//                Employee employee = new Employee(ma_nhan_vien, ten_nhan_vien);
+                Order order = new Order(ma_order, ngay_lam_order, so_luong_xe, product, customer);
                 orderList.add(order);
             }
         } catch (SQLException e) {
