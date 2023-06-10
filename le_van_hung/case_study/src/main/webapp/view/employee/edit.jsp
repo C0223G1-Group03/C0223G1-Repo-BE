@@ -139,7 +139,7 @@
         <tr>
             <th><a href="/employee"><span class="btn btn-outline-light"><i class="fa-solid fa-arrow-left"></i></span></a></th>
             <td>
-                <button class="btn btn-outline-light" type="submit" style="width: 40px;margin-left: 300px"><span>
+                <button id="button" class="btn btn-outline-light" type="submit" style="width: 40px;margin-left: 300px"><span>
                 <i class="fa-regular fa-circle-check"></i></span></button>
             </td>
         </tr>

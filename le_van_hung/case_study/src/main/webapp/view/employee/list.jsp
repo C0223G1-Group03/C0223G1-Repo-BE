@@ -31,12 +31,13 @@
             margin: 0;
             padding: 0;
             background: #19161c;
-            height: 1000vh;
+            height: 10000vh;
             display: flex;
             /*justify-content: space-evenly;*/
             align-items: center;
             flex-direction: column;
             align-content: center;
+            place-items: center;
         }
 
         .box {
@@ -79,6 +80,43 @@
             z-index: -1;
         }
 
+
+
+        html,
+        body {
+            height: 100%
+        }
+
+        .modal-content {
+            border-radius: 5rem;
+        }
+
+
+        .modal-content:hover {
+            box-shadow: 2px 2px 2px black;
+        }
+
+        .fa {
+            color: #be2b3c;
+            font-size: 90px;
+            padding: 30px 0px;
+            text-align: center;
+        }
+
+        .b1 {
+            background-color: #2b84be;
+            box-shadow: 0px 4px #337095;
+            font-size: 17px;
+        }
+
+        .r3 {
+            color: #c1c1c1;
+            font-weight: 500;
+        }
+
+        a, a:hover {
+            text-decoration: none;
+        }
     </style>
 
 </head>

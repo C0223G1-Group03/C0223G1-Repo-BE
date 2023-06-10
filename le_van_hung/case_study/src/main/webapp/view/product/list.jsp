@@ -216,8 +216,8 @@
             <i class=" fa fa-solid fa-trash-can"></i>
             <h5 style="text-align: center" class="r3 px-md-5 px-sm-1">Bạn có chắc chắn muốn xóa sản phẩm <span
                     style="color: black" id="nameDelete"></span> ?</h5>
-            <form action="/customer?action=delete" method="post">
-                <input type="hidden" id="isDelete" name="isDelete">
+            <form action="/product?action=delete" method="post">
+                <input type="hidden" id="idDelete" name="idDelete">
                 <div class="text-center mb-3">
                     <button class="btn btn-outline-dark w-50 rounded-pill b1" type="submit">Có</button>
                 </div>
