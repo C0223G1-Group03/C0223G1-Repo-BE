@@ -89,7 +89,7 @@
         <th class="col-1" scope="col">Tên xe</th>
         <th class="col-1" scope="col">Giá</th>
         <th class="col-1" scope="col">Mã khách hàng</th>
-        <th class="col-1" scope="col">Tên khách hàng</th>
+        <th class="col-1" scope="col">Tên khách hàng </th>
         <th class="col-3" scope="col">
             <a href="/order?action=showFormAddOrder">
                 <span style="color: white;border-radius: 100%"><i class="fa-solid fa-file-circle-plus"></i></span></a>
