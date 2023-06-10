@@ -17,29 +17,30 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
-<body>
+<body style="background-color: black" >
 <div class="container" style="margin-top: 10px;">
   <div class="row"
-       style="border: 1px darkgrey solid; border-radius: 10px; width: 50%; margin: 0 auto; padding: 20px;">
+       style="border: 1px darkgrey solid; border-radius: 10px; width: 100%; margin: 0 auto; padding: 20px;">
     <div class="col-sm-12">
-      <h2 class="myclass">Information</h2>
+      <h2 class="myclass" style="color: white">Information</h2>
       <form action="/send" method="post">
         <div class="form-group">
-          <label>To: </label>
+          <label style="color: white" >To: </label>
           <input type="text"
                  class="form-control" name="to" placeholder="Enter Email">
         </div>
         <div class="form-group">
-          <label>Subject:</label>
+          <label style="color: white">Subject:</label>
           <input type="text"
                  class="form-control" name="subject" placeholder="Enter Subject">
         </div>
         <div class="form-group">
-          <label for="">Content: </label>
-          <textarea class="form-control" rows="3" name="content"></textarea>
+          <label style="color: white" >Content: </label>
+          <textarea class="form-control" rows="4" name="content"></textarea>
         </div>
+        <br>
         <button type="submit" class="btn btn-primary">Send</button>
-        <button type="submit" class="btn btn-primary"><a href="/order"></a>Cancel</button>
+        <button type="reset" class="btn btn-primary">Reset</button>
       </form>
     </div>
   </div>

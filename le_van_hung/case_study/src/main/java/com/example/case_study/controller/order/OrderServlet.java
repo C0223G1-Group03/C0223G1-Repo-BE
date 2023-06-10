@@ -19,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -119,6 +120,8 @@ public class OrderServlet extends HttpServlet {
         Employee employee1 = new Employee(ma_nhan_vien);
         Order order = new Order(ngay_lam_order,so_luong_xe,product1,customer1,employee1);
         orderService.addOrder(order);
+        HttpSession session=req.getSession();
+        session.setAttribute("AddOrder","Them Thanh Cong");
         try {
             resp.sendRedirect("/order");
         }catch (IOException e){
@@ -128,7 +131,7 @@ public class OrderServlet extends HttpServlet {
     private void deleteOrder(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         int ma_hop_dong= Integer.parseInt(req.getParameter("isDelete"));
         orderService.deleteOrder(ma_hop_dong);
-        resp.sendRedirect("/order");
+        resp.sendRedirect("/order?message= xoa thanh cong");
     }
 
 }
