@@ -75,8 +75,8 @@
         }
 
         .toast {
-            background-color: white;
-            color: black;
+            background-color: dodgerblue;
+            color: white;
             padding: 25px;
             border-radius: 5px;
             position: fixed;
@@ -235,13 +235,13 @@
 <%--    <div id="toastMessage" class="toast"></div>--%>
 <%--</c:if>--%>
 <c:if test="${EditProduct !=null}">
-    <div id="toastMessage" class="toast"></div>
+    <div style="background-color: dodgerblue" id="toastMessage" class="toast"></div>
 </c:if>
 <%--<c:if test="${DeleteProduct !=null}">--%>
 <%--    <div id="toastMessage" class="toast"></div>--%>
 <%--</c:if>--%>
 <c:if test="${massage !=null}">
-    <div id="toastMessage" class="toast"></div>
+    <div id="toastMessage" class="toast" style="background-color: dodgerblue;font-size: 20px;border-radius: 50px;text-align: center"></div>
 </c:if>
 <script>
     function showToast(message) {

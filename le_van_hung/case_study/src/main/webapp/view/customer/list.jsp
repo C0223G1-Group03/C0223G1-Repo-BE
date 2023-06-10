@@ -16,15 +16,16 @@
     <style>
         /* Styling for the toast message */
         .toast {
-            background-color: #333;
-            color: black;
-            padding: 15px;
+            background-color: dodgerblue;
+            color: white;
+            padding: 25px;
             border-radius: 5px;
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            top: 60px;
+            right: 20px;
             z-index: 1;
             display: none;
+            font-size: medium;
         }
     </style>
     <style>
@@ -212,7 +213,7 @@
 </div>
 <%-- sign_up--%>
     <c:if test="${massage!=null}">
-    <div id="toastMessage" class="toast"></div>
+    <div style="background-color: dodgerblue;font-size: 20px;border-radius: 50px ;text-align: center" id="toastMessage" class="toast"></div>
     </c:if>
     <script>
         // Function to show the toast message

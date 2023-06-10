@@ -43,15 +43,16 @@
     <style>
         /* Styling for the toast message */
         .toast {
-            background-color: #333;
+            background-color: dodgerblue;
             color: white;
-            padding: 15px;
+            padding: 25px;
             border-radius: 5px;
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            top: 100px;
+            right: 20px;
             z-index: 1;
             display: none;
+            font-size: medium;
         }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -140,7 +141,7 @@
     </div>
 </div>
 <c:if test="${order!=null}">
-<div id="toastMessage" class="toast" style="background-color: black"></div>
+<div id="toastMessage" class="toast" style="background-color: dodgerblue;font-size: 20px;border-radius: 50px;text-align: center"></div>
 </c:if>
 <script>
     // Function to show the toast message
