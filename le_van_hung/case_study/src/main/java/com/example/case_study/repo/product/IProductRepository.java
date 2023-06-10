@@ -13,4 +13,5 @@ public interface IProductRepository {
     void edit(Product product);
     List<Product> displayListByType(int id);
     Product findId(int ma_xe);
+    Product findByName(int ten_xe);
 }

@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <style>
     ul li a:hover{
-      background-color: dodgerblue;
+      background-color: darkgray;
     }
   </style>
   <title>Title</title>
