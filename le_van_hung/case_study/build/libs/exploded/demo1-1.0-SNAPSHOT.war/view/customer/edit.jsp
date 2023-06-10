@@ -30,24 +30,6 @@
             align-content: center;
         }
 
-        .box {
-            position: relative;
-        }
-
-        .input {
-            padding: 10px;
-            width: 40px;
-            height: 40px;
-            background: none;
-            border: 4px solid white;
-            border-radius: 50px;
-            box-sizing: border-box;
-            font-family: Comic Sans MS;
-            font-size: 20px;
-            color: white;
-            outline: none;
-            transition: .5s;
-        }
 
         .box:hover input {
             width: 100px;
