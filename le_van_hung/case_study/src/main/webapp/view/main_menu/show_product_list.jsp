@@ -43,15 +43,16 @@
     <style>
         /* Styling for the toast message */
         .toast {
-            background-color: #333;
+            background-color: dodgerblue;
             color: white;
-            padding: 15px;
+            padding: 25px;
             border-radius: 5px;
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            top: 100px;
+            right: 20px;
             z-index: 1;
             display: none;
+            font-size: medium;
         }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -102,11 +103,11 @@
                         <h5 class="card-title"><c:out value="${list.ten_xe}"/></h5>
                         <span class="float-start my-4"><button onclick="showModal('${list.ten_xe}','${list.mau_sac_xe}','${list.ngay_san_xuat}','${list.mo_ta}','${list.loaiXe.ten_loai_xe}',
                                 '${list.tinhTrang.ten_tinh_trang}','<fmt:formatNumber type="number" maxFractionDigits="3" value="${list.gia}"/>')"
-                                                               type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modelId"
-                                                               style="width: 80px;color: white">
-                            <span style="font-size:small;"> Chi tiết</span>
+                                                               type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modelId"
+                                                              >
+                             Chi tiết
                         </button></span>
-                        <span class="float-end my-4"><a href="/user?action=order&id=${list.ma_xe}"><button style="border: 0px"><i class="fa-solid fa-cart-shopping"></i></button></a></span>
+                        <span class="float-end my-4"><a href="/user?action=order&id=${list.ma_xe}"><button class="btn btn-outline-dark" style="font-size: 20px"><i class="fa-solid fa-id-card"></i></button></a></span>
                     </div>
                 </div>
             </div>
@@ -119,9 +120,6 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="modelTitleId">Chi tiết sản phẩm</h4>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">x</span>
-                </button>
             </div>
             <div class="modal-body">
                 <p>Tên: <span id="name"></span></p>
@@ -140,7 +138,7 @@
     </div>
 </div>
 <c:if test="${order!=null}">
-<div id="toastMessage" class="toast" style="background-color: black"></div>
+<div id="toastMessage" class="toast" style="background-color: dodgerblue;font-size: 20px;border-radius: 50px;text-align: center"></div>
 </c:if>
 <script>
     // Function to show the toast message

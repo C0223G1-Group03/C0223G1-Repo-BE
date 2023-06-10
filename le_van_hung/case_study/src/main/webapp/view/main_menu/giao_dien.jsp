@@ -294,7 +294,7 @@
         </div>
     </div>
 </div>
-<div class="row container-fluid " style="padding-top: 100px; background-color: black; border: 0px">
+<div class="row container-fluid " style="background-color: dodgerblue;font-size: 20px;border-radius: 50px">
     <div class="row container-fluid"
          style="border: 1px white solid; color: white; margin-bottom: 50px ;margin-left: 10px; padding-top: 20px;padding-bottom: 20px">
         <h5>Giữ liên lạc với chúng tôi</h5>

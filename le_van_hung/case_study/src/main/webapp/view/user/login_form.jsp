@@ -34,29 +34,28 @@
 
                                     <div class="d-flex align-items-center mb-3 pb-1">
                                         <i class="fas fa-cubes fa-2x me-3"></i>
-                                        <span style="color:white;" class="h1 fw-bold mb-0">Login</span>
+                                        <span style="color:white;" class="h1 fw-bold mb-0">ĐĂNG NHẬP</span>
                                     </div>
 
-                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;color: white">Sign into your account</h5>
+                                    
 
                                     <div class="form-outline mb-4">
                                         <input type="text" name="account" class="form-control form-control-lg" />
-                                        <label class="form-label" style="color: white">Your account</label>
+                                        <label class="form-label" style="color: white">Tài khoản</label>
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <input type="password" name="password" class="form-control form-control-lg" />
-                                        <label class="form-label"  style="color: white">Password</label>
+                                        <label class="form-label"  style="color: white">Mật khẩu</label>
                                     </div>
                                    <input style="width: 300px;color: red;background-color: black;border: 0;padding: 0" type="text"
                                                                     value="${message}">
                                     <div class="pt-1 mb-4">
-                                        <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
+                                        <button class="btn btn-dark btn-lg btn-block" type="submit">Đăng nhập</button>
                                     </div>
 
-                                    <p class="mb-5 pb-lg-2" style="color: white;">Don't have an account? <a href="#!" style="color: #393f81;"><span style="color: white">Register here</span></a></p>
-                                    <a href="#!" class="small text-muted"><span style="color: white">Terms of use.</span></a>
-                                    <a href="#!" class="small text-muted"><span style="color: white">Privacy policy</span></a>
+                                    <a href="#!" class="small text-muted"><span style="color: white">Điều khoản sử dụng</span></a>
+                                    <a href="#!" class="small text-muted"><span style="color: white">Chính sách bảo mật</span></a>
                                 </form>
 
                             </div>

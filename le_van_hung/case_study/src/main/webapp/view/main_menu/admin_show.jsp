@@ -12,22 +12,24 @@
     <style>
         /* Styling for the toast message */
         .toast {
-            background-color: blue;
+            background-color: dodgerblue;
             color: white;
-            padding: 15px;
+            padding: 25px;
             border-radius: 5px;
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            top: 60px;
+            right: 20px;
             z-index: 1;
             display: none;
+            font-size: 100px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 <%--<jsp:include page="nav_bar_giao_dien.jsp"></jsp:include>--%>
 <jsp:include page="nav_bar_admin_show.jsp"></jsp:include>
-<div id="toastMessage" class="toast" style="background-color: black"></div>
+<div  id="toastMessage" class="toast" style="background-color: dodgerblue;font-size: 20px;border-radius: 50px;text-align: center"></div>
 <script>
     // Function to show the toast message
     function showToast(message) {
