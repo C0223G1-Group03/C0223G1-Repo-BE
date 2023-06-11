@@ -12,36 +12,37 @@
     <title>Title</title>
     <meta charset="UTF-8">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #19161c;
-            height: 100vh;
+        .table {
+            background-image: image("https://carpassion.vn/wp-content/uploads/2020/01/GT-R-Pro-1024x576.jpg");
+            background-color: #212529;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
             flex-direction: column;
             align-content: center;
+            width: 100%;
+            height: 100%;
+            font-size: large;
         }
 
-        .box {
-            position: relative;
-        }
+        /*.box {*/
+        /*    position: relative;*/
+        /*}*/
 
-        .input {
-            padding: 10px;
-            width: 40px;
-            height: 40px;
-            background: none;
-            border: 4px solid white;
-            border-radius: 50px;
-            box-sizing: border-box;
-            font-family: Comic Sans MS;
-            font-size: 20px;
-            color: white;
-            outline: none;
-            transition: .5s;
-        }
+        /*.input {*/
+        /*    padding: 10px;*/
+        /*    width: 40px;*/
+        /*    height: 40px;*/
+        /*    background: none;*/
+        /*    border: 4px solid white;*/
+        /*    border-radius: 50px;*/
+        /*    box-sizing: border-box;*/
+        /*    font-family: Comic Sans MS;*/
+        /*    font-size: 20px;*/
+        /*    color: white;*/
+        /*    outline: none;*/
+        /*    transition: .5s;*/
+        /*}*/
 
         .box:hover input {
             width: 100px;
@@ -63,11 +64,13 @@
             opacity: 0;
             z-index: -1;
         }
-        th{
+
+        th {
             width: 200px;
             text-align: center;
         }
-        td,input{
+
+        td, input {
             width: 400px;
         }
 
@@ -79,54 +82,51 @@
 </head>
 <body>
 <form action="/product?action=add" method="post">
-    <table class="table table-dark table-hover container-f ">
+    <table class="table table-dark table-hover">
         <thead>
-        <tr style="color: white;text-align: center"><th>THÊM SẢN PHẨM</th></tr>
+        <tr style="color: white;text-align: center">
+            <th>THÊM SẢN PHẨM</th>
+        </tr>
         <tr style="text-align: center">
-            <tr>
+        <tr>
             <th class="col-3" scope="col">Tên xe</th>
-            <td class="col-3"><input name="name"  required></td>
+            <td class="col-3"><input name="name" required></td>
         </tr>
         <tr>
             <th class="col-1" scope="col">Màu xe</th>
-            <td class="col-1"><input name="color"></td>
+            <td class="col-1"><input name="color" required></td>
         </tr>
         <tr>
             <th class="col-2" scope="col">Ngày sản xuất</th>
-            <td class="col-2"><input name="day" ></td>
+            <td class="col-2"><input type="date" name="day" required></td>
         </tr>
         <tr>
             <th class="col-1" scope="col">Mô tả</th>
-            <td class="col-1"><input name="introduce"></td>
+            <td class="col-1"><input name="introduce" required></td>
         </tr>
         <tr>
             <th class="col-1" scope="col">Loại xe</th>
             <td class="col-1"><select name="loai_xe">
-
-                <c:forEach items="${loaiXeList}" var="loaiXe">
-                    <option value="${loaiXe.ma_loai_xe}">Sedan</option>
-                    <option value="${loaiXe.ma_loai_xe}">SUV</option>
-                    <option value="${loaiXe.ma_loai_xe}">coupe</option>
-                    <option value="${loaiXe.ma_loai_xe}">Xe đa dụng</option>
-                </c:forEach>
+                <option value="1"/>1<span> : Sedan</span>
+                <option value="2"/>2<span> : SUV</span>
+                <option value="3"/>3<span> : Coupé</span>
+                <option value="4"/>4<span> : Xe Đa Dụng</span>
             </select>
-            </td>
         </tr>
         <tr>
             <th class="col-1" scope="col">Tình trạng</th>
-            <td class="col-1"><select name="tinh_trang">
-                <c:forEach items="${tinhTrangXe}" var="tinhTrang">
-                    <option value="${tinhTrang.ma_tinh_trang}">Có Sẵn</option>
-                    <option value="${tinhTrang.ma_tinh_trang}">Không có sẵn</option>
-                </c:forEach>
-            </select></td>
+            <td class="col-1">
+                <select name="tinh_trang">
+                    <option value="1"/>1<span> : Có Sẵn</span>
+                    <option value="2"/>2<span> : Không Có Sẵn</span>
+                </select></td>
         </tr>
         <tr>
-            <th class="col-1" scope="col">Giá (VND)</th>
+            <th class="col-1" scope="col">Giá(VND)</th>
             <td class="col-1"><input name="gia" required></td>
         </tr>
         <tr>
-            <th class="col-1" scope="col">Ảnh (img) </th>
+            <th class="col-1" scope="col">Ảnh(img)</th>
             <td class="col-1"><input name="img" required></td>
         </tr>
         <tr>

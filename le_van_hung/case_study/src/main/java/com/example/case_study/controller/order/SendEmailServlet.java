@@ -47,10 +47,10 @@ public class SendEmailServlet extends HttpServlet {
                     //
             );
             message.setSubject(emailSubject);
-            message.setText(emailContent);
+            message.setContent(emailContent, "text/html; charset=UTF-8");
             Transport.send(message);
             System.out.println("Done");
-            resp.sendRedirect("/order");
+            resp.sendRedirect("/order?message=Da Gui Thu Den Email Cua Ban");
         }catch (Exception e){
             e.printStackTrace();
         }

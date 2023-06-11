@@ -12,18 +12,33 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-
+    <style>
+        /* Styling for the toast message */
+        .toast {
+            background-color: dodgerblue;
+            color: white;
+            padding: 25px;
+            border-radius: 5px;
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            z-index: 1;
+            display: none;
+            font-size: medium;
+        }
+    </style>
     <style>
         body_1 {
             margin: 0;
             padding: 0;
             background: #19161c;
-            height: 100vh;
+            height: 10000vh;
             display: flex;
             /*justify-content: space-evenly;*/
             align-items: center;
             flex-direction: column;
             align-content: center;
+            place-items: center;
         }
 
         .box {
@@ -66,6 +81,43 @@
             z-index: -1;
         }
 
+
+
+        html,
+        body {
+            height: 100%
+        }
+
+        .modal-content {
+            border-radius: 5rem;
+        }
+
+
+        .modal-content:hover {
+            box-shadow: 2px 2px 2px black;
+        }
+
+        .fa {
+            color: #be2b3c;
+            font-size: 90px;
+            padding: 30px 0px;
+            text-align: center;
+        }
+
+        .b1 {
+            background-color: #2b84be;
+            box-shadow: 0px 4px #337095;
+            font-size: 17px;
+        }
+
+        .r3 {
+            color: #c1c1c1;
+            font-weight: 500;
+        }
+
+        a, a:hover {
+            text-decoration: none;
+        }
     </style>
 
 </head>
@@ -89,7 +141,7 @@
                 <span style="color: white;border-radius: 100%"><i class="fa-solid fa-user-plus"></i></span></a>
             <div class="box" style="padding-top: 10px">
                 <form action="/employee?action=search" method="post">
-                    <input onchange="searchId(this.value)" type="search" class="input" id="id" name="id" onmouseout="this.value = ''; this.blur();">
+                    <input type="search" class="input" id="id" name="id">
                 </form>
                 <i class="fas fa-search"></i>
             </div>
@@ -100,7 +152,7 @@
     <c:forEach items="${employeeList}" var="e">
         <tr>
             <th class="col-1" scope="row"><c:out value="${e.id}"/></th>
-            <td class="col-1"><c:out value="${e.name}"/></td>
+            <td class="col-1" style="text-align: left"><c:out value="${e.name}"/></td>
             <td class="col-1"><c:out value="${e.dateOfBirth}"/></td>
             <td class="col-1"><c:if test="${e.gender==false}">Nữ</c:if>
                 <c:if test="${e.gender==true}">Nam</c:if></td>
@@ -132,37 +184,49 @@
         document.getElementById("nameDelete").innerText = name;
     }
 
-    function searchId(id){
-        console.log(id)
-        document.getElementById("id").value=id;
-    }
 </script>
 
 <!-- Modal -->
-<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="modelTitleId"></h4>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h3>Do you want to delete <span id="nameDelete"></span> ?</h3>
-            </div>
-            <div class="modal-footer">
+    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content py-md-5 px-md-4 p-sm-3 p-4">
+                <h4 style="text-align: center">Xóa nhân viên</h4>
+                <i class=" fa fa-solid fa-trash-can"></i>
+                <h5 style="text-align: center" class="r3 px-md-5 px-sm-1">Bạn có chắc chắn muốn xóa <span style="color: black" id="nameDelete"></span> ?</h5>
                 <form action="/employee?action=delete" method="post">
                     <input type="hidden" id="isDelete" name="isDelete">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                    <button type="submit" class="btn btn-primary">Yes</button>
+                    <div class="text-center mb-3">
+                        <button class="btn btn-outline-dark w-50 rounded-pill b1" type="submit">Có</button>
+                    </div>
+                    <div class="text-center mb-3">
+                        <button type="button" class="btn btn-outline-dark w-50 rounded-pill b1" data-bs-dismiss="modal" >Không</button>
+                    </div>
+
                 </form>
             </div>
         </div>
     </div>
 </div>
 <%-- sign_up--%>
-
+    <c:if test="${massage!= null}">
+    <div style="background-color: dodgerblue;font-size: 20px;border-radius: 50px ;text-align: center" id="toastMessage" class="toast"></div>
+    </c:if>
+    <script>
+        // Function to show the toast message
+        function showToast(message) {
+            var toast = document.getElementById("toastMessage");
+            toast.style.display = "block";
+            toast.innerText = message;
+            setTimeout(function() {
+                toast.style.display = "none";
+            }, 3000); // Hide the toast message after 3 seconds
+        }
+        // Automatically show the toast message when the page is reloaded
+        window.addEventListener('load', function() {
+            showToast("${massage}");
+        });
+    </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

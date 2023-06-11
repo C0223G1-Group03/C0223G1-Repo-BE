@@ -82,13 +82,15 @@
         </tr>
         <tr>
             <th class="col-1" scope="col">CCCD</th>
-            <td class="col-1"><input type="number" name="citizenId" required title="Vui lòng nhập CCCD"></td>
+            <td class="col-1"><input id="input_cccd" onkeyup="checkCCCD()" type="number" name="citizenId" required title="Vui lòng nhập CCCD">
+               <br> <span id="cccd_error"></span>
+            </td>
         </tr>
         <tr>
             <th class="col-1" scope="col">SĐT</th>
-            <td class="col-1"><input name="phone" type="tel"
-                                     pattern="^(84|0[3|5|7|8|9])+([0-9]{8})$" title="Vui lòng nhập số điện thoại"
-                                     required></td>
+            <td class="col-1"><input id="phoneNumber" onkeyup="checkPhone()" name="phone" type="tel" title="Vui lòng nhập số điện thoại" required>
+                <br><span id="phone_error"></span>
+            </td>
         </tr>
         <tr>
             <th class="col-3" scope="col">Địa chỉ</th>
@@ -96,17 +98,60 @@
         </tr>
         <tr>
             <th class="col-2" scope="col">Email</th>
-            <td class="col-2"><input type="email" name="email" pattern="^\s*@[a-z0-9.-]*$" tilte="Vui lòng nhập Email" required></td>
+            <td class="col-2"><input id="emailAddress" onkeyup="checkEmail()" type="email" name="email" tilte="Vui lòng nhập Email" required>
+              <br>  <span id="error_mail"></span>
+            </td>
         </tr>
         <tr>
             <th class="col-1" scope="col"><a href="/customer"><span class="btn btn-outline-light"><i
                     class="fa-solid fa-arrow-left"></i></span></a></th>
             <td class="col-1">
-                <button class="btn btn-outline-light" type="submit" style="width: 40px;margin-left: 300px"><span>
+                <button id="button" class="btn btn-outline-light" type="submit" style="width: 40px;margin-left: 300px"><span>
                 <i class="fa-regular fa-circle-check"></i></span></button>
             </td>
         </tr>
     </table>
 </form>
+<script>
+    function checkCCCD() {
+        let message_cccd=document.getElementById("cccd_error");
+        let cccd=document.getElementById("input_cccd").value;
+        if(!cccd.match(/^[0-9]{12,}/)){
+            message_cccd.textContent="CCCD không hợp lệ";
+            message_cccd.style.color="#ffffff"
+            document.getElementById('button').style.display='none'
+        }else{
+            message_cccd.textContent="";
+            document.getElementById('button').style.display='block';
+        }
+
+    }
+
+    function checkPhone(){
+        let message_phone=document.getElementById("phone_error");
+        let phone=document.getElementById("phoneNumber").value;
+        if(!phone.match(/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/)){
+            message_phone.textContent="Số điện thoại không hợp lệ";
+            message_phone.style.color="#ffffff"
+            document.getElementById('button').style.display='none'
+        }else{
+            message_phone.textContent="";
+            document.getElementById('button').style.display='block';
+        }
+    }
+
+    function checkEmail(){
+        let message_mail=document.getElementById("error_mail");
+        let mail=document.getElementById("emailAddress").value;
+        if(!mail.match(/^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/)){
+            message_mail.textContent="Email không đúng định dạng";
+            message_mail.style.color="#ffffff"
+            document.getElementById('button').style.display='none'
+        }else{
+            message_mail.textContent="";
+            document.getElementById('button').style.display='block';
+        }
+    }
+</script>
 </body>
 </html>

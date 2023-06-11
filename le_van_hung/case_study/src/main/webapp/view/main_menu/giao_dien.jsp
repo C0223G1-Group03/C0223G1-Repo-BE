@@ -114,6 +114,7 @@
         }
 
     </style>
+
     <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <link rel="stylesheet" href="(../../bootstrap-5.1.3-dist/bootstrap-5.1.3-dist/css/bootstrap.min.css))">
@@ -293,7 +294,7 @@
         </div>
     </div>
 </div>
-<div class="row container-fluid " style="padding-top: 100px; background-color: black; border: 0px">
+<div class="row container-fluid " style="background-color: dodgerblue;font-size: 20px;border-radius: 50px">
     <div class="row container-fluid"
          style="border: 1px white solid; color: white; margin-bottom: 50px ;margin-left: 10px; padding-top: 20px;padding-bottom: 20px">
         <h5>Giữ liên lạc với chúng tôi</h5>
@@ -339,7 +340,6 @@
         </div>
     </div>
 </div>
-<button onclick="topFunction()" id="myBtn" title="Quay Về Đầu Trang">BackToTop</button>
 <script>
     window.onscroll = function () {
         scrollFunction()

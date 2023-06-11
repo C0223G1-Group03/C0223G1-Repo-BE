@@ -74,6 +74,12 @@ public class Product {
         this.ten_xe = ten_xe;
     }
 
+    public Product(int ma_xe, String ten_xe, double gia) {
+        this.ma_xe = ma_xe;
+        this.ten_xe = ten_xe;
+        this.gia = gia;
+    }
+
     public Product(int ma_xe) {
         this.ma_xe = ma_xe;
     }

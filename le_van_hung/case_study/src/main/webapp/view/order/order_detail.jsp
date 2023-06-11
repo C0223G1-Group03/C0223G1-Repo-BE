@@ -41,6 +41,7 @@
 <%--</html>--%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -116,45 +117,45 @@
 </head>
 <body>
 <form>
-<table class="table table-dark table-hover container-f">
-    <tr style="color: Red;text-align: center"><th>Chi tiết order</th></tr>
+<%--    <button style="background-color:black; color: white;text-align: center"><th>Chi tiết order</th></button>--%>
+    <table class="table table-dark table-hover container-f">
     <thead>
+    <tr style="color: white;text-align: center">
+        <th>Chi Tiết Order</th>
+    </tr>
     <tr style="text-align: center">
     <tr>
         <th>Mã Order</th>
-        <td><input name="id" disabled value="${orderDetail.ma_order}"></td>
+        <td><input name="id" readonly value="${orderDetail.ma_order}"></td>
     </tr>
     <tr>
         <th>Ngày làm order</th>
-        <td><input name="date" disabled value="${orderDetail.ngay_lam_order}"></td>
+        <td><input name="date" readonly value="${orderDetail.ngay_lam_order}"></td>
     </tr>
     <tr>
         <th>Số lượng xe</th>
-        <td><input name="quanlity" disabled value="${orderDetail.so_luong_xe}"></td>
+        <td><input name="quanlity" readonly value="${orderDetail.so_luong_xe}"></td>
     </tr>
     <tr>
         <th>Mã xe</th>
-        <td><input name="idcar" disabled value="${orderDetail.product.ma_xe}"></td>
+        <td><input name="idcar" readonly value="${orderDetail.product.ma_xe}"></td>
     </tr>
     <tr>
         <th>Tên xe</th>
-        <td><input name="nameCar" disabled value="${orderDetail.product.ten_xe}"></td>
+        <td><input name="nameCar" readonly value="${orderDetail.product.ten_xe}"></td>
+    </tr>
+    <tr>
+        <th>Giá</th>
+        <td><input name="gia" readonly value="<fmt:formatNumber type="number" maxFractionDigits="3" value="${orderDetail.product.gia}"/>"></td>
+
     </tr>
     <tr>
         <th>Mã khách hàng</th>
-        <td><input name="idCustomer" disabled value="${orderDetail.customer.id}"></td>
+        <td><input name="idCustomer" readonly value="${orderDetail.customer.id}"></td>
     </tr>
     <tr>
         <th>Tên khách hàng</th>
-        <td><input name="nameCustomer" disabled value="${orderDetail.customer.name}"></td>
-    </tr>
-    <tr>
-        <th>Mã Nhân Viên</th>
-        <td><input name="idEmployee" disabled value="${orderDetail.employee.id}"></td>
-    </tr>
-    <tr>
-        <th>Tên Nhân Viên</th>
-        <td><input name="nameCustomer" disabled value="${orderDetail.employee.name}"></td>
+        <td><input name="nameCustomer" readonly value="${orderDetail.customer.name}"></td>
     </tr>
     <tr>
         <th>

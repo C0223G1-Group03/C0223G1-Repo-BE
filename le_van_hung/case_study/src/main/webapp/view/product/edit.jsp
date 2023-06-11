@@ -1,12 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Admin
-  Date: 04/06/2023
-  Time: 09:04
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -73,19 +67,19 @@
         </tr>
         <tr>
             <th>Màu xe</th>
-            <td><input type="text" name="color" value="${product.getMau_sac_xe()}"></td>
+            <td><input type="text" name="color" value="${product.getMau_sac_xe()}" required></td>
         </tr>
         <tr>
             <th>Ngày sản xuất</th>
-            <td><input type="date" name="date" value="${product.getNgay_san_xuat()}"></td>
+            <td><input type="date" name="date" value="${product.getNgay_san_xuat()}" required></td>
         </tr>
         <tr>
             <th>Mô tả</th>
-            <td><input type="text" name="introduce" value="${product.getMo_ta()}" minlength="3" maxlength="20"></td>
+            <td><input type="text" name="introduce" value="${product.getMo_ta()}" minlength="3" maxlength="20" required></td>
         </tr>
         <tr>
             <th>Loại xe</th>
-            <td><select name="loaiXe">
+            <td><select name="loaiXe" required>
                     <option value="1"/>1<span> : Sedan</span>
                     <option value="2"/>2<span> : SUV</span>
                     <option value="3"/>3<span> : Coupé</span>
@@ -94,18 +88,18 @@
         </tr>
         <tr>
             <th>Tình Trạng</th>
-            <td><select name="tinhTrang">
+            <td><select name="tinhTrang" required>
                     <option value="1"/>1<span> : Có Sẵn</span>
                     <option value="2"/>2<span> : Không Có Sẵn</span>
             </select></td>
         </tr>
         <tr>
             <th>Giá(VND)</th>
-            <td><input type="number" name="gia" value="${product.getGia()}" step="any" pattern="[-+]?[0-9]"></td>
+            <td><input type="number" name="gia" value="${product.getGia()}" step="any" pattern="[-+]?[0-9]" required></td>
         </tr>
         <tr>
             <th>Ảnh(img)</th>
-            <td><input type="text" name="img" value="${product.getImage()}"></td>
+            <td><input type="text" name="img" value="${product.getImage()}" required></td>
         </tr>
         <tr>
             <th><a href="/product"><span class="btn btn-outline-light"><i class="fa-solid fa-arrow-left"></i></span></a>
