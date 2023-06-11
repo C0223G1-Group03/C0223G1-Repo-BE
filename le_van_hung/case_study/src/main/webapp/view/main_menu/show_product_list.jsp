@@ -88,7 +88,8 @@
                         <h5 class="card-title"><c:out value="${list.ten_xe}"/></h5>
                         <span class="float-start my-4"><button onclick="showModal('${list.ten_xe}','${list.mau_sac_xe}','${list.ngay_san_xuat}','${list.mo_ta}','${list.loaiXe.ten_loai_xe}',
                                 '${list.tinhTrang.ten_tinh_trang}','${list.gia}')"
-                                                              type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modelId" style="width: 80px;background-color: black;color: white">
+                                                              type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modelId"
+                                                               style="width: 80px;background-color: black;color: white">
                            <span style="font-size:small;"> Chi tiết</span>
                         </button></span>
                         <span class="float-end my-4"><a href="/user?action=order&id=${list.ma_xe}"><button style="border: 0px"><i class="fa-solid fa-cart-shopping"></i></button></a></span>

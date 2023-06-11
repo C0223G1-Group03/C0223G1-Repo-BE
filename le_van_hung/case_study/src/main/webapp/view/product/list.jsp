@@ -74,8 +74,8 @@
         }
 
         .toast {
-            background-color: white;
-            color: black;
+            background-color: #308ae7;
+            color: white;
             padding: 25px;
             border-radius: 5px;
             position: fixed;
@@ -85,22 +85,7 @@
             display: none;
             font-size: medium;
         }
-
-        .toast1 {
-            background-color: white;
-            color: red;
-            padding: 25px;
-            border-radius: 5px;
-            position: fixed;
-            top: 60px;
-            right: 20px;
-            z-index: 1;
-            display: none;
-            font-size: medium;
-        }
-
     </style>
-
 </head>
 <jsp:include page="/view/main_menu/nav_bar_admin_show.jsp"></jsp:include>
 <body>
@@ -130,10 +115,9 @@
                 <span><i class="fa-solid fa-circle-down"></i></span></a>
             <div class="box" style="padding-top: 10px">
                 <form action="/product?action=search" method="post">
-                    <input type="search" class="input" id="id" name="id">
-                    <%--                        <button type="submit" >tìm kiếm</button>--%>
+                    <input type="search" class="input" id="id" name="list">
+                    <button type="submit">tìm kiếm</button>
                 </form>
-                <i class="fas fa-search"></i>
             </div>
         </th>
     </tr>
@@ -142,13 +126,13 @@
     <c:forEach items="${list}" var="list" varStatus="loop">
         <tr>
             <th class="col-1" scope="row"><c:out value="${loop.count}"/></th>
-            <td class="col-2"><c:out value="${list.ten_xe}"/></td>
+            <td class="col-2" style="text-align: left"><c:out value="${list.ten_xe}"/></td>
             <td class="col-1"><c:out value="${list.mau_sac_xe}"/></td>
             <td class="col-2"><c:out value="${list.ngay_san_xuat}"/></td>
             <td class="col-1"><c:out value="${list.mo_ta}"/></td>
             <td class="col-1"><c:out value="${list.loaiXe.ten_loai_xe}"/></td>
             <td class="col-1"><c:out value="${list.tinhTrang.ten_tinh_trang}"/></td>
-            <td class="col-1">
+            <td class="col-1" style="text-align: right">
                 <fmt:formatNumber type="number" maxFractionDigits="3" value="${list.gia}"/>
             </td>
             <td class="col-1"><img height="50px" width="50px" src="<c:out value="${list.image}"/>"/></td>
@@ -177,9 +161,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h4>Bạn có chắc chắn xóa sản phẩm có tên:
+                <h5>Bạn có chắc chắn xóa sản phẩm có tên:
                     <span style="color:red" id="nameDelete"></span>
-                </h4>
+                </h5>
             </div>
             <div class="modal-footer">
                 <form action="/product?action=delete" method="post">
@@ -191,15 +175,10 @@
         </div>
     </div>
 </div>
-<%--<c:if test="${AddProduct !=null}">--%>
-<%--    <div id="toastMessage" class="toast"></div>--%>
-<%--</c:if>--%>
+
 <c:if test="${EditProduct !=null}">
     <div id="toastMessage" class="toast"></div>
 </c:if>
-<%--<c:if test="${DeleteProduct !=null}">--%>
-<%--    <div id="toastMessage" class="toast"></div>--%>
-<%--</c:if>--%>
 <c:if test="${massage !=null}">
     <div id="toastMessage" class="toast"></div>
 </c:if>
@@ -216,7 +195,7 @@
     window.addEventListener('load', function () {
         if ("${massage}" != "") {
             showToast("${massage}")
-        } else if ("${EditProduct}" != ""){
+        } else if ("${EditProduct}" != "") {
             showToast("${EditProduct}");
         }
     });
